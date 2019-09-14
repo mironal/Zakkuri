@@ -3,12 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
+		4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */; };
+		4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */; };
+		4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */; };
+		4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */; };
+		4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FA232C8B70007D42A5 /* HabitModel.swift */; };
+		4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FC232C9F53007D42A5 /* Models.swift */; };
+		4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */; };
+		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
+		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
+		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
+		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
+		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
-		4ECE99C2232A596600215BFE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* FirstViewController.swift */; };
+		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C4232A596600215BFE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C3232A596600215BFE /* SecondViewController.swift */; };
 		4ECE99C7232A596600215BFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C5232A596600215BFE /* Main.storyboard */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
@@ -35,9 +48,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
+		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitFormViewController.storyboard; sourceTree = "<group>"; };
+		4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryViewController.storyboard; sourceTree = "<group>"; };
+		4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		4E33B5FA232C8B70007D42A5 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
+		4E33B5FC232C9F53007D42A5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
+		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		4E6CC52F232A5FC500E367E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		4E6CC530232A5FC500E367E3 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		4E6CC531232A5FC500E367E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
+		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* laid-back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "laid-back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4ECE99C1232A596600215BFE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
 		4ECE99C3232A596600215BFE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4ECE99C6232A596600215BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4ECE99C8232A596700215BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +84,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */,
+				4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */,
+				4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */,
+				4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */,
+				4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +109,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E33B5F8232C8B3C007D42A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E33B5FA232C8B70007D42A5 /* HabitModel.swift */,
+				4E33B5FC232C9F53007D42A5 /* Models.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E33B5F9232C8B41007D42A5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4E33B600232CC7EC007D42A5 /* HabitForm */ = {
+			isa = PBXGroup;
+			children = (
+				4ECE99C1232A596600215BFE /* HabitFormViewController.swift */,
+				4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */,
+			);
+			path = HabitForm;
+			sourceTree = "<group>";
+		};
+		4E33B601232CC7FD007D42A5 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */,
+				4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */,
+				4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		4E6CC52C232A5FC500E367E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */,
+				4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */,
+				4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */,
+				4E6CC531232A5FC500E367E3 /* RxCocoa.framework */,
+				4E6CC52D232A5FC500E367E3 /* RxRelay.framework */,
+				4E6CC52F232A5FC500E367E3 /* RxSwift.framework */,
+				4E6CC530232A5FC500E367E3 /* RxTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E6CC539232A615E00E367E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */,
+				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4E6CC53A232A616D00E367E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E33B601232CC7FD007D42A5 /* Summary */,
+				4E33B600232CC7EC007D42A5 /* HabitForm */,
+				4ECE99C3232A596600215BFE /* SecondViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4ECE99B3232A596600215BFE = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +184,7 @@
 				4ECE99D5232A596800215BFE /* laid-backTests */,
 				4ECE99E0232A596800215BFE /* laid-backUITests */,
 				4ECE99BD232A596600215BFE /* Products */,
+				4E6CC52C232A5FC500E367E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +201,11 @@
 		4ECE99BE232A596600215BFE /* laid-back */ = {
 			isa = PBXGroup;
 			children = (
+				4E6CC53A232A616D00E367E3 /* View */,
+				4E6CC539232A615E00E367E3 /* ViewModel */,
+				4E33B5F8232C8B3C007D42A5 /* Model */,
+				4E33B5F9232C8B41007D42A5 /* Service */,
 				4ECE99BF232A596600215BFE /* AppDelegate.swift */,
-				4ECE99C1232A596600215BFE /* FirstViewController.swift */,
-				4ECE99C3232A596600215BFE /* SecondViewController.swift */,
 				4ECE99C5232A596600215BFE /* Main.storyboard */,
 				4ECE99C8232A596700215BFE /* Assets.xcassets */,
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
@@ -138,6 +242,7 @@
 				4ECE99B8232A596600215BFE /* Sources */,
 				4ECE99B9232A596600215BFE /* Frameworks */,
 				4ECE99BA232A596600215BFE /* Resources */,
+				4E6CC538232A5FDA00E367E3 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -234,6 +339,8 @@
 			files = (
 				4ECE99CC232A596700215BFE /* LaunchScreen.storyboard in Resources */,
 				4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */,
+				4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */,
+				4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */,
 				4ECE99C7232A596600215BFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,14 +361,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4E6CC538232A5FDA00E367E3 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4ECE99B8232A596600215BFE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4ECE99C4232A596600215BFE /* SecondViewController.swift in Sources */,
+				4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */,
 				4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */,
-				4ECE99C2232A596600215BFE /* FirstViewController.swift in Sources */,
+				4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */,
+				4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */,
+				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
+				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
+				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
+				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +574,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "laid-back/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,6 +596,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "laid-back/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

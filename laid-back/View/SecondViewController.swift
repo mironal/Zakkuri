@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  laid-back
 //
 //  Created by mironal on 2019/09/12.
@@ -8,13 +8,9 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
-
+class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
-

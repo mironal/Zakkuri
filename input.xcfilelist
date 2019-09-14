@@ -1,0 +1,7 @@
+$(SRCROOT)/Carthage/Build/iOS/RxTest.framework
+$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework
+$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework
+$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework
+$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
+$(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework
+$(SRCROOT)/Carthage/Build/iOS/SwifterSwift.framework
