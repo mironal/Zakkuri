@@ -40,19 +40,20 @@ class HabitFormViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        clearsSelectionOnViewWillAppear = true
+        titleTextField.delegate = self
 
         let selectSpanRelay = PublishRelay<GoalSpan>()
         let selectGoalTimeRelay = PublishRelay<TimeInterval>()
 
-        let tapItem = tableView.rx.itemSelected.do(onNext: { [weak self] in
-            self?.tableView.deselectRow(at: $0, animated: true)
-        }).compactMap { HabitFormViewModel.TappedItem(indexPath: $0) }
+        let tapItem = tableView.rx.itemSelected
+            .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
+            .compactMap { HabitFormViewModel.TappedItem(indexPath: $0) }
 
-        func reloadTableView() {
-            // 表示の更新だけ
-            tableView.beginUpdates()
-            tableView.endUpdates()
+        func reloadTableView(at indexPath: IndexPath) {
+            if HabitFormViewModel.TappedItem(indexPath: indexPath) != .title {
+                tableView.reloadData()
+                print("Reload data")
+            }
         }
 
         let outputs = viewModel.bind(.init(
@@ -76,20 +77,23 @@ class HabitFormViewController: UITableViewController {
             .disposed(by: disposeBag)
 
         outputs.span.asDriver(onErrorDriveWith: .never())
+            .debug("span")
             .map { Optional($0.localizedString) }
-            .do(onNext: { _ in reloadTableView() })
+            .do(afterNext: { _ in reloadTableView(at: .init(row: 0, section: 1)) })
             .drive(spanCell.detailTextLabel!.rx.text)
             .disposed(by: disposeBag)
 
-        let fmt = DateComponentsFormatter()
-        outputs.goalTime.asDriver(onErrorDriveWith: .never())
-            .map { fmt.string(from: $0) }
-            .do(onNext: { _ in reloadTableView() })
+        outputs.goalTime
+            .debug("goalTime")
+            .compactMap { Habit.timeFormatter.string(from: $0) }
+            .asDriver(onErrorDriveWith: .never())
+            .do(afterNext: { _ in reloadTableView(at: .init(row: 1, section: 1)) })
             .drive(timeCell.detailTextLabel!.rx.text)
             .disposed(by: disposeBag)
 
         outputs.readableString.asDriver(onErrorDriveWith: .never())
-            .do(onNext: { _ in reloadTableView() })
+            .debug("readableString")
+            .do(afterNext: { _ in reloadTableView(at: .init(row: 0, section: 2)) })
             .drive(readableCell.textLabel!.rx.text)
             .disposed(by: disposeBag)
 
@@ -135,5 +139,11 @@ class HabitFormViewController: UITableViewController {
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: showTimePicker)
             .disposed(by: disposeBag)
+    }
+}
+
+extension HabitFormViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_: UITextField) -> Bool {
+        return true
     }
 }

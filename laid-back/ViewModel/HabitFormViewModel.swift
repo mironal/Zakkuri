@@ -55,7 +55,7 @@ public class HabitFormViewModel {
             startTitleEditing: inputs.tapItem.filterMap { $0 == .title ? .map(()) : .ignore },
             span: inputs.selectSpan,
             goalTime: inputs.selectGoalTime,
-            readableString: habit.map { $0.readableString },
+            readableString: habit.map { $0.readableString }.distinctUntilChanged(),
             showSelectSpan: inputs.tapItem.filterMap { $0 == .span ? .map(()) : .ignore },
             showTimePicker: inputs.tapItem.filterMap { $0 == .goalTime ? .map(()) : .ignore },
             dismiss: .merge(inputs.tapCancel, saved)

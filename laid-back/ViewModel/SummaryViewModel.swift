@@ -20,9 +20,13 @@ extension Models: SummaryViewModelService {}
 public class SummaryViewModel {
     public struct Inputs {
         public let tapAdd: Observable<Void>
+
+        // tableview
+        public let selectItem: Observable<IndexPath>
     }
 
     public struct Outputs {
+        let showRecordView: Observable<RecordViewModel>
         let showGoalForm: Observable<HabitFormViewModel>
         let habits: Observable<[Habit]>
     }
@@ -36,7 +40,12 @@ public class SummaryViewModel {
     public func bind(_ inputs: Inputs) -> Outputs {
         let showGoalForm = inputs.tapAdd.map { HabitFormViewModel() }
 
+        let showRecordView = inputs.selectItem
+            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].id }
+            .map { RecordViewModel(habitId: $0) }
+
         return Outputs(
+            showRecordView: showRecordView,
             showGoalForm: showGoalForm,
             habits: habitModel.habits
         )

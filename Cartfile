@@ -1,4 +1,5 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "RxSwiftCommunity/RxSwiftExt"
 github "SwifterSwift/SwifterSwift" ~> 5.0
+github "scenee/FloatingPanel"
 

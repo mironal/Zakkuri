@@ -16,8 +16,7 @@ public class SummaryCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
 
-    @IBOutlet var progressBase: UIView!
-    @IBOutlet var progressBar: UIView!
+    @IBOutlet var progressView: UIProgressView!
 
     var state: SummaryCellState! {
         didSet {

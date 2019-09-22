@@ -12,7 +12,8 @@ public class Models {
     public static let shared = Models()
 
     private init() {
-        habit = HabitModel()
+        let storage = UserDefaultsStorage()
+        habit = HabitModel(storage: storage)
     }
 
     public var habit: HabitModelProtocol

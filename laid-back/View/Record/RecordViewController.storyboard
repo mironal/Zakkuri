@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l4r-S2-N3f">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Input-->
+        <scene sceneID="U2c-pV-1eH">
+            <objects>
+                <viewController storyboardIdentifier="RecordViewController" title="Input" id="l4r-S2-N3f" customClass="RecordViewController" customModule="laid_back" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W26-XP-N3X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p36-G0-VTV">
+                                <rect key="frame" x="20" y="56" width="358" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfS-uS-VRO">
+                                <rect key="frame" x="378" y="51.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Dfa-DP-C3s"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="IwS-5Y-Pvu"/>
+                                    <constraint firstAttribute="height" constant="30" id="JaS-uQ-iFU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="zex-Ls-KUg"/>
+                                </constraints>
+                                <state key="normal" image="CancelIcon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How long did you spend roughly?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMu-YH-Mhn">
+                                <rect key="frame" x="20" y="80.5" width="374" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="LiX-3P-u9k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX8-G6-KDi">
+                                <rect key="frame" x="20" y="282" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Bxc-5h-q6z"/>
+                                    <constraint firstAttribute="height" constant="44" id="PBg-dE-pmt"/>
+                                </constraints>
+                                <state key="normal" title="完了！">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1800" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="7rJ-aM-Xjq">
+                                <rect key="frame" x="20" y="106.5" width="374" height="167.5"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <date key="date" timeIntervalSinceReferenceDate="590231053.45170605">
+                                    <!--2019-09-15 09:04:13 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uMu-YH-Mhn" firstAttribute="top" secondItem="p36-G0-VTV" secondAttribute="bottom" constant="4" id="03C-B5-H6Z"/>
+                            <constraint firstItem="EfS-uS-VRO" firstAttribute="centerY" secondItem="p36-G0-VTV" secondAttribute="centerY" id="1JC-fi-Acx"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="KX8-G6-KDi" secondAttribute="trailing" constant="20" id="2nR-Qd-1eb"/>
+                            <constraint firstItem="EfS-uS-VRO" firstAttribute="leading" secondItem="p36-G0-VTV" secondAttribute="trailing" id="2tO-t5-9Oa"/>
+                            <constraint firstItem="uMu-YH-Mhn" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="6de-1k-7yp"/>
+                            <constraint firstItem="p36-G0-VTV" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="7w3-F4-4Hy"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="uMu-YH-Mhn" secondAttribute="trailing" constant="20" id="DC9-Ds-taf"/>
+                            <constraint firstItem="7rJ-aM-Xjq" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="F9G-58-syp"/>
+                            <constraint firstItem="7rJ-aM-Xjq" firstAttribute="top" secondItem="uMu-YH-Mhn" secondAttribute="bottom" constant="8" id="Gng-B0-n0Q"/>
+                            <constraint firstItem="KX8-G6-KDi" firstAttribute="bottom" secondItem="hI7-ke-Hfg" secondAttribute="bottom" id="Ht7-Yi-o4l"/>
+                            <constraint firstItem="KX8-G6-KDi" firstAttribute="top" secondItem="7rJ-aM-Xjq" secondAttribute="bottom" constant="8" id="JwT-QB-7Qz"/>
+                            <constraint firstItem="KX8-G6-KDi" firstAttribute="bottom" secondItem="hI7-ke-Hfg" secondAttribute="bottom" id="KIM-Sb-HGH"/>
+                            <constraint firstItem="KX8-G6-KDi" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="OG9-Pz-rnE"/>
+                            <constraint firstItem="KX8-G6-KDi" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="Pvq-DP-z4s"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="7rJ-aM-Xjq" secondAttribute="trailing" constant="20" id="VLc-W0-LC8"/>
+                            <constraint firstItem="uMu-YH-Mhn" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="hkC-Ob-hZR"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="uMu-YH-Mhn" secondAttribute="trailing" constant="20" id="rnG-Uh-XSK"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="KX8-G6-KDi" secondAttribute="trailing" constant="20" id="svi-9A-Lr8"/>
+                            <constraint firstItem="p36-G0-VTV" firstAttribute="top" secondItem="hI7-ke-Hfg" secondAttribute="top" constant="12" id="tJj-lp-QqW"/>
+                            <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="EfS-uS-VRO" secondAttribute="trailing" constant="6" id="vgA-sr-Otk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hI7-ke-Hfg"/>
+                    </view>
+                    <toolbarItems/>
+                    <size key="freeformSize" width="414" height="360"/>
+                    <connections>
+                        <outlet property="closeButton" destination="EfS-uS-VRO" id="8DY-TP-HGg"/>
+                        <outlet property="doneButton" destination="KX8-G6-KDi" id="rHA-xn-c8t"/>
+                        <outlet property="timePicker" destination="7rJ-aM-Xjq" id="ucW-Yk-5ou"/>
+                        <outlet property="titleLabel" destination="p36-G0-VTV" id="ij3-W7-UVc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHN-GB-AYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CancelIcon" width="15" height="15"/>
+    </resources>
+</document>
