@@ -10,6 +10,7 @@
 		4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3A7233747BD0083606C /* RecordViewModel.swift */; };
 		4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */; };
 		4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */; };
+		4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */; };
 		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
 		4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */; };
 		4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */; };
@@ -56,6 +57,7 @@
 		4E06F3A7233747BD0083606C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitDetailViewController.storyboard; sourceTree = "<group>"; };
+		4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
 		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
 		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitFormViewController.storyboard; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */,
 				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
 				4E06F3A7233747BD0083606C /* RecordViewModel.swift */,
+				4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
 				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
+				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
 				4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */,
 				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
 				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,

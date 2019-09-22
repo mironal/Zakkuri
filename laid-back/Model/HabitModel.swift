@@ -64,6 +64,8 @@ public protocol HabitModelProtocol {
     /// Behavior
     var habits: Observable<[HabitSummary]> { get }
 
+    func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
+
     func add(_ habit: Habit)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
 }
@@ -102,6 +104,10 @@ public class HabitModel: HabitModelProtocol {
 
     public var habits: Observable<[HabitSummary]> {
         return habitsRelay.asObservable()
+    }
+
+    public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {
+        return storage.restoreHabitRecords(by: habitId).asObservable()
     }
 
     public func add(_ habit: Habit) {

@@ -25,7 +25,7 @@ class RecordViewModel {
 
     public struct Outputs {
         public let title: Observable<String>
-        public let showDetail: Observable<Void>
+        public let showDetail: Observable<HabitDetailViewModel>
         public let dismiss: Observable<Void>
     }
 
@@ -38,23 +38,25 @@ class RecordViewModel {
         habitModel = service.habit
     }
 
-    private func currentHabit() -> Observable<Habit> {
-        let id = habitId
-        return habitModel.habits.compactMap { $0.first(where: { $0.habit.id == id }).map { $0.habit } }
-    }
-
     public func bind(_ inputs: Inputs) -> Outputs {
-        let current = currentHabit().share()
+        let current = currentHabit().share(replay: 1)
 
         let done = inputs.tapDone.withLatestFrom(inputs.changeDuration).share()
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
+        let showDetail = inputs.tapNext.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
+
         return Outputs(
             title: current.map { $0.title },
-            showDetail: inputs.tapNext,
+            showDetail: showDetail,
             dismiss: done.mapTo(())
         )
+    }
+
+    private func currentHabit() -> Observable<Habit> {
+        let id = habitId
+        return habitModel.habits.compactMap { $0.first(where: { $0.habit.id == id }).map { $0.habit } }
     }
 
     private func addTimeSpent(_ duration: TimeInterval) {

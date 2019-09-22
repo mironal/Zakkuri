@@ -103,13 +103,14 @@ class RecordViewController: UIViewController {
             .disposed(by: disposeBag)
 
         outputs.showDetail
-            .asSignal(onErrorJustReturn: ())
+            .asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
 
                 guard let self = self else { return }
 
                 guard let detail = UIStoryboard(name: "HabitDetailViewController", bundle: .main).instantiateViewController(withClass: HabitDetailViewController.self) else { return }
 
+                detail.viewModel = $0
                 let nav = UINavigationController(rootViewController: detail)
                 nav.transitioningDelegate = self
                 self.transitioningDelegate = self
