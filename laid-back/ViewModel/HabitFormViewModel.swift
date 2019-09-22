@@ -67,7 +67,7 @@ public class HabitFormViewModel {
             inputs.changeTitle,
             inputs.selectSpan,
             inputs.selectGoalTime
-        ) { Habit(title: $0, goalSpan: $1, targetTime: $2) }
+        ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2) }
 
         let publishRelay = PublishRelay<Void>()
         func save(_ h: Habit) {

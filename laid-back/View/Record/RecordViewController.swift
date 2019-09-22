@@ -17,11 +17,14 @@ class RecordViewController: UIViewController {
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
 
+    let changeDurationRelay = PublishRelay<TimeInterval>()
     @IBOutlet var timePicker: UIDatePicker! {
         didSet {
             // Layout が走った後にセットしないとずれてしまう...
             DispatchQueue.main.async {
                 self.timePicker.countDownDuration = 30 * 60
+                // 初期化前に subscribe すると謎の値が入ってくるので初期化してからのイベントだけ伝搬するようにした.
+                self.timePicker.rx.countDownDuration.bind(to: self.changeDurationRelay).disposed(by: self.disposeBag)
             }
         }
     }
@@ -35,7 +38,7 @@ class RecordViewController: UIViewController {
         let outputs = viewModel.bind(.init(
             tapDone: doneButton.rx.tap.asObservable(),
             tapClose: closeButton.rx.tap.asObservable(),
-            changeDuration: timePicker.rx.countDownDuration.asObservable()
+            changeDuration: changeDurationRelay.asObservable()
         ))
 
         outputs.title

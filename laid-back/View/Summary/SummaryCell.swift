@@ -9,7 +9,7 @@
 import UIKit
 
 public struct SummaryCellState {
-    let habit: Habit
+    let summary: HabitSummary
 }
 
 public class SummaryCell: UITableViewCell {
@@ -20,8 +20,9 @@ public class SummaryCell: UITableViewCell {
 
     var state: SummaryCellState! {
         didSet {
-            titleLabel.text = state.habit.title
-            descriptionLabel.text = state.habit.readableString
+            titleLabel.text = state.summary.habit.title
+            descriptionLabel.text = state.summary.habit.readableString
+            progressView.progress = Float(state.summary.spentTimeInDuration / state.summary.habit.targetTime)
         }
     }
 }

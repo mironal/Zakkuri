@@ -39,7 +39,7 @@ class RecordViewModel {
 
     private func currentHabit() -> Observable<Habit> {
         let id = habitId
-        return habitModel.habits.compactMap { $0.first(where: { $0.id == id }) }
+        return habitModel.habits.compactMap { $0.first(where: { $0.habit.id == id }).map { $0.habit } }
     }
 
     public func bind(_ inputs: Inputs) -> Outputs {

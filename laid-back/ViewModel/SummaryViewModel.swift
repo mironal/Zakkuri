@@ -28,7 +28,7 @@ public class SummaryViewModel {
     public struct Outputs {
         let showRecordView: Observable<RecordViewModel>
         let showGoalForm: Observable<HabitFormViewModel>
-        let habits: Observable<[Habit]>
+        let habits: Observable<[HabitSummary]>
     }
 
     private let habitModel: HabitModelProtocol
@@ -41,7 +41,7 @@ public class SummaryViewModel {
         let showGoalForm = inputs.tapAdd.map { HabitFormViewModel() }
 
         let showRecordView = inputs.selectItem
-            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].id }
+            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .map { RecordViewModel(habitId: $0) }
 
         return Outputs(

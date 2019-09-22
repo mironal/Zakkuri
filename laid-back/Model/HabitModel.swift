@@ -25,10 +25,17 @@ public enum GoalSpan: Int, CaseIterable, Codable {
 public typealias HabitID = String
 
 public struct Habit: Codable {
-    let id: HabitID = UUID().uuidString
+    let id: HabitID
     let title: String
     let goalSpan: GoalSpan
     let targetTime: TimeInterval
+
+    init(createNewHabitWithTitle title: String, goalSpan: GoalSpan, targetTime: TimeInterval) {
+        id = UUID().uuidString
+        self.title = title
+        self.goalSpan = goalSpan
+        self.targetTime = targetTime
+    }
 
     var readableString: String {
         let time = Habit.timeFormatter.string(from: targetTime) ?? ""
@@ -48,14 +55,16 @@ public struct HabitRecord: Codable {
     let createdAt: Date
 }
 
+public struct HabitSummary {
+    let habit: Habit
+    let spentTimeInDuration: TimeInterval
+}
+
 public protocol HabitModelProtocol {
     /// Behavior
-    var habits: Observable<[Habit]> { get }
-
-    func recordByHabitId(_ id: HabitID) -> Observable<[HabitRecord]>
+    var habits: Observable<[HabitSummary]> { get }
 
     func add(_ habit: Habit)
-
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
 }
 
@@ -66,27 +75,40 @@ public class HabitModel: HabitModelProtocol {
     }
 
     private let disposeBag = DisposeBag()
-    private let recordRelay = BehaviorRelay<[HabitRecord]>(value: [])
 
-    private lazy var habitsRelay: BehaviorRelay<[Habit]> = {
-        let r = BehaviorRelay<[Habit]>(value: [])
+    private func createHabitSummary(_ habit: Habit) -> Observable<HabitSummary> {
+        return Observable.just(habit)
+            .flatMap { self.storage.restoreHabitRecords(by: $0.id) }
+            .map {
+                let spentTimeInDuration = $0.reduce(0.0) { $0 + $1.duration }
+                return HabitSummary(habit: habit,
+                                    spentTimeInDuration: spentTimeInDuration)
+            }
+    }
 
-        storage.restoreHabits().subscribe(onSuccess: r.accept).disposed(by: disposeBag)
+    private func loadHabitsSummary(_ r: BehaviorRelay<[HabitSummary]>) {
+        storage.restoreHabits()
+            .asObservable()
+            .map { $0.map { self.createHabitSummary($0) } }
+            .flatMap { Observable.zip($0) }
+            .subscribe(onNext: r.accept).disposed(by: disposeBag)
+    }
 
+    private lazy var habitsRelay: BehaviorRelay<[HabitSummary]> = {
+        let r = BehaviorRelay<[HabitSummary]>(value: [])
+        loadHabitsSummary(r)
         return r
     }()
 
-    public var habits: Observable<[Habit]> {
+    public var habits: Observable<[HabitSummary]> {
         return habitsRelay.asObservable()
-    }
-
-    public func recordByHabitId(_ id: HabitID) -> Observable<[HabitRecord]> {
-        return recordRelay.map { $0.filter { $0.habitId == id } }
     }
 
     public func add(_ habit: Habit) {
         var value = habitsRelay.value
-        value.append(habit)
+
+        let summary = HabitSummary(habit: habit, spentTimeInDuration: 0)
+        value.append(summary)
         habitsRelay.accept(value)
 
         _ = storage.add(habit)
@@ -98,10 +120,7 @@ public class HabitModel: HabitModelProtocol {
     }
 
     public func add(_ record: HabitRecord) {
-        var value = recordRelay.value
-        value.append(record)
-        recordRelay.accept(value)
-
         _ = storage.add(record)
+        loadHabitsSummary(habitsRelay)
     }
 }

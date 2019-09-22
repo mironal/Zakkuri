@@ -23,9 +23,9 @@ class SummaryViewController: UITableViewController {
             selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
         ))
 
-        outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, habit, cell in
+        outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, summary, cell in
 
-            cell.state = SummaryCellState(habit: habit)
+            cell.state = SummaryCellState(summary: summary)
 
         }.disposed(by: disposeBag)
 

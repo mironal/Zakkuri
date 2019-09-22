@@ -13,7 +13,7 @@ import SwifterSwift
 public protocol StorageProtocol {
     func add(_ habit: Habit) -> Single<Void>
     func restoreHabits() -> Single<[Habit]>
-    func restoreHabitRecords() -> Single<[HabitRecord]>
+    func restoreHabitRecords(by id: HabitID) -> Single<[HabitRecord]>
 
     func add(_ record: HabitRecord) -> Single<Void>
 }
@@ -54,9 +54,12 @@ public class UserDefaultsStorage: StorageProtocol {
         return .just(habits)
     }
 
-    public func restoreHabitRecords() -> Single<[HabitRecord]> {
+    public func restoreHabitRecords(by id: HabitID) -> Single<[HabitRecord]> {
         let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
-        return .just(records)
+
+        let filterd = records.filter { $0.habitId == id }
+
+        return .just(filterd)
     }
 
     public func add(_ record: HabitRecord) -> Single<Void> {
