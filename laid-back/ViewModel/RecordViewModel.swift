@@ -25,6 +25,7 @@ class RecordViewModel {
 
     public struct Outputs {
         public let title: Observable<String>
+        public let showDetail: Observable<Void>
         public let dismiss: Observable<Void>
     }
 
@@ -51,6 +52,7 @@ class RecordViewModel {
 
         return Outputs(
             title: current.map { $0.title },
+            showDetail: inputs.tapNext,
             dismiss: done.mapTo(())
         )
     }

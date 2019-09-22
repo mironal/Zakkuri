@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfS-uS-VRO">
-                                <rect key="frame" x="378" y="51.5" width="30" height="30"/>
+                                <rect key="frame" x="378" y="57" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Dfa-DP-C3s"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="IwS-5Y-Pvu"/>
@@ -70,7 +70,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uMu-YH-Mhn" firstAttribute="top" secondItem="p36-G0-VTV" secondAttribute="bottom" constant="4" id="03C-B5-H6Z"/>
-                            <constraint firstItem="EfS-uS-VRO" firstAttribute="centerY" secondItem="p36-G0-VTV" secondAttribute="centerY" id="1JC-fi-Acx"/>
+                            <constraint firstItem="EfS-uS-VRO" firstAttribute="centerY" secondItem="p36-G0-VTV" secondAttribute="firstBaseline" id="1JC-fi-Acx"/>
                             <constraint firstItem="hI7-ke-Hfg" firstAttribute="trailing" secondItem="KX8-G6-KDi" secondAttribute="trailing" constant="20" id="2nR-Qd-1eb"/>
                             <constraint firstItem="EfS-uS-VRO" firstAttribute="leading" secondItem="p36-G0-VTV" secondAttribute="trailing" id="2tO-t5-9Oa"/>
                             <constraint firstItem="uMu-YH-Mhn" firstAttribute="leading" secondItem="hI7-ke-Hfg" secondAttribute="leading" constant="20" id="6de-1k-7yp"/>
