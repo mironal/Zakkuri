@@ -42,7 +42,6 @@ class SummaryViewController: UITableViewController {
                 (fpc.surfaceView as UIView).borderColor = UIColor.black.withAlphaComponent(0.2)
                 fpc.backdropView.alpha = 1
                 fpc.isRemovalInteractionEnabled = true
-
                 fpc.set(contentViewController: vc)
                 self.present(fpc, animated: true)
 

@@ -19,7 +19,7 @@ extension Models: RecordViewModelService {}
 class RecordViewModel {
     public struct Inputs {
         public let tapDone: Observable<Void>
-        public let tapClose: Observable<Void>
+        public let tapNext: Observable<Void>
         public let changeDuration: Observable<TimeInterval>
     }
 
@@ -51,7 +51,7 @@ class RecordViewModel {
 
         return Outputs(
             title: current.map { $0.title },
-            dismiss: .merge(done.mapTo(()), inputs.tapClose)
+            dismiss: done.mapTo(())
         )
     }
 

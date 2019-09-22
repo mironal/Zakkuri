@@ -116,11 +116,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E06F3A9233751240083606C /* Utils */ = {
+		4E06F3A9233751240083606C /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Utils;
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 		4E33B5F8232C8B3C007D42A5 /* Model */ = {
@@ -227,7 +227,7 @@
 		4ECE99BE232A596600215BFE /* laid-back */ = {
 			isa = PBXGroup;
 			children = (
-				4E06F3A9233751240083606C /* Utils */,
+				4E06F3A9233751240083606C /* CommonViews */,
 				4E6CC53A232A616D00E367E3 /* View */,
 				4E6CC539232A615E00E367E3 /* ViewModel */,
 				4E33B5F8232C8B3C007D42A5 /* Model */,

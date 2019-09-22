@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--ざっくり-->
         <scene sceneID="bEI-9h-hvA">
             <objects>
                 <tableViewController id="Stw-ps-RKt" customClass="SummaryViewController" customModule="laid_back" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                             <outlet property="delegate" destination="Stw-ps-RKt" id="e0Y-iK-TJF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="1D9-n9-rTk">
+                    <navigationItem key="navigationItem" title="ざっくり" id="1D9-n9-rTk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="N01-p4-hMW"/>
                     </navigationItem>
                     <connections>

@@ -14,7 +14,7 @@ import UIKit
 class RecordViewController: UIViewController {
     @IBOutlet var doneButton: UIButton!
 
-    @IBOutlet var closeButton: UIButton!
+    @IBOutlet var nextButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
 
     let changeDurationRelay = PublishRelay<TimeInterval>()
@@ -37,7 +37,7 @@ class RecordViewController: UIViewController {
 
         let outputs = viewModel.bind(.init(
             tapDone: doneButton.rx.tap.asObservable(),
-            tapClose: closeButton.rx.tap.asObservable(),
+            tapNext: nextButton.rx.tap.asObservable(),
             changeDuration: changeDurationRelay.asObservable()
         ))
 
@@ -78,6 +78,10 @@ private class FPLayout: FloatingPanelLayout {
 }
 
 extension RecordViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidEndRemove(_: FloatingPanelController) {
+        print("floatingPanelDidEndRemove")
+    }
+
     func floatingPanel(_: FloatingPanelController, layoutFor _: UITraitCollection) -> FloatingPanelLayout? {
         return FPLayout()
     }

@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="30" id="JaS-uQ-iFU"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="zex-Ls-KUg"/>
                                 </constraints>
-                                <state key="normal" image="CancelIcon"/>
+                                <state key="normal" image="Next"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How long did you spend roughly?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMu-YH-Mhn">
                                 <rect key="frame" x="20" y="80.5" width="374" height="18"/>
@@ -95,8 +95,8 @@
                     <toolbarItems/>
                     <size key="freeformSize" width="414" height="360"/>
                     <connections>
-                        <outlet property="closeButton" destination="EfS-uS-VRO" id="8DY-TP-HGg"/>
                         <outlet property="doneButton" destination="KX8-G6-KDi" id="rHA-xn-c8t"/>
+                        <outlet property="nextButton" destination="EfS-uS-VRO" id="P6q-QT-wSW"/>
                         <outlet property="timePicker" destination="7rJ-aM-Xjq" id="ucW-Yk-5ou"/>
                         <outlet property="titleLabel" destination="p36-G0-VTV" id="ij3-W7-UVc"/>
                     </connections>
@@ -107,6 +107,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CancelIcon" width="15" height="15"/>
+        <image name="Next" width="11" height="18"/>
     </resources>
 </document>
