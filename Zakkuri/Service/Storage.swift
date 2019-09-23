@@ -16,6 +16,8 @@ public protocol StorageProtocol {
     func restoreHabitRecords(by id: HabitID) -> Single<[HabitRecord]>
 
     func add(_ record: HabitRecord) -> Single<Void>
+
+    func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID>
 }
 
 public class UserDefaultsStorage: StorageProtocol {
@@ -27,28 +29,6 @@ public class UserDefaultsStorage: StorageProtocol {
 
     private let disposeBag = DisposeBag()
 
-    private lazy var addHabitSubject: PublishSubject<Habit> = {
-        let subject = PublishSubject<Habit>()
-        let defaults = self.defaults
-
-        subject
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { habit in
-                var habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
-                habits.append(habit)
-                defaults.set(object: habits, forKey: Keys.habits.rawValue)
-                defaults.synchronize()
-            })
-            .disposed(by: disposeBag)
-
-        return subject
-    }()
-
-    public func add(_ habit: Habit) -> Single<Void> {
-        addHabitSubject.onNext(habit)
-        return .just(())
-    }
-
     public func restoreHabits() -> Single<[Habit]> {
         let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         return .just(habits)
@@ -56,10 +36,17 @@ public class UserDefaultsStorage: StorageProtocol {
 
     public func restoreHabitRecords(by id: HabitID) -> Single<[HabitRecord]> {
         let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
-
         let filterd = records.filter { $0.habitId == id }
 
         return .just(filterd)
+    }
+
+    public func add(_ habit: Habit) -> Single<Void> {
+        var habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
+        habits.append(habit)
+        defaults.set(habits, forKey: Keys.habits.rawValue)
+
+        return .just(())
     }
 
     public func add(_ record: HabitRecord) -> Single<Void> {
@@ -67,5 +54,17 @@ public class UserDefaultsStorage: StorageProtocol {
         records.append(record)
         defaults.set(object: records, forKey: Keys.habitRecords.rawValue)
         return .just(())
+    }
+
+    public func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID> {
+        let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
+        let filteredHabits = habits.reject(where: { $0.id == habitId })
+        defaults.set(object: filteredHabits, forKey: Keys.habits.rawValue)
+
+        let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
+        let filteredRecords = records.reject(where: { $0.habitId == habitId })
+        defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
+
+        return .just(habitId)
     }
 }

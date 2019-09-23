@@ -42,4 +42,8 @@ public class HabitDetailViewController: UITableViewController {
                 self.dismiss(animated: true)
             }).disposed(by: disposeBag)
     }
+
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

@@ -29,6 +29,7 @@
 		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
+		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
 		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		4E06F3A9233751240083606C /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				4EAC5A9723388589009334F3 /* NavigationController.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */,
 				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
 				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
+				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
 				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
 				4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */,

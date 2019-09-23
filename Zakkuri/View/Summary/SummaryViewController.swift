@@ -15,12 +15,16 @@ class SummaryViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     public var viewModel = SummaryViewModel()
     @IBOutlet var addButton: UIBarButtonItem!
+
+    private let deleteItemRelay = PublishRelay<IndexPath>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let outputs = viewModel.bind(.init(
             tapAdd: addButton.rx.tap.asObservable(),
-            selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
+            selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) }),
+            deleteItem: deleteItemRelay.asObservable()
         ))
 
         outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, summary, cell in
@@ -28,6 +32,8 @@ class SummaryViewController: UITableViewController {
             cell.state = SummaryCellState(summary: summary)
 
         }.disposed(by: disposeBag)
+
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
         outputs.showRecordView
             .asSignal(onErrorSignalWith: .never())
@@ -56,5 +62,37 @@ class SummaryViewController: UITableViewController {
                 let nav = UINavigationController(rootViewController: vc)
                 self?.present(nav, animated: true)
             }).disposed(by: disposeBag)
+    }
+
+    override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, success in
+
+            let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+
+            alert.addAction(title: "Delete", style: .destructive, isEnabled: true, handler: { _ in
+                self?.deleteItemRelay.accept(indexPath)
+                success(true)
+            })
+
+            alert.addAction(title: "Cancel", style: .cancel, isEnabled: true, handler: { _ in
+                success(false)
+            })
+
+            self?.present(alert, animated: true)
+        }
+
+        delete.backgroundColor = Theme.defailt.accentColor
+
+        let config = UISwipeActionsConfiguration(actions: [delete])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

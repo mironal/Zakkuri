@@ -23,6 +23,7 @@ public class SummaryViewModel {
 
         // tableview
         public let selectItem: Observable<IndexPath>
+        public let deleteItem: Observable<IndexPath>
     }
 
     public struct Outputs {
@@ -31,6 +32,7 @@ public class SummaryViewModel {
         let habits: Observable<[HabitSummary]>
     }
 
+    private let disposeBag = DisposeBag()
     private let habitModel: HabitModelProtocol
 
     public init(_ service: SummaryViewModelService = Models.shared) {
@@ -44,10 +46,18 @@ public class SummaryViewModel {
             .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .map { RecordViewModel(habitId: $0) }
 
+        inputs.deleteItem
+            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
+            .subscribe(weak: self, onNext: SummaryViewModel.deleteHabit).disposed(by: disposeBag)
+
         return Outputs(
             showRecordView: showRecordView,
             showGoalForm: showGoalForm,
             habits: habitModel.habits
         )
+    }
+
+    private func deleteHabit(_ habitId: HabitID) {
+        habitModel.delete(habitId)
     }
 }

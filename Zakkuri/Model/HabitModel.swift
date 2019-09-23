@@ -67,10 +67,12 @@ public protocol HabitModelProtocol {
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
 
     func add(_ habit: Habit)
+    func delete(_ habitId: HabitID)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
 }
 
 public class HabitModel: HabitModelProtocol {
+    let queue = DispatchQueue(label: "dev.mironal.HabitModel")
     let storage: StorageProtocol
     init(storage: StorageProtocol) {
         self.storage = storage
@@ -111,13 +113,24 @@ public class HabitModel: HabitModelProtocol {
     }
 
     public func add(_ habit: Habit) {
-        var value = habitsRelay.value
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            var value = self.habitsRelay.value
 
-        let summary = HabitSummary(habit: habit, spentTimeInDuration: 0)
-        value.append(summary)
-        habitsRelay.accept(value)
+            let summary = HabitSummary(habit: habit, spentTimeInDuration: 0)
+            value.append(summary)
+            self.habitsRelay.accept(value)
 
-        _ = storage.add(habit)
+            _ = self.storage.add(habit)
+        }
+    }
+
+    public func delete(_ habitId: HabitID) {
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            _ = self.storage.deleteHabitAndRecords(habitId)
+            self.loadHabitsSummary(self.habitsRelay)
+        }
     }
 
     public func addTimeSpent(duration: TimeInterval, to habitId: HabitID) {
@@ -126,7 +139,10 @@ public class HabitModel: HabitModelProtocol {
     }
 
     public func add(_ record: HabitRecord) {
-        _ = storage.add(record)
-        loadHabitsSummary(habitsRelay)
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            _ = self.storage.add(record)
+            self.loadHabitsSummary(self.habitsRelay)
+        }
     }
 }

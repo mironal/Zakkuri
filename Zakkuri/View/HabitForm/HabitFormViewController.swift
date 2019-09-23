@@ -140,6 +140,10 @@ class HabitFormViewController: UITableViewController {
             .emit(onNext: showTimePicker)
             .disposed(by: disposeBag)
     }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 extension HabitFormViewController: UITextFieldDelegate {

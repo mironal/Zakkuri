@@ -8,16 +8,23 @@
 
 import UIKit
 
+public struct Theme {
+    let baseColor: UIColor
+    let secondColor: UIColor
+    let accentColor: UIColor
+
+    public static let defailt = Theme(baseColor: UIColor(hexString: "5289FF")!,
+                                      secondColor: UIColor(hexString: "2753B3")!,
+                                      accentColor: UIColor(hexString: "FF836B")!)
+}
+
 class ThemeAppier {
-    let baseColor = UIColor(hexString: "5289FF")
-    let secondColor = UIColor(hexString: "2753B3")
-    let accentColor = UIColor(hexString: "FF836B")
+    let theme: Theme = Theme.defailt
 
     func apply() {
-//        UIButton.appearance().tintColor = baseColor
-        UISlider.appearance().tintColor = baseColor
+        UISlider.appearance().tintColor = theme.baseColor
 
-        UINavigationBar.appearance().barTintColor = baseColor
+        UINavigationBar.appearance().barTintColor = theme.baseColor
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
     }
