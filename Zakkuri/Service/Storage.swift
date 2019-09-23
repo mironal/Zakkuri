@@ -18,6 +18,7 @@ public protocol StorageProtocol {
     func add(_ record: HabitRecord) -> Single<Void>
 
     func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID>
+    func deleteRecord(_ recordId: String) -> Single<String>
 }
 
 public class UserDefaultsStorage: StorageProtocol {
@@ -44,7 +45,7 @@ public class UserDefaultsStorage: StorageProtocol {
     public func add(_ habit: Habit) -> Single<Void> {
         var habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         habits.append(habit)
-        defaults.set(habits, forKey: Keys.habits.rawValue)
+        defaults.set(object: habits, forKey: Keys.habits.rawValue)
 
         return .just(())
     }
@@ -66,5 +67,13 @@ public class UserDefaultsStorage: StorageProtocol {
         defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
 
         return .just(habitId)
+    }
+
+    public func deleteRecord(_ recordId: String) -> Single<String> {
+        let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
+        let filteredRecords = records.reject(where: { $0.recordId == recordId })
+        defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
+
+        return .just(recordId)
     }
 }

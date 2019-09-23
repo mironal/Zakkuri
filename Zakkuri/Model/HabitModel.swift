@@ -53,6 +53,10 @@ public struct HabitRecord: Codable {
     let habitId: HabitID
     let duration: TimeInterval
     let createdAt: Date
+
+    var recordId: String {
+        return "\(habitId)_\(createdAt.unixTimestamp)"
+    }
 }
 
 public struct HabitSummary {
@@ -68,6 +72,7 @@ public protocol HabitModelProtocol {
 
     func add(_ habit: Habit)
     func delete(_ habitId: HabitID)
+    func deleteRecord(_ recordId: String)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
 }
 
@@ -129,6 +134,14 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.deleteHabitAndRecords(habitId)
+            self.loadHabitsSummary(self.habitsRelay)
+        }
+    }
+
+    public func deleteRecord(_ recordId: String) {
+        queue.async { [weak self] in
+            guard let self = self else { return }
+            _ = self.storage.deleteRecord(recordId)
             self.loadHabitsSummary(self.habitsRelay)
         }
     }

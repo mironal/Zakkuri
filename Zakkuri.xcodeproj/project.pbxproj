@@ -28,6 +28,7 @@
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
 		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
+		4E81A3002338B7290042188A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81A2FF2338B7290042188A /* AlertController.swift */; };
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		4E6CC531232A5FC500E367E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
+		4E81A2FF2338B7290042188A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,12 +128,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E06F3A9233751240083606C /* CommonViews */ = {
+		4E06F3A9233751240083606C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				4EAC5A9723388589009334F3 /* NavigationController.swift */,
+				4E81A2FF2338B7290042188A /* AlertController.swift */,
 			);
-			path = CommonViews;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4E06F3AC23379B680083606C /* Detail */ = {
@@ -250,7 +253,7 @@
 		4ECE99BE232A596600215BFE /* Zakkuri */ = {
 			isa = PBXGroup;
 			children = (
-				4E06F3A9233751240083606C /* CommonViews */,
+				4E06F3A9233751240083606C /* Utils */,
 				4E6CC53A232A616D00E367E3 /* View */,
 				4E6CC539232A615E00E367E3 /* ViewModel */,
 				4E33B5F8232C8B3C007D42A5 /* Model */,
@@ -445,6 +448,7 @@
 				4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */,
 				4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */,
 				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
+				4E81A3002338B7290042188A /* AlertController.swift in Sources */,
 				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
 				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,

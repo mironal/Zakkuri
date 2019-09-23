@@ -33,8 +33,6 @@ class SummaryViewController: UITableViewController {
 
         }.disposed(by: disposeBag)
 
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-
         outputs.showRecordView
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: {
@@ -70,19 +68,17 @@ class SummaryViewController: UITableViewController {
 
     override func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, success in
+            guard let self = self else { return }
 
-            let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
-
-            alert.addAction(title: "Delete", style: .destructive, isEnabled: true, handler: { _ in
-                self?.deleteItemRelay.accept(indexPath)
-                success(true)
-            })
-
-            alert.addAction(title: "Cancel", style: .cancel, isEnabled: true, handler: { _ in
-                success(false)
-            })
-
-            self?.present(alert, animated: true)
+            UIAlertController.confirmDelete()(self).subscribe(onNext: {
+                switch $0 {
+                case .cancel:
+                    success(false)
+                case .delete:
+                    self.deleteItemRelay.accept(indexPath)
+                    success(true)
+                }
+            }).disposed(by: self.disposeBag)
         }
 
         delete.backgroundColor = Theme.defailt.accentColor

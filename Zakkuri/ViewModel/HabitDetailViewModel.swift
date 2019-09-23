@@ -18,6 +18,7 @@ extension Models: HabitDetailViewModelService {}
 public class HabitDetailViewModel {
     public struct Inputs {
         public let tapClose: Observable<Void>
+        public let deleteItem: Observable<IndexPath>
     }
 
     public struct Outputs {
@@ -35,9 +36,20 @@ public class HabitDetailViewModel {
     }
 
     public func bind(_ inputs: Inputs) -> Outputs {
+        let habitRecords = habitModel.habitRecords(by: habitId).share(replay: 1)
+
+        inputs.deleteItem
+            .withLatestFrom(habitRecords) { (indexPath, habits) -> String in habits[indexPath.row].recordId }
+            .subscribe(weak: self, onNext: HabitDetailViewModel.deleteRecord)
+            .disposed(by: disposeBag)
+
         return Outputs(
-            habitRecords: habitModel.habitRecords(by: habitId).share(replay: 1),
+            habitRecords: habitRecords,
             dismiss: inputs.tapClose
         )
+    }
+
+    private func deleteRecord(_ recordId: String) {
+        habitModel.deleteRecord(recordId)
     }
 }

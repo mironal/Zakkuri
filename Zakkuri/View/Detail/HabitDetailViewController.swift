@@ -15,12 +15,14 @@ public class HabitDetailViewController: UITableViewController {
     private let disposeBag = DisposeBag()
 
     @IBOutlet var closeButton: UIBarButtonItem!
+    private let deleteItemRelay = PublishRelay<IndexPath>()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
         let outputs = viewModel.bind(.init(
-            tapClose: closeButton.rx.tap.asObservable()
+            tapClose: closeButton.rx.tap.asObservable(),
+            deleteItem: deleteItemRelay.asObservable()
         ))
 
         let formatter = DateComponentsFormatter()
@@ -45,5 +47,27 @@ public class HabitDetailViewController: UITableViewController {
 
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    public override func tableView(_: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, success in
+            guard let self = self else { return }
+
+            UIAlertController.confirmDelete()(self).subscribe(onNext: {
+                switch $0 {
+                case .cancel:
+                    success(false)
+                case .delete:
+                    self.deleteItemRelay.accept(indexPath)
+                    success(true)
+                }
+            }).disposed(by: self.disposeBag)
+        }
+
+        delete.backgroundColor = Theme.defailt.accentColor
+
+        let config = UISwipeActionsConfiguration(actions: [delete])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
 }
