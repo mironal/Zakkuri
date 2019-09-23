@@ -77,14 +77,12 @@ class HabitFormViewController: UITableViewController {
             .disposed(by: disposeBag)
 
         outputs.span.asDriver(onErrorDriveWith: .never())
-            .debug("span")
             .map { Optional($0.localizedString) }
             .do(afterNext: { _ in reloadTableView(at: .init(row: 0, section: 1)) })
             .drive(spanCell.detailTextLabel!.rx.text)
             .disposed(by: disposeBag)
 
         outputs.goalTime
-            .debug("goalTime")
             .compactMap { Habit.timeFormatter.string(from: $0) }
             .asDriver(onErrorDriveWith: .never())
             .do(afterNext: { _ in reloadTableView(at: .init(row: 1, section: 1)) })
@@ -92,7 +90,6 @@ class HabitFormViewController: UITableViewController {
             .disposed(by: disposeBag)
 
         outputs.readableString.asDriver(onErrorDriveWith: .never())
-            .debug("readableString")
             .do(afterNext: { _ in reloadTableView(at: .init(row: 0, section: 2)) })
             .drive(readableCell.textLabel!.rx.text)
             .disposed(by: disposeBag)
