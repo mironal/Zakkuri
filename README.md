@@ -1,4 +1,4 @@
-## Laid back
+## Zakkuri
 
 ゆるい目標管理アプリ.
 
