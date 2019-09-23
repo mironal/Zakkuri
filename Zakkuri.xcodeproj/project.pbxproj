@@ -28,6 +28,7 @@
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
 		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
+		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
 		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		4E6CC531232A5FC500E367E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
+		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				4E33B602232CF795007D42A5 /* Storage.swift */,
+				4EAC5A932338637B009334F3 /* Theme.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
 				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,
 				4E33B603232CF795007D42A5 /* Storage.swift in Sources */,
+				4EAC5A942338637B009334F3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

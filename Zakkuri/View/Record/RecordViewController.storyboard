@@ -13,7 +13,7 @@
         <!--Input-->
         <scene sceneID="U2c-pV-1eH">
             <objects>
-                <viewController storyboardIdentifier="RecordViewController" title="Input" id="l4r-S2-N3f" customClass="RecordViewController" customModule="laid_back" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordViewController" title="Input" id="l4r-S2-N3f" customClass="RecordViewController" customModule="Zakkuri" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W26-XP-N3X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -45,7 +45,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX8-G6-KDi">
                                 <rect key="frame" x="20" y="282" width="374" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.32156862745098036" green="0.53725490196078429" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Bxc-5h-q6z"/>
                                     <constraint firstAttribute="height" constant="44" id="PBg-dE-pmt"/>
