@@ -77,16 +77,16 @@
 		4E6CC531232A5FC500E367E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
-		4ECE99BC232A596600215BFE /* laid-back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "laid-back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
 		4ECE99C8232A596700215BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ECE99CB232A596700215BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ECE99CD232A596700215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4ECE99D2232A596800215BFE /* laid-backTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laid-backTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ECE99D2232A596800215BFE /* ZakkuriTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZakkuriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99D6232A596800215BFE /* laid_backTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = laid_backTests.swift; sourceTree = "<group>"; };
 		4ECE99D8232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4ECE99DD232A596800215BFE /* laid-backUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laid-backUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ECE99DD232A596800215BFE /* ZakkuriUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZakkuriUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99E1232A596800215BFE /* laid_backUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = laid_backUITests.swift; sourceTree = "<group>"; };
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,9 +223,9 @@
 		4ECE99B3232A596600215BFE = {
 			isa = PBXGroup;
 			children = (
-				4ECE99BE232A596600215BFE /* laid-back */,
-				4ECE99D5232A596800215BFE /* laid-backTests */,
-				4ECE99E0232A596800215BFE /* laid-backUITests */,
+				4ECE99BE232A596600215BFE /* Zakkuri */,
+				4ECE99D5232A596800215BFE /* ZakkuriTests */,
+				4ECE99E0232A596800215BFE /* ZakkuriUITests */,
 				4ECE99BD232A596600215BFE /* Products */,
 				4E6CC52C232A5FC500E367E3 /* Frameworks */,
 			);
@@ -234,14 +234,14 @@
 		4ECE99BD232A596600215BFE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4ECE99BC232A596600215BFE /* laid-back.app */,
-				4ECE99D2232A596800215BFE /* laid-backTests.xctest */,
-				4ECE99DD232A596800215BFE /* laid-backUITests.xctest */,
+				4ECE99BC232A596600215BFE /* Zakkuri.app */,
+				4ECE99D2232A596800215BFE /* ZakkuriTests.xctest */,
+				4ECE99DD232A596800215BFE /* ZakkuriUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4ECE99BE232A596600215BFE /* laid-back */ = {
+		4ECE99BE232A596600215BFE /* Zakkuri */ = {
 			isa = PBXGroup;
 			children = (
 				4E06F3A9233751240083606C /* CommonViews */,
@@ -254,33 +254,33 @@
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
 				4ECE99CD232A596700215BFE /* Info.plist */,
 			);
-			path = "laid-back";
+			path = Zakkuri;
 			sourceTree = "<group>";
 		};
-		4ECE99D5232A596800215BFE /* laid-backTests */ = {
+		4ECE99D5232A596800215BFE /* ZakkuriTests */ = {
 			isa = PBXGroup;
 			children = (
 				4ECE99D6232A596800215BFE /* laid_backTests.swift */,
 				4ECE99D8232A596800215BFE /* Info.plist */,
 			);
-			path = "laid-backTests";
+			path = ZakkuriTests;
 			sourceTree = "<group>";
 		};
-		4ECE99E0232A596800215BFE /* laid-backUITests */ = {
+		4ECE99E0232A596800215BFE /* ZakkuriUITests */ = {
 			isa = PBXGroup;
 			children = (
 				4ECE99E1232A596800215BFE /* laid_backUITests.swift */,
 				4ECE99E3232A596800215BFE /* Info.plist */,
 			);
-			path = "laid-backUITests";
+			path = ZakkuriUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4ECE99BB232A596600215BFE /* laid-back */ = {
+		4ECE99BB232A596600215BFE /* Zakkuri */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4ECE99E6232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-back" */;
+			buildConfigurationList = 4ECE99E6232A596800215BFE /* Build configuration list for PBXNativeTarget "Zakkuri" */;
 			buildPhases = (
 				4ECE99B8232A596600215BFE /* Sources */,
 				4ECE99B9232A596600215BFE /* Frameworks */,
@@ -291,14 +291,14 @@
 			);
 			dependencies = (
 			);
-			name = "laid-back";
+			name = Zakkuri;
 			productName = "laid-back";
-			productReference = 4ECE99BC232A596600215BFE /* laid-back.app */;
+			productReference = 4ECE99BC232A596600215BFE /* Zakkuri.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4ECE99D1232A596800215BFE /* laid-backTests */ = {
+		4ECE99D1232A596800215BFE /* ZakkuriTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4ECE99E9232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-backTests" */;
+			buildConfigurationList = 4ECE99E9232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriTests" */;
 			buildPhases = (
 				4ECE99CE232A596800215BFE /* Sources */,
 				4ECE99CF232A596800215BFE /* Frameworks */,
@@ -309,14 +309,14 @@
 			dependencies = (
 				4ECE99D4232A596800215BFE /* PBXTargetDependency */,
 			);
-			name = "laid-backTests";
+			name = ZakkuriTests;
 			productName = "laid-backTests";
-			productReference = 4ECE99D2232A596800215BFE /* laid-backTests.xctest */;
+			productReference = 4ECE99D2232A596800215BFE /* ZakkuriTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4ECE99DC232A596800215BFE /* laid-backUITests */ = {
+		4ECE99DC232A596800215BFE /* ZakkuriUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4ECE99EC232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-backUITests" */;
+			buildConfigurationList = 4ECE99EC232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriUITests" */;
 			buildPhases = (
 				4ECE99D9232A596800215BFE /* Sources */,
 				4ECE99DA232A596800215BFE /* Frameworks */,
@@ -327,9 +327,9 @@
 			dependencies = (
 				4ECE99DF232A596800215BFE /* PBXTargetDependency */,
 			);
-			name = "laid-backUITests";
+			name = ZakkuriUITests;
 			productName = "laid-backUITests";
-			productReference = 4ECE99DD232A596800215BFE /* laid-backUITests.xctest */;
+			productReference = 4ECE99DD232A596800215BFE /* ZakkuriUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -355,7 +355,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4ECE99B7232A596600215BFE /* Build configuration list for PBXProject "laid-back" */;
+			buildConfigurationList = 4ECE99B7232A596600215BFE /* Build configuration list for PBXProject "Zakkuri" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -368,9 +368,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4ECE99BB232A596600215BFE /* laid-back */,
-				4ECE99D1232A596800215BFE /* laid-backTests */,
-				4ECE99DC232A596800215BFE /* laid-backUITests */,
+				4ECE99BB232A596600215BFE /* Zakkuri */,
+				4ECE99D1232A596800215BFE /* ZakkuriTests */,
+				4ECE99DC232A596800215BFE /* ZakkuriUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -470,12 +470,12 @@
 /* Begin PBXTargetDependency section */
 		4ECE99D4232A596800215BFE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4ECE99BB232A596600215BFE /* laid-back */;
+			target = 4ECE99BB232A596600215BFE /* Zakkuri */;
 			targetProxy = 4ECE99D3232A596800215BFE /* PBXContainerItemProxy */;
 		};
 		4ECE99DF232A596800215BFE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4ECE99BB232A596600215BFE /* laid-back */;
+			target = 4ECE99BB232A596600215BFE /* Zakkuri */;
 			targetProxy = 4ECE99DE232A596800215BFE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -613,17 +613,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K45ES832VB;
+				DEVELOPMENT_TEAM = 4P8DBPU9W6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "laid-back/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Zakkuri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-back";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mironal.zakkuri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -635,17 +635,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K45ES832VB;
+				DEVELOPMENT_TEAM = 4P8DBPU9W6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "laid-back/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Zakkuri/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-back";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mironal.zakkuri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -659,17 +659,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
-				INFOPLIST_FILE = "laid-backTests/Info.plist";
+				INFOPLIST_FILE = ZakkuriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-backTests";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mironal.ZakkuriTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/laid-back.app/laid-back";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zakkuri.app/Zakkuri";
 			};
 			name = Debug;
 		};
@@ -680,17 +680,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
-				INFOPLIST_FILE = "laid-backTests/Info.plist";
+				INFOPLIST_FILE = ZakkuriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-backTests";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mironal.ZakkuriTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/laid-back.app/laid-back";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zakkuri.app/Zakkuri";
 			};
 			name = Release;
 		};
@@ -700,17 +700,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
-				INFOPLIST_FILE = "laid-backUITests/Info.plist";
+				INFOPLIST_FILE = ZakkuriUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-backUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mironal.ZakkuriUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "laid-back";
+				TEST_TARGET_NAME = Zakkuri;
 			};
 			name = Debug;
 		};
@@ -720,24 +720,24 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
-				INFOPLIST_FILE = "laid-backUITests/Info.plist";
+				INFOPLIST_FILE = ZakkuriUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.mironal.laid-backUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mironal.ZakkuriUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "laid-back";
+				TEST_TARGET_NAME = Zakkuri;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4ECE99B7232A596600215BFE /* Build configuration list for PBXProject "laid-back" */ = {
+		4ECE99B7232A596600215BFE /* Build configuration list for PBXProject "Zakkuri" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ECE99E4232A596800215BFE /* Debug */,
@@ -746,7 +746,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4ECE99E6232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-back" */ = {
+		4ECE99E6232A596800215BFE /* Build configuration list for PBXNativeTarget "Zakkuri" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ECE99E7232A596800215BFE /* Debug */,
@@ -755,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4ECE99E9232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-backTests" */ = {
+		4ECE99E9232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ECE99EA232A596800215BFE /* Debug */,
@@ -764,7 +764,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4ECE99EC232A596800215BFE /* Build configuration list for PBXNativeTarget "laid-backUITests" */ = {
+		4ECE99EC232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4ECE99ED232A596800215BFE /* Debug */,

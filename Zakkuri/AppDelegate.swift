@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  laid-back
+//  Zakkuri
 //
 //  Created by mironal on 2019/09/12.
 //  Copyright © 2019 mironal. All rights reserved.

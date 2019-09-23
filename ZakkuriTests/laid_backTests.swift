@@ -1,15 +1,15 @@
 //
-//  laid_backTests.swift
-//  laid-backTests
+//  ZakkuriTests.swift
+//  ZakkuriTests
 //
 //  Created by mironal on 2019/09/12.
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
-@testable import laid_back
 import XCTest
+@testable import Zakkuri
 
-class laid_backTests: XCTestCase {
+class ZakkuriTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

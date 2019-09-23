@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:laid-back.xcodeproj">
+      location = "self:/Users/miro/Documents/github/mironal/laid-back/Zakkuri.xcodeproj">
    </FileRef>
 </Workspace>
