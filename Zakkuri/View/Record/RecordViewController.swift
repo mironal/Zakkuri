@@ -78,9 +78,8 @@ class RecordViewController: UIViewController {
         didSet {
             // Layout が走った後にセットしないとずれてしまう...
             DispatchQueue.main.async {
-                self.timePicker.countDownDuration = 30 * 60
                 // 初期化前に subscribe すると謎の値が入ってくるので初期化してからのイベントだけ伝搬するようにした.
-                self.timePicker.rx.countDownDuration.bind(to: self.changeDurationRelay).disposed(by: self.disposeBag)
+                //              self.timePicker.rx.countDownDuration.bind(to: self.changeDurationRelay).disposed(by: self.disposeBag)
             }
         }
     }
@@ -92,10 +91,11 @@ class RecordViewController: UIViewController {
         super.viewDidLoad()
 
         let outputs = viewModel.bind(.init(
-            tapDone: doneButton.rx.tap.asObservable(),
-            tapNext: nextButton.rx.tap.asObservable(),
-            changeDuration: changeDurationRelay.asObservable()
+            // https://stackoverflow.com/questions/42685774/uidatepicker-change-event-not-firing-on-first-spin-swift
+            tapDone: doneButton.rx.tap.asObservable().map { self.timePicker.countDownDuration },
+            tapNext: nextButton.rx.tap.asObservable()
         ))
+        timePicker.countDownDuration = 30 * 60
 
         outputs.title
             .asDriver(onErrorJustReturn: "")

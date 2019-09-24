@@ -18,9 +18,8 @@ extension Models: RecordViewModelService {}
 
 class RecordViewModel {
     public struct Inputs {
-        public let tapDone: Observable<Void>
+        public let tapDone: Observable<TimeInterval>
         public let tapNext: Observable<Void>
-        public let changeDuration: Observable<TimeInterval>
     }
 
     public struct Outputs {
@@ -41,7 +40,7 @@ class RecordViewModel {
     public func bind(_ inputs: Inputs) -> Outputs {
         let current = currentHabit().share(replay: 1)
 
-        let done = inputs.tapDone.withLatestFrom(inputs.changeDuration).share()
+        let done = inputs.tapDone.share()
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
