@@ -41,6 +41,7 @@ class SummaryViewController: UITableViewController {
 
                 let fpc = FloatingPanelController(delegate: vc)
                 fpc.surfaceView.shadowHidden = false
+                fpc.surfaceView.width = self.view.width
                 (fpc.surfaceView as UIView).cornerRadius = 9
                 (fpc.surfaceView as UIView).borderWidth = 1.0 / self.traitCollection.displayScale
                 (fpc.surfaceView as UIView).borderColor = UIColor.black.withAlphaComponent(0.2)
