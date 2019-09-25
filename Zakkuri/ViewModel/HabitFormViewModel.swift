@@ -38,6 +38,7 @@ public class HabitFormViewModel {
         let readableString: Observable<String>
         let showSelectSpan: Observable<Void>
         let showTimePicker: Observable<Void>
+        let canSave: Observable<Bool>
         let dismiss: Observable<Void>
     }
 
@@ -49,7 +50,16 @@ public class HabitFormViewModel {
     }
 
     func bind(_ inputs: Inputs) -> Outputs {
-        let (habit, saved) = addHabit(inputs)
+        let habit = createHabit(inputs)
+            .share(replay: 1)
+
+        let canSave = habit
+            .map { $0.targetTime > 0 && !$0.title.isEmpty }
+            .startWith(false)
+
+        let saved = inputs.tapSave.withLatestFrom(habit)
+            .flatMap(addHabit)
+            .share()
 
         return Outputs(
             startTitleEditing: inputs.tapItem.filterMap { $0 == .title ? .map(()) : .ignore },
@@ -58,25 +68,23 @@ public class HabitFormViewModel {
             readableString: habit.map { $0.readableString }.distinctUntilChanged(),
             showSelectSpan: inputs.tapItem.filterMap { $0 == .span ? .map(()) : .ignore },
             showTimePicker: inputs.tapItem.filterMap { $0 == .goalTime ? .map(()) : .ignore },
+            canSave: canSave,
             dismiss: .merge(inputs.tapCancel, saved)
         )
     }
 
-    private func addHabit(_ inputs: Inputs) -> (habit: Observable<Habit>, saved: Observable<Void>) {
+    private func createHabit(_ inputs: Inputs) -> Observable<Habit> {
         let habit: Observable<Habit> = Observable.combineLatest(
             inputs.changeTitle,
             inputs.selectSpan,
             inputs.selectGoalTime
         ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2) }
+        return habit
+    }
 
-        let publishRelay = PublishRelay<Void>()
-        func save(_ h: Habit) {
-            habitModel.add(h)
-            publishRelay.accept(())
-        }
+    private func addHabit(_ habit: Habit) -> Observable<Void> {
+        habitModel.add(habit)
 
-        inputs.tapSave.withLatestFrom(habit).subscribe(onNext: save).disposed(by: disposeBag)
-
-        return (habit: habit, saved: publishRelay.asObservable())
+        return .just(())
     }
 }

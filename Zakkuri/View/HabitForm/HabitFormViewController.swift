@@ -68,6 +68,12 @@ class HabitFormViewController: UITableViewController {
         func startEditing() {
             titleTextField.becomeFirstResponder()
         }
+
+        outputs.canSave
+            .asDriver(onErrorDriveWith: .never())
+            .drive(saveButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
         outputs.startTitleEditing.asSignal(onErrorSignalWith: .never())
             .emit(onNext: startEditing).disposed(by: disposeBag)
 
