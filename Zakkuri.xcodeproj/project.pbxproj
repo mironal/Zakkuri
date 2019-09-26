@@ -23,6 +23,7 @@
 		4E33B605232E3165007D42A5 /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B604232E3165007D42A5 /* FloatingPanel.framework */; };
 		4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B607232E35BF007D42A5 /* RecordViewController.swift */; };
 		4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */; };
+		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
 		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
 		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
@@ -35,8 +36,8 @@
 		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
 		4ECE99CC232A596700215BFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */; };
-		4ECE99D7232A596800215BFE /* laid_backTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99D6232A596800215BFE /* laid_backTests.swift */; };
-		4ECE99E2232A596800215BFE /* laid_backUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* laid_backUITests.swift */; };
+		4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99D6232A596800215BFE /* ZakkuriTests.swift */; };
+		4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		4E33B604232E3165007D42A5 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
 		4E33B607232E35BF007D42A5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
+		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
 		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		4E6CC52F232A5FC500E367E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -90,10 +92,10 @@
 		4ECE99CB232A596700215BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ECE99CD232A596700215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ECE99D2232A596800215BFE /* ZakkuriTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZakkuriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4ECE99D6232A596800215BFE /* laid_backTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = laid_backTests.swift; sourceTree = "<group>"; };
+		4ECE99D6232A596800215BFE /* ZakkuriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakkuriTests.swift; sourceTree = "<group>"; };
 		4ECE99D8232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ECE99DD232A596800215BFE /* ZakkuriUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZakkuriUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4ECE99E1232A596800215BFE /* laid_backUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = laid_backUITests.swift; sourceTree = "<group>"; };
+		4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakkuriUITests.swift; sourceTree = "<group>"; };
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,14 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		4E66A48D233AF882009BD0CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4E6CC52C232A5FC500E367E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +279,8 @@
 		4ECE99D5232A596800215BFE /* ZakkuriTests */ = {
 			isa = PBXGroup;
 			children = (
-				4ECE99D6232A596800215BFE /* laid_backTests.swift */,
+				4E66A48D233AF882009BD0CA /* ViewModel */,
+				4ECE99D6232A596800215BFE /* ZakkuriTests.swift */,
 				4ECE99D8232A596800215BFE /* Info.plist */,
 			);
 			path = ZakkuriTests;
@@ -278,7 +289,7 @@
 		4ECE99E0232A596800215BFE /* ZakkuriUITests */ = {
 			isa = PBXGroup;
 			children = (
-				4ECE99E1232A596800215BFE /* laid_backUITests.swift */,
+				4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */,
 				4ECE99E3232A596800215BFE /* Info.plist */,
 			);
 			path = ZakkuriUITests;
@@ -465,7 +476,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ECE99D7232A596800215BFE /* laid_backTests.swift in Sources */,
+				4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */,
+				4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ECE99E2232A596800215BFE /* laid_backUITests.swift in Sources */,
+				4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

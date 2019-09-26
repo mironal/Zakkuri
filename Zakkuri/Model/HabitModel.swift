@@ -15,9 +15,9 @@ public enum GoalSpan: Int, CaseIterable, Codable {
     case aDay, aWeek, aMonth
     var localizedString: String {
         switch self {
-        case .aDay: return "1日"
-        case .aWeek: return "1週間"
-        case .aMonth: return "1ヶ月"
+        case .aDay: return "24 hours"
+        case .aWeek: return "7 days"
+        case .aMonth: return "30 days"
         }
     }
 }
@@ -62,6 +62,14 @@ public struct HabitRecord: Codable {
 public struct HabitSummary {
     let habit: Habit
     let spentTimeInDuration: TimeInterval
+
+    var summary: String {
+        let fmt = DateComponentsFormatter()
+        fmt.allowedUnits = [.hour, .minute]
+        fmt.unitsStyle = .short
+
+        return "You spent \(fmt.string(from: spentTimeInDuration) ?? "0") in the last \(habit.goalSpan.localizedString)"
+    }
 }
 
 public protocol HabitModelProtocol {

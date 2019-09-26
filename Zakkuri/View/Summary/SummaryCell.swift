@@ -21,7 +21,7 @@ public class SummaryCell: UITableViewCell {
     var state: SummaryCellState! {
         didSet {
             titleLabel.text = state.summary.habit.title
-            descriptionLabel.text = state.summary.habit.readableString
+            descriptionLabel.text = state.summary.summary
             progressView.progress = Float(state.summary.spentTimeInDuration / state.summary.habit.targetTime)
         }
     }
