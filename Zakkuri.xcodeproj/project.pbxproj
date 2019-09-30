@@ -11,6 +11,8 @@
 		4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */; };
 		4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */; };
 		4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */; };
+		4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */; };
+		4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC530232A5FC500E367E3 /* RxTest.framework */; };
 		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
 		4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */; };
 		4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */; };
@@ -32,6 +34,7 @@
 		4E81A3002338B7290042188A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81A2FF2338B7290042188A /* AlertController.swift */; };
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
+		4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC19513233C590A0090BC66 /* InMemoryStorage.swift */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
 		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
@@ -85,6 +88,7 @@
 		4E81A2FF2338B7290042188A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		4EC19513233C590A0090BC66 /* InMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */,
+				4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +288,7 @@
 				4E66A48D233AF882009BD0CA /* ViewModel */,
 				4ECE99D6232A596800215BFE /* ZakkuriTests.swift */,
 				4ECE99D8232A596800215BFE /* Info.plist */,
+				4EC19513233C590A0090BC66 /* InMemoryStorage.swift */,
 			);
 			path = ZakkuriTests;
 			sourceTree = "<group>";
@@ -476,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */,
 				4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */,
 				4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */,
 			);
@@ -683,6 +691,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZakkuriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -704,6 +716,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K45ES832VB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZakkuriTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -25,16 +25,20 @@ public enum GoalSpan: Int, CaseIterable, Codable {
 public typealias HabitID = String
 
 public struct Habit: Codable {
-    let id: HabitID
-    let title: String
-    let goalSpan: GoalSpan
-    let targetTime: TimeInterval
+    public let id: HabitID
+    public let title: String
+    public let goalSpan: GoalSpan
+    public let targetTime: TimeInterval
 
-    init(createNewHabitWithTitle title: String, goalSpan: GoalSpan, targetTime: TimeInterval) {
-        id = UUID().uuidString
+    init(id: HabitID, title: String, goalSpan: GoalSpan, targetTime: TimeInterval) {
+        self.id = id
         self.title = title
         self.goalSpan = goalSpan
         self.targetTime = targetTime
+    }
+
+    init(createNewHabitWithTitle title: String, goalSpan: GoalSpan, targetTime: TimeInterval) {
+        self.init(id: UUID().uuidString, title: title, goalSpan: goalSpan, targetTime: targetTime)
     }
 
     var readableString: String {
@@ -50,11 +54,11 @@ public struct Habit: Codable {
 }
 
 public struct HabitRecord: Codable {
-    let habitId: HabitID
-    let duration: TimeInterval
-    let createdAt: Date
+    public let habitId: HabitID
+    public let duration: TimeInterval
+    public let createdAt: Date
 
-    var recordId: String {
+    public var recordId: String {
         return "\(habitId)_\(createdAt.unixTimestamp)"
     }
 }

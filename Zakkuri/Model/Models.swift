@@ -8,13 +8,12 @@
 
 import Foundation
 
-public class Models {
-    public static let shared = Models()
-
-    private init() {
+public struct Models {
+    public static let shared: Models = {
         let storage = UserDefaultsStorage()
-        habit = HabitModel(storage: storage)
-    }
+        let habitModel = HabitModel(storage: storage)
+        return .init(habit: habitModel)
+    }()
 
     public var habit: HabitModelProtocol
 }
