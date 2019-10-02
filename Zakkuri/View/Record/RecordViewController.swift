@@ -106,9 +106,30 @@ class RecordViewController: UIViewController {
                 let nav = UINavigationController(rootViewController: detail)
                 nav.transitioningDelegate = self
                 self.transitioningDelegate = self
-
                 self.present(nav, animated: true)
             }).disposed(by: disposeBag)
+
+        outputs.showMenu
+            .asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { subject in
+
+                let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+                sheet.addAction(title: "Details", style: .default, isEnabled: true) { _ in
+                    subject.onNext(.cancel)
+                }
+
+                sheet.addAction(title: "Edit", style: .default, isEnabled: true) { _ in
+                    subject.onNext(.edit)
+                }
+
+                sheet.addAction(title: "Cancel", style: .cancel, isEnabled: true) { _ in
+                    subject.onNext(.cancel)
+                }
+
+                self.present(sheet, animated: true)
+            })
+            .disposed(by: disposeBag)
 
         outputs.dismiss
             .asSignal(onErrorJustReturn: ())

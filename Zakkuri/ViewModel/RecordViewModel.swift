@@ -17,6 +17,10 @@ protocol RecordViewModelService {
 extension Models: RecordViewModelService {}
 
 class RecordViewModel {
+    public enum MenuItem {
+        case detail, edit, cancel
+    }
+
     public struct Inputs {
         public let tapDone: Observable<TimeInterval>
         public let tapOthers: Observable<Void>
@@ -25,6 +29,7 @@ class RecordViewModel {
     public struct Outputs {
         public let title: Observable<String>
         public let showDetail: Observable<HabitDetailViewModel>
+        public let showMenu: Observable<PublishSubject<MenuItem>>
         public let dismiss: Observable<Void>
     }
 
@@ -44,11 +49,14 @@ class RecordViewModel {
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
-        let showDetail = inputs.tapOthers.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
+        // let showDetail = inputs.tapOthers.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
+
+        let menuItemSelectedSubject = PublishSubject<MenuItem>()
 
         return Outputs(
             title: current.map { $0.title },
-            showDetail: showDetail,
+            showDetail: .never(),
+            showMenu: inputs.tapOthers.mapTo(menuItemSelectedSubject),
             dismiss: done.mapTo(())
         )
     }
