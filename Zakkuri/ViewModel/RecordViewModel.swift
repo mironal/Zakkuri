@@ -19,7 +19,7 @@ extension Models: RecordViewModelService {}
 class RecordViewModel {
     public struct Inputs {
         public let tapDone: Observable<TimeInterval>
-        public let tapNext: Observable<Void>
+        public let tapOthers: Observable<Void>
     }
 
     public struct Outputs {
@@ -44,7 +44,7 @@ class RecordViewModel {
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
-        let showDetail = inputs.tapNext.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
+        let showDetail = inputs.tapOthers.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
 
         return Outputs(
             title: current.map { $0.title },

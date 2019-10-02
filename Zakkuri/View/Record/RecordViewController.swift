@@ -70,7 +70,7 @@ class RecordToDetailTransition: NSObject, UIViewControllerAnimatedTransitioning 
 class RecordViewController: UIViewController {
     @IBOutlet var doneButton: UIButton!
 
-    @IBOutlet var nextButton: UIButton!
+    @IBOutlet var othersButtons: UIButton!
     @IBOutlet var titleLabel: UILabel!
 
     let changeDurationRelay = PublishRelay<TimeInterval>()
@@ -85,7 +85,7 @@ class RecordViewController: UIViewController {
         let outputs = viewModel.bind(.init(
             // https://stackoverflow.com/questions/42685774/uidatepicker-change-event-not-firing-on-first-spin-swift
             tapDone: doneButton.rx.tap.asObservable().map { self.timePicker.countDownDuration },
-            tapNext: nextButton.rx.tap.asObservable()
+            tapOthers: othersButtons.rx.tap.asObservable()
         ))
         timePicker.countDownDuration = 30 * 60
 

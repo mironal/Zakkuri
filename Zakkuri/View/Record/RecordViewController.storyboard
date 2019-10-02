@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l4r-S2-N3f">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l4r-S2-N3f">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,15 +22,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfS-uS-VRO">
-                                <rect key="frame" x="378" y="13" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfS-uS-VRO">
+                                <rect key="frame" x="383" y="17" width="19" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Dfa-DP-C3s"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="IwS-5Y-Pvu"/>
                                     <constraint firstAttribute="height" constant="30" id="JaS-uQ-iFU"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="zex-Ls-KUg"/>
                                 </constraints>
-                                <state key="normal" image="Next"/>
+                                <state key="normal" image="ellipsis.circle" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How long did you spend roughly?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMu-YH-Mhn">
                                 <rect key="frame" x="20" y="36.5" width="374" height="18"/>
@@ -59,12 +57,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1800" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="7rJ-aM-Xjq">
+                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1800" minuteInterval="10" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rJ-aM-Xjq">
                                 <rect key="frame" x="20" y="62.5" width="374" height="233.5"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                <date key="date" timeIntervalSinceReferenceDate="590231053.45170605">
-                                    <!--2019-09-15 09:04:13 +0000-->
-                                </date>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -93,7 +88,7 @@
                     <size key="freeformSize" width="414" height="360"/>
                     <connections>
                         <outlet property="doneButton" destination="KX8-G6-KDi" id="rHA-xn-c8t"/>
-                        <outlet property="nextButton" destination="EfS-uS-VRO" id="P6q-QT-wSW"/>
+                        <outlet property="othersButtons" destination="EfS-uS-VRO" id="P6q-QT-wSW"/>
                         <outlet property="timePicker" destination="7rJ-aM-Xjq" id="ucW-Yk-5ou"/>
                         <outlet property="titleLabel" destination="p36-G0-VTV" id="ij3-W7-UVc"/>
                     </connections>
@@ -104,6 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Next" width="11" height="18"/>
+        <image name="ellipsis.circle" catalog="system" width="64" height="62"/>
     </resources>
 </document>
