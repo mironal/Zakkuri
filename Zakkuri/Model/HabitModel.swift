@@ -10,6 +10,7 @@ import Foundation
 import RxRelay
 import RxSwift
 import RxSwiftExt
+import SwifterSwift
 
 public enum GoalSpan: Int, CaseIterable, Codable {
     case aDay, aWeek, aMonth
@@ -18,6 +19,14 @@ public enum GoalSpan: Int, CaseIterable, Codable {
         case .aDay: return "24 hours"
         case .aWeek: return "7 days"
         case .aMonth: return "30 days"
+        }
+    }
+
+    var duration: TimeInterval {
+        switch self {
+        case .aDay: return 86400
+        case .aWeek: return 604_800
+        case .aMonth: return 2_592_000
         }
     }
 }
@@ -101,7 +110,11 @@ public class HabitModel: HabitModelProtocol {
         return Observable.just(habit)
             .flatMap { self.storage.restoreHabitRecords(by: $0.id) }
             .map {
-                let spentTimeInDuration = $0.reduce(0.0) { $0 + $1.duration }
+                guard let endOfToday = Date().end(of: .day) else { fatalError() }
+                let from = endOfToday.addingTimeInterval(-habit.goalSpan.duration)
+                let spentTimeInDuration = $0.filter {
+                    $0.createdAt.isBetween(from, endOfToday)
+                }.reduce(0.0) { $0 + $1.duration }
                 return HabitSummary(habit: habit,
                                     spentTimeInDuration: spentTimeInDuration)
             }
