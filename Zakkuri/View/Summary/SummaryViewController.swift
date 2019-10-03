@@ -27,6 +27,8 @@ class SummaryViewController: UITableViewController {
             deleteItem: deleteItemRelay.asObservable()
         ))
 
+        tableView.dataSource = nil
+
         outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, summary, cell in
 
             cell.state = SummaryCellState(summary: summary)
