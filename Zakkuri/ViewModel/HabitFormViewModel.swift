@@ -29,6 +29,7 @@ public class HabitFormViewModel {
         let tapItem: Observable<TappedItem>
         let selectSpan: Observable<GoalSpan>
         let selectGoalTime: Observable<TimeInterval>
+        let toggleNotify: Observable<Bool>
     }
 
     public struct Outputs {
@@ -77,8 +78,9 @@ public class HabitFormViewModel {
         let habit: Observable<Habit> = Observable.combineLatest(
             inputs.changeTitle,
             inputs.selectSpan,
-            inputs.selectGoalTime
-        ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2) }
+            inputs.selectGoalTime,
+            inputs.toggleNotify
+        ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2, notify: $3) }
         return habit
     }
 

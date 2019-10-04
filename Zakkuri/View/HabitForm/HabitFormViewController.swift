@@ -36,6 +36,8 @@ class HabitFormViewController: UITableViewController {
     @IBOutlet var spanCell: UITableViewCell!
     @IBOutlet var timeCell: UITableViewCell!
 
+    @IBOutlet var notifySwitch: UISwitch!
+
     @IBOutlet var readableCell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +64,8 @@ class HabitFormViewController: UITableViewController {
             tapSave: saveButton.rx.tap.asObservable(),
             tapItem: tapItem,
             selectSpan: selectSpanRelay.asObservable(),
-            selectGoalTime: selectGoalTimeRelay.asObservable()
+            selectGoalTime: selectGoalTimeRelay.asObservable(),
+            toggleNotify: notifySwitch.rx.isOn.asObservable()
         ))
 
         func startEditing() {
