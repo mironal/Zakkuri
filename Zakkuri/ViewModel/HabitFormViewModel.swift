@@ -13,6 +13,7 @@ import RxSwiftExt
 
 public protocol HabitFormViewModelService {
     var habit: HabitModelProtocol { get }
+    var notify: NotifyModelProtocol { get }
 }
 
 extension Models: HabitFormViewModelService {}
@@ -36,22 +37,36 @@ public class HabitFormViewModel {
         let startTitleEditing: Observable<Void>
         let span: Observable<GoalSpan>
         let goalTime: Observable<TimeInterval>
+        let notify: Observable<Bool>
         let readableString: Observable<String>
         let showSelectSpan: Observable<Void>
         let showTimePicker: Observable<Void>
+        let canNotify: Observable<Bool>
         let canSave: Observable<Bool>
         let dismiss: Observable<Void>
     }
 
     private let disposeBag = DisposeBag()
 
-    let habitModel: HabitModelProtocol
-    init(_ service: HabitFormViewModelService = Models.shared) {
+    private let habitModel: HabitModelProtocol
+    private let notifyModel: NotifyModelProtocol
+    private let initialHabit: Habit?
+    init(habit: Habit? = nil, _ service: HabitFormViewModelService = Models.shared) {
+        initialHabit = habit
         habitModel = service.habit
+        notifyModel = service.notify
     }
 
     func bind(_ inputs: Inputs) -> Outputs {
-        let habit = createHabit(inputs)
+        let toggleNotify = inputs.toggleNotify
+            .flatMapLatest { [weak self] isOn -> Single<Bool> in
+                guard let self = self else { return .just(false) }
+                // On になったら requestAuthorization の結果を使う
+                // それ以外は false
+                return isOn ? self.notifyModel.requestAuthorization() : .just(false)
+            }.catchErrorJustReturn(false)
+
+        let habit = createHabit(inputs, notificationGranted: toggleNotify)
             .share(replay: 1)
 
         let canSave = habit
@@ -66,20 +81,22 @@ public class HabitFormViewModel {
             startTitleEditing: inputs.tapItem.filterMap { $0 == .title ? .map(()) : .ignore },
             span: inputs.selectSpan,
             goalTime: inputs.selectGoalTime,
+            notify: habit.map { $0.notify },
             readableString: habit.map { $0.readableString }.distinctUntilChanged(),
             showSelectSpan: inputs.tapItem.filterMap { $0 == .span ? .map(()) : .ignore },
             showTimePicker: inputs.tapItem.filterMap { $0 == .goalTime ? .map(()) : .ignore },
+            canNotify: notifyModel.deniedNotification.not(),
             canSave: canSave,
             dismiss: .merge(inputs.tapCancel, saved)
         )
     }
 
-    private func createHabit(_ inputs: Inputs) -> Observable<Habit> {
+    private func createHabit(_ inputs: Inputs, notificationGranted: Observable<Bool>) -> Observable<Habit> {
         let habit: Observable<Habit> = Observable.combineLatest(
-            inputs.changeTitle,
-            inputs.selectSpan,
-            inputs.selectGoalTime,
-            inputs.toggleNotify
+            inputs.changeTitle.startWith(initialHabit?.title ?? ""),
+            inputs.selectSpan.startWith(initialHabit?.goalSpan ?? .aWeek),
+            inputs.selectGoalTime.startWith(initialHabit?.targetTime ?? 25200),
+            notificationGranted
         ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2, notify: $3) }
         return habit
     }

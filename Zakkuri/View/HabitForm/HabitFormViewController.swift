@@ -98,6 +98,16 @@ class HabitFormViewController: UITableViewController {
             .drive(timeCell.detailTextLabel!.rx.text)
             .disposed(by: disposeBag)
 
+        outputs.canNotify
+            .asDriver(onErrorDriveWith: .never())
+            .drive(notifySwitch.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        outputs.notify
+            .asDriver(onErrorDriveWith: .never())
+            .drive(notifySwitch.rx.isOn)
+            .disposed(by: disposeBag)
+
         outputs.readableString.asDriver(onErrorDriveWith: .never())
             .do(afterNext: { _ in reloadTableView(at: .init(row: 0, section: 2)) })
             .drive(readableCell.textLabel!.rx.text)

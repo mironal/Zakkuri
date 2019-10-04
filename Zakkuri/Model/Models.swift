@@ -12,8 +12,11 @@ public struct Models {
     public static let shared: Models = {
         let storage = UserDefaultsStorage()
         let habitModel = HabitModel(storage: storage)
-        return .init(habit: habitModel)
+        let notifyModel = NotifyModel()
+        return .init(habit: habitModel,
+                     notify: notifyModel)
     }()
 
-    public var habit: HabitModelProtocol
+    public let habit: HabitModelProtocol
+    public let notify: NotifyModelProtocol
 }
