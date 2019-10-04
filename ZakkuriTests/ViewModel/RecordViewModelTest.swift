@@ -11,17 +11,21 @@ import RxTest
 import XCTest
 @testable import Zakkuri
 
+private struct TestModels: RecordViewModelService {
+    var habit: HabitModelProtocol
+}
+
 class RecordViewModelTest: XCTestCase {
-    var service: Models!
+    var service: RecordViewModelService!
 
     override func setUp() {
         let storage = InMemoryStorage()
 
-        storage.habits.append(.init(id: "1", title: "hoge", goalSpan: .aWeek, targetTime: 100_000))
+        storage.habits.append(.init(id: "1", title: "hoge", goalSpan: .aWeek, targetTime: 100_000, notify: false))
 
         let habitModel = HabitModel(storage: storage)
 
-        service = Models(habit: habitModel)
+        service = TestModels(habit: habitModel)
     }
 
     override func tearDown() {}
@@ -34,7 +38,7 @@ class RecordViewModelTest: XCTestCase {
         let tapNext: Observable<Void> = scheduler.createHotObservable([]).asObservable()
 
         let viewModel = RecordViewModel(habitId: "1", service: service)
-        let inputs = RecordViewModel.Inputs(tapDone: tapDone, tapNext: tapNext)
+        let inputs = RecordViewModel.Inputs(tapDone: tapDone, tapOthers: tapNext)
         let outputs = viewModel.bind(inputs)
 
         let expectedTitle = scheduler.createObserver(String.self)
