@@ -53,7 +53,6 @@ class HabitFormViewController: UITableViewController {
 
         func reloadTableView(at indexPath: IndexPath) {
             if HabitFormViewModel.TappedItem(indexPath: indexPath) != .title {
-                tableView.reloadData()
                 titleTextField.becomeFirstResponder()
             }
         }

@@ -79,9 +79,9 @@ public class HabitFormViewModel {
 
         return Outputs(
             startTitleEditing: inputs.tapItem.filterMap { $0 == .title ? .map(()) : .ignore },
-            span: inputs.selectSpan,
-            goalTime: inputs.selectGoalTime,
-            notify: habit.map { $0.notify },
+            span: habit.map { $0.goalSpan }.distinctUntilChanged(),
+            goalTime: habit.map { $0.targetTime }.distinctUntilChanged(),
+            notify: habit.map { $0.notify }.distinctUntilChanged(),
             readableString: habit.map { $0.readableString }.distinctUntilChanged(),
             showSelectSpan: inputs.tapItem.filterMap { $0 == .span ? .map(()) : .ignore },
             showTimePicker: inputs.tapItem.filterMap { $0 == .goalTime ? .map(()) : .ignore },
@@ -92,12 +92,17 @@ public class HabitFormViewModel {
     }
 
     private func createHabit(_ inputs: Inputs, notificationGranted: Observable<Bool>) -> Observable<Habit> {
+        let initialHabit = self.initialHabit ??
+            Habit(createNewHabitWithTitle: "", goalSpan: .aWeek, targetTime: 25200, notify: false)
+
         let habit: Observable<Habit> = Observable.combineLatest(
-            inputs.changeTitle.startWith(initialHabit?.title ?? ""),
-            inputs.selectSpan.startWith(initialHabit?.goalSpan ?? .aWeek),
-            inputs.selectGoalTime.startWith(initialHabit?.targetTime ?? 25200),
-            notificationGranted
-        ) { Habit(createNewHabitWithTitle: $0, goalSpan: $1, targetTime: $2, notify: $3) }
+            Observable<HabitID>.just(initialHabit.id),
+            inputs.changeTitle.startWith(initialHabit.title),
+            inputs.selectSpan.startWith(initialHabit.goalSpan),
+            inputs.selectGoalTime.startWith(initialHabit.targetTime),
+            notificationGranted.startWith(initialHabit.notify)
+        ) { Habit(id: $0, title: $1, goalSpan: $2, targetTime: $3, notify: $4) }
+            .debug("changeTitle:createHabit")
         return habit
     }
 

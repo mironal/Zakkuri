@@ -33,7 +33,7 @@ public enum GoalSpan: Int, CaseIterable, Codable {
 
 public typealias HabitID = String
 
-public struct Habit: Codable {
+public struct Habit: Codable, Equatable {
     public let id: HabitID
     public let title: String
     public let goalSpan: GoalSpan
