@@ -47,7 +47,10 @@ public class SummaryViewModel {
             .map { RecordViewModel(habitId: $0) }
 
         inputs.deleteItem
+            // おまじない(全然わからん)
             .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
+            // ビジネスロジックを紐付けている？
+            // SummaryViewModel.deleteHabitは引数はないし、スタティックメソッドっぽい書き方で動くの？deleteHabit(habitId: 1)とかじゃないと動かなそうなのに
             .subscribe(weak: self, onNext: SummaryViewModel.deleteHabit).disposed(by: disposeBag)
 
         return Outputs(

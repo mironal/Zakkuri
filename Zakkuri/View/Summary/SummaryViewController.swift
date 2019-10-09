@@ -24,11 +24,12 @@ class SummaryViewController: UITableViewController {
         let outputs = viewModel.bind(.init(
             tapAdd: addButton.rx.tap.asObservable(),
             selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) }),
-            deleteItem: deleteItemRelay.asObservable()
+            deleteItem: deleteItemRelay.asObservable() //　このIndexPathはいつ同定される？
         ))
 
         tableView.dataSource = nil
 
+        // outputs.hogehogeは画面遷移や、表示項目の追加(hubitが追加されたらTableにせCellを追加とか見た目の変更をしている気がする、い)
         outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, summary, cell in
 
             cell.state = SummaryCellState(summary: summary)
