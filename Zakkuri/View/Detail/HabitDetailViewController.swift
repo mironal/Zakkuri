@@ -20,6 +20,8 @@ public class HabitDetailViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.dataSource = nil
+
         let outputs = viewModel.bind(.init(
             tapClose: closeButton.rx.tap.asObservable(),
             deleteItem: deleteItemRelay.asObservable()
