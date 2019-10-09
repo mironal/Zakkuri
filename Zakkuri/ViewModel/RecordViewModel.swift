@@ -49,13 +49,36 @@ class RecordViewModel {
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
+
+
         // let showDetail = inputs.tapOthers.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
 
+        // ToraDady
+        let showDetailSubject = PublishSubject<()>()
         let menuItemSelectedSubject = PublishSubject<MenuItem>()
 
+        menuItemSelectedSubject.subscribe(onNext: {
+            switch $0{
+            case .detail:
+                showDetailSubject.onNext(())
+            case .edit:
+                print(".edit----------")
+            case .cancel:
+                print("cancel---------")
+            }
+        }).disposed(by: disposeBag)
+
+
+
+        // toradady withLatestFromがあやしいと山口さんがいってた
         return Outputs(
             title: current.map { $0.title },
-            showDetail: .never(),
+            showDetail: showDetailSubject.withLatestFrom(current).map{
+                print("hoge")
+                // toradady うーん。$0の値を見ると中身は正しく入ってそうだ
+                return HabitDetailViewModel(habitId: $0.id)
+
+            },
             showMenu: inputs.tapOthers.mapTo(menuItemSelectedSubject),
             dismiss: done.mapTo(())
         )

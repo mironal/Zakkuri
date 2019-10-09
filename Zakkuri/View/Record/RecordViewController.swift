@@ -94,6 +94,7 @@ class RecordViewController: UIViewController {
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
 
+        // toradady 詳細画面出す所
         outputs.showDetail
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
@@ -116,7 +117,7 @@ class RecordViewController: UIViewController {
                 let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
                 sheet.addAction(title: "Details", style: .default, isEnabled: true) { _ in
-                    subject.onNext(.cancel)
+                    subject.onNext(.detail)
                 }
 
                 sheet.addAction(title: "Edit", style: .default, isEnabled: true) { _ in

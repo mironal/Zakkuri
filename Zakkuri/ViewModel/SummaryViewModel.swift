@@ -42,6 +42,7 @@ public class SummaryViewModel {
     public func bind(_ inputs: Inputs) -> Outputs {
         let showGoalForm = inputs.tapAdd.map { HabitFormViewModel() }
 
+        // toradady: 選択したものをidをもとにもモデルつくってる
         let showRecordView = inputs.selectItem
             .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .map { RecordViewModel(habitId: $0) }

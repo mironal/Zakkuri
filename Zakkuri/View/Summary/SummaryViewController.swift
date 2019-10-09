@@ -39,7 +39,7 @@ class SummaryViewController: UITableViewController {
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: {
                 guard let vc = UIStoryboard(name: "RecordViewController", bundle: .main).instantiateViewController(withClass: RecordViewController.self) else { return }
-                vc.viewModel = $0
+                vc.viewModel = $0 //Toradady RecordViewModel
 
                 let fpc = FloatingPanelController(delegate: vc)
                 fpc.surfaceView.shadowHidden = false
