@@ -44,6 +44,8 @@ public class SummaryViewModel {
 
         let showRecordView = inputs.selectItem
             .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
+            // mapと見るとArrayのように、処理した処理後の配列をイメージしてしまうが、Obserberに初期化されたRecordViewModelが詰められたもの？
+            // また1行前withLatestFromで最新の一つだけObserberをとってくるだったはず
             .map { RecordViewModel(habitId: $0) }
 
         inputs.deleteItem
