@@ -109,6 +109,14 @@ class RecordViewController: UIViewController {
                 self.present(nav, animated: true)
             }).disposed(by: disposeBag)
 
+        outputs.showEdit.asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { [weak self] _ in
+                guard let self = self else { return }
+
+                // TODO:
+
+            }).disposed(by: disposeBag)
+
         outputs.showMenu
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: { subject in

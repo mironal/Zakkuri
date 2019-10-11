@@ -29,6 +29,7 @@ class RecordViewModel {
     public struct Outputs {
         public let title: Observable<String>
         public let showDetail: Observable<HabitDetailViewModel>
+        public let showEdit: Observable<HabitFormViewModel>
         public let showMenu: Observable<PublishSubject<MenuItem>>
         public let dismiss: Observable<Void>
     }
@@ -56,9 +57,15 @@ class RecordViewModel {
             .withLatestFrom(current)
             .map { HabitDetailViewModel(habitId: $0.id) }
 
+        let showEdit = menuItemSelectedSubject
+            .filter { $0 == .edit }
+            .withLatestFrom(current)
+            .map { HabitFormViewModel(habit: $0) }
+
         return Outputs(
             title: current.map { $0.title },
             showDetail: showDetail,
+            showEdit: showEdit,
             showMenu: inputs.tapOthers.mapTo(menuItemSelectedSubject),
             dismiss: done.mapTo(())
         )
