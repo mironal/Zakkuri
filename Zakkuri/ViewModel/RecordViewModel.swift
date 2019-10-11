@@ -49,13 +49,16 @@ class RecordViewModel {
 
         done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
 
-        // let showDetail = inputs.tapOthers.withLatestFrom(current).map { HabitDetailViewModel(habitId: $0.id) }
-
         let menuItemSelectedSubject = PublishSubject<MenuItem>()
+
+        let showDetail = menuItemSelectedSubject
+            .filter { $0 == .detail }
+            .withLatestFrom(current)
+            .map { HabitDetailViewModel(habitId: $0.id) }
 
         return Outputs(
             title: current.map { $0.title },
-            showDetail: .never(),
+            showDetail: showDetail,
             showMenu: inputs.tapOthers.mapTo(menuItemSelectedSubject),
             dismiss: done.mapTo(())
         )
