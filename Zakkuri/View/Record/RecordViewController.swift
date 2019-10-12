@@ -110,10 +110,12 @@ class RecordViewController: UIViewController {
             }).disposed(by: disposeBag)
 
         outputs.showEdit.asSignal(onErrorSignalWith: .never())
-            .emit(onNext: { [weak self] _ in
+            .emit(onNext: { [weak self] in
                 guard let self = self else { return }
-
-                // TODO:
+                guard let edit = UIViewController.loadFromStoryboard(withClass: HabitFormViewController.self) else { return }
+                edit.viewModel = $0
+                let nav = UINavigationController(rootViewController: edit)
+                self.present(nav, animated: true)
 
             }).disposed(by: disposeBag)
 

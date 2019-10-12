@@ -35,6 +35,7 @@ public class HabitFormViewModel {
 
     public struct Outputs {
         let startTitleEditing: Observable<Void>
+        let title: Observable<String>
         let span: Observable<GoalSpan>
         let goalTime: Observable<TimeInterval>
         let notify: Observable<Bool>
@@ -79,6 +80,7 @@ public class HabitFormViewModel {
 
         return Outputs(
             startTitleEditing: inputs.tapItem.filterMap { $0 == .title ? .map(()) : .ignore },
+            title: habit.map { $0.title }.distinctUntilChanged(),
             span: habit.map { $0.goalSpan }.distinctUntilChanged(),
             goalTime: habit.map { $0.targetTime }.distinctUntilChanged(),
             notify: habit.map { $0.notify }.distinctUntilChanged(),
@@ -95,14 +97,17 @@ public class HabitFormViewModel {
         let initialHabit = self.initialHabit ??
             Habit(createNewHabitWithTitle: "", goalSpan: .aWeek, targetTime: 25200, notify: false)
 
+        let title = inputs.changeTitle
+            .skipWhile { $0.isEmpty /* 何故か空文字が入ってきてしまうので skip */ }
+            .startWith(initialHabit.title)
+
         let habit: Observable<Habit> = Observable.combineLatest(
             Observable<HabitID>.just(initialHabit.id),
-            inputs.changeTitle.startWith(initialHabit.title),
+            title,
             inputs.selectSpan.startWith(initialHabit.goalSpan),
             inputs.selectGoalTime.startWith(initialHabit.targetTime),
             notificationGranted.startWith(initialHabit.notify)
         ) { Habit(id: $0, title: $1, goalSpan: $2, targetTime: $3, notify: $4) }
-            .debug("changeTitle:createHabit")
         return habit
     }
 

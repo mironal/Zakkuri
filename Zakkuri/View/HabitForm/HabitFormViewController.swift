@@ -71,6 +71,10 @@ class HabitFormViewController: UITableViewController {
             titleTextField.becomeFirstResponder()
         }
 
+        outputs.title.asDriver(onErrorDriveWith: .never())
+            .drive(titleTextField.rx.text)
+            .disposed(by: disposeBag)
+
         outputs.canSave
             .asDriver(onErrorDriveWith: .never())
             .drive(saveButton.rx.isEnabled)
