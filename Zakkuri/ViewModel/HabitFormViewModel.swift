@@ -67,7 +67,7 @@ public class HabitFormViewModel {
                 return isOn ? self.notifyModel.requestAuthorization() : .just(false)
             }.catchErrorJustReturn(false)
 
-        let habit = createHabit(inputs, notificationGranted: toggleNotify)
+        let habit = createHabit(inputs, toggleNotify: toggleNotify)
             .share(replay: 1)
 
         let canSave = habit
@@ -93,7 +93,7 @@ public class HabitFormViewModel {
         )
     }
 
-    private func createHabit(_ inputs: Inputs, notificationGranted: Observable<Bool>) -> Observable<Habit> {
+    private func createHabit(_ inputs: Inputs, toggleNotify: Observable<Bool>) -> Observable<Habit> {
         let initialHabit = self.initialHabit ??
             Habit(createNewHabitWithTitle: "", goalSpan: .aWeek, targetTime: 25200, notify: false)
 
@@ -106,7 +106,7 @@ public class HabitFormViewModel {
             title,
             inputs.selectSpan.startWith(initialHabit.goalSpan),
             inputs.selectGoalTime.startWith(initialHabit.targetTime),
-            notificationGranted.startWith(initialHabit.notify)
+            toggleNotify.skip(1 /* initial switch value */ ).startWith(initialHabit.notify)
         ) { Habit(id: $0, title: $1, goalSpan: $2, targetTime: $3, notify: $4) }
         return habit
     }
