@@ -33,6 +33,10 @@
 		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
 		4E81A3002338B7290042188A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81A2FF2338B7290042188A /* AlertController.swift */; };
+		4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0722351C8A200F0B4F2 /* Habit.swift */; };
+		4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */; };
+		4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */; };
+		4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */; };
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC19513233C590A0090BC66 /* InMemoryStorage.swift */; };
@@ -161,6 +165,10 @@
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		4E81A2FF2338B7290042188A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		4EA3F0722351C8A200F0B4F2 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpan.swift; sourceTree = "<group>"; };
+		4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecord.swift; sourceTree = "<group>"; };
+		4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSummary.swift; sourceTree = "<group>"; };
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4EC19513233C590A0090BC66 /* InMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
@@ -340,6 +348,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4EA3F0672351C87400F0B4F2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4EA3F0722351C8A200F0B4F2 /* Habit.swift */,
+				4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */,
+				4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */,
+				4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		4ECE99B3232A596600215BFE = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +390,7 @@
 				4E6CC539232A615E00E367E3 /* ViewModel */,
 				4E33B5F8232C8B3C007D42A5 /* Model */,
 				4E33B5F9232C8B41007D42A5 /* Service */,
+				4EA3F0672351C87400F0B4F2 /* Entity */,
 				4ECE99BF232A596600215BFE /* AppDelegate.swift */,
 				4ECE99C8232A596700215BFE /* Assets.xcassets */,
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
@@ -644,16 +664,20 @@
 				4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */,
 				4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */,
 				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
+				4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */,
 				4E81A3002338B7290042188A /* AlertController.swift in Sources */,
 				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
 				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
 				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
+				4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */,
 				4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */,
 				4E1E70752346CB7900B2E107 /* NotifyModel.swift in Sources */,
 				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
 				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,
 				4E33B603232CF795007D42A5 /* Storage.swift in Sources */,
+				4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */,
+				4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */,
 				4EAC5A942338637B009334F3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
