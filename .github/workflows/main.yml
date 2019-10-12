@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup tools
+      run: |
+        brew install mint
+        mint bootstrap
+        carthage bootstrap --platform iOS
+    - name: Show Xcode version
+      run: xcodebuild -version
+    - name: Test
+      run: ./test.sh
+  
