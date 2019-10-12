@@ -54,7 +54,7 @@ class SummaryViewController: UITableViewController {
 
             }).disposed(by: disposeBag)
 
-        outputs.showGoalForm.asSignal(onErrorSignalWith: .never())
+        outputs.showHabitForm.asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
                 guard let vc = UIStoryboard(name: "HabitFormViewController", bundle: .main).instantiateViewController(withClass: HabitFormViewController.self) else { return }
 

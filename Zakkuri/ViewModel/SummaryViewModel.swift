@@ -28,7 +28,7 @@ public class SummaryViewModel {
 
     public struct Outputs {
         let showRecordView: Observable<RecordViewModel>
-        let showGoalForm: Observable<HabitFormViewModel>
+        let showHabitForm: Observable<HabitFormViewModel>
         let habits: Observable<[HabitSummary]>
     }
 
@@ -52,7 +52,7 @@ public class SummaryViewModel {
 
         return Outputs(
             showRecordView: showRecordView,
-            showGoalForm: showGoalForm,
+            showHabitForm: showGoalForm,
             habits: habitModel.habits
         )
     }
