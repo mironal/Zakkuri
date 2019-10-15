@@ -7,46 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3A7233747BD0083606C /* RecordViewModel.swift */; };
-		4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */; };
-		4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */; };
-		4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */; };
-		4E1E70752346CB7900B2E107 /* NotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E70742346CB7900B2E107 /* NotifyModel.swift */; };
 		4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */; };
 		4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC530232A5FC500E367E3 /* RxTest.framework */; };
 		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
-		4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */; };
-		4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */; };
-		4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */; };
-		4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */; };
-		4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FA232C8B70007D42A5 /* HabitModel.swift */; };
-		4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FC232C9F53007D42A5 /* Models.swift */; };
-		4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */; };
-		4E33B603232CF795007D42A5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B602232CF795007D42A5 /* Storage.swift */; };
 		4E33B605232E3165007D42A5 /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B604232E3165007D42A5 /* FloatingPanel.framework */; };
-		4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B607232E35BF007D42A5 /* RecordViewController.swift */; };
-		4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */; };
 		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
+		4E67B38B23556A1300CAD17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E67B38A23556A1300CAD17D /* Main.storyboard */; };
+		4E67B39023556C5400CAD17D /* HabitList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E67B38F23556C5400CAD17D /* HabitList.storyboard */; };
+		4E67B39223556C6600CAD17D /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67B39123556C6600CAD17D /* HabitListViewController.swift */; };
+		4E67B39723556D1F00CAD17D /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67B39623556D1F00CAD17D /* HabitListViewModel.swift */; };
+		4E67B39923556F0400CAD17D /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67B39823556F0400CAD17D /* HabitModel.swift */; };
 		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
 		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
-		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
-		4E81A3002338B7290042188A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81A2FF2338B7290042188A /* AlertController.swift */; };
-		4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0722351C8A200F0B4F2 /* Habit.swift */; };
-		4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */; };
-		4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */; };
-		4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */; };
-		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
-		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC19513233C590A0090BC66 /* InMemoryStorage.swift */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
-		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
 		4ECE99CC232A596700215BFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */; };
 		4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99D6232A596800215BFE /* ZakkuriTests.swift */; };
 		4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */; };
-		4EF09C98235061C100691A57 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF09C97235061C100691A57 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,44 +117,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4E06F3A7233747BD0083606C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
-		4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
-		4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitDetailViewController.storyboard; sourceTree = "<group>"; };
-		4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
-		4E1E70742346CB7900B2E107 /* NotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyModel.swift; sourceTree = "<group>"; };
 		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
-		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitFormViewController.storyboard; sourceTree = "<group>"; };
-		4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryViewController.storyboard; sourceTree = "<group>"; };
-		4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
-		4E33B5FA232C8B70007D42A5 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
-		4E33B5FC232C9F53007D42A5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
-		4E33B602232CF795007D42A5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		4E33B604232E3165007D42A5 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingPanel.framework; path = Carthage/Build/iOS/FloatingPanel.framework; sourceTree = "<group>"; };
-		4E33B607232E35BF007D42A5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
-		4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
 		4E3B807C23458ADB00A81971 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E3B807D23458B2E00A81971 /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = Carthage/Checkouts/RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
+		4E67B38A23556A1300CAD17D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4E67B38F23556C5400CAD17D /* HabitList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitList.storyboard; sourceTree = "<group>"; };
+		4E67B39123556C6600CAD17D /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
+		4E67B39623556D1F00CAD17D /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
+		4E67B39823556F0400CAD17D /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		4E6CC52F232A5FC500E367E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		4E6CC530232A5FC500E367E3 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		4E6CC531232A5FC500E367E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
-		4E81A2FF2338B7290042188A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		4EA3F0722351C8A200F0B4F2 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpan.swift; sourceTree = "<group>"; };
-		4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecord.swift; sourceTree = "<group>"; };
-		4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSummary.swift; sourceTree = "<group>"; };
-		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4EC19513233C590A0090BC66 /* InMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
 		4ECE99C8232A596700215BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ECE99CB232A596700215BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ECE99CD232A596700215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,7 +145,6 @@
 		4ECE99DD232A596800215BFE /* ZakkuriUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZakkuriUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakkuriUITests.swift; sourceTree = "<group>"; };
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EF09C97235061C100691A57 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,72 +180,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E06F3A9233751240083606C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				4EAC5A9723388589009334F3 /* NavigationController.swift */,
-				4E81A2FF2338B7290042188A /* AlertController.swift */,
-				4EF09C97235061C100691A57 /* UIViewController.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		4E06F3AC23379B680083606C /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */,
-				4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		4E33B5F8232C8B3C007D42A5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4E33B5FA232C8B70007D42A5 /* HabitModel.swift */,
-				4E33B5FC232C9F53007D42A5 /* Models.swift */,
-				4E1E70742346CB7900B2E107 /* NotifyModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4E33B5F9232C8B41007D42A5 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				4E33B602232CF795007D42A5 /* Storage.swift */,
-				4EAC5A932338637B009334F3 /* Theme.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		4E33B600232CC7EC007D42A5 /* HabitForm */ = {
-			isa = PBXGroup;
-			children = (
-				4ECE99C1232A596600215BFE /* HabitFormViewController.swift */,
-				4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */,
-			);
-			path = HabitForm;
-			sourceTree = "<group>";
-		};
-		4E33B601232CC7FD007D42A5 /* Summary */ = {
-			isa = PBXGroup;
-			children = (
-				4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */,
-				4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */,
-				4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */,
-			);
-			path = Summary;
-			sourceTree = "<group>";
-		};
-		4E33B606232E35AE007D42A5 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				4E33B607232E35BF007D42A5 /* RecordViewController.swift */,
-				4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
 		4E3B807E23458B2E00A81971 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +205,47 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4E67B38C23556BA500CAD17D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E67B39523556CC800CAD17D /* HabitInput */,
+				4E67B39323556CB800CAD17D /* HabitList */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E67B38D23556BAB00CAD17D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E67B39623556D1F00CAD17D /* HabitListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4E67B38E23556BB100CAD17D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E67B39823556F0400CAD17D /* HabitModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E67B39323556CB800CAD17D /* HabitList */ = {
+			isa = PBXGroup;
+			children = (
+				4E67B38F23556C5400CAD17D /* HabitList.storyboard */,
+				4E67B39123556C6600CAD17D /* HabitListViewController.swift */,
+			);
+			path = HabitList;
+			sourceTree = "<group>";
+		};
+		4E67B39523556CC800CAD17D /* HabitInput */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HabitInput;
+			sourceTree = "<group>";
+		};
 		4E6CC52C232A5FC500E367E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,39 +259,6 @@
 				4E6CC530232A5FC500E367E3 /* RxTest.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4E6CC539232A615E00E367E3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */,
-				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
-				4E06F3A7233747BD0083606C /* RecordViewModel.swift */,
-				4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		4E6CC53A232A616D00E367E3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4E06F3AC23379B680083606C /* Detail */,
-				4E33B606232E35AE007D42A5 /* Record */,
-				4E33B601232CC7FD007D42A5 /* Summary */,
-				4E33B600232CC7EC007D42A5 /* HabitForm */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4EA3F0672351C87400F0B4F2 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				4EA3F0722351C8A200F0B4F2 /* Habit.swift */,
-				4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */,
-				4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */,
-				4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		4ECE99B3232A596600215BFE = {
@@ -385,16 +287,14 @@
 		4ECE99BE232A596600215BFE /* Zakkuri */ = {
 			isa = PBXGroup;
 			children = (
-				4E06F3A9233751240083606C /* Utils */,
-				4E6CC53A232A616D00E367E3 /* View */,
-				4E6CC539232A615E00E367E3 /* ViewModel */,
-				4E33B5F8232C8B3C007D42A5 /* Model */,
-				4E33B5F9232C8B41007D42A5 /* Service */,
-				4EA3F0672351C87400F0B4F2 /* Entity */,
+				4E67B38C23556BA500CAD17D /* View */,
+				4E67B38D23556BAB00CAD17D /* ViewModel */,
+				4E67B38E23556BB100CAD17D /* Model */,
 				4ECE99BF232A596600215BFE /* AppDelegate.swift */,
 				4ECE99C8232A596700215BFE /* Assets.xcassets */,
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
 				4ECE99CD232A596700215BFE /* Info.plist */,
+				4E67B38A23556A1300CAD17D /* Main.storyboard */,
 			);
 			path = Zakkuri;
 			sourceTree = "<group>";
@@ -604,12 +504,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E67B38B23556A1300CAD17D /* Main.storyboard in Resources */,
 				4ECE99CC232A596700215BFE /* LaunchScreen.storyboard in Resources */,
-				4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */,
 				4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */,
-				4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */,
-				4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */,
-				4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */,
+				4E67B39023556C5400CAD17D /* HabitList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,28 +555,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */,
-				4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */,
-				4EF09C98235061C100691A57 /* UIViewController.swift in Sources */,
+				4E67B39923556F0400CAD17D /* HabitModel.swift in Sources */,
+				4E67B39723556D1F00CAD17D /* HabitListViewModel.swift in Sources */,
 				4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */,
-				4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */,
-				4E33B5FF232CB3F1007D42A5 /* SummaryCell.swift in Sources */,
-				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
-				4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */,
-				4E81A3002338B7290042188A /* AlertController.swift in Sources */,
-				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
-				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
-				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
-				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
-				4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */,
-				4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */,
-				4E1E70752346CB7900B2E107 /* NotifyModel.swift in Sources */,
-				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
-				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,
-				4E33B603232CF795007D42A5 /* Storage.swift in Sources */,
-				4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */,
-				4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */,
-				4EAC5A942338637B009334F3 /* Theme.swift in Sources */,
+				4E67B39223556C6600CAD17D /* HabitListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
