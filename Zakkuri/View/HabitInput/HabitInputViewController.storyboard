@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UVg-2M-8c4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Habit Input View Controller-->
+        <scene sceneID="RJy-kT-ylK">
+            <objects>
+                <viewController id="UVg-2M-8c4" customClass="HabitInputViewController" customModule="Zakkuri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="99r-Yg-Lge">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-uJ-Cwq">
+                                <rect key="frame" x="0.0" y="299" width="414" height="64"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pqm-JF-1Dh">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-IW-CYs">
+                                        <rect key="frame" x="0.0" y="34" width="414" height="30"/>
+                                        <state key="normal" title="追加"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ec6-uJ-Cwq" firstAttribute="leading" secondItem="dtM-1r-qlC" secondAttribute="leading" id="8lp-w1-e20"/>
+                            <constraint firstItem="dtM-1r-qlC" firstAttribute="trailing" secondItem="ec6-uJ-Cwq" secondAttribute="trailing" id="I0v-dp-YzE"/>
+                            <constraint firstItem="dtM-1r-qlC" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ec6-uJ-Cwq" secondAttribute="bottom" priority="996" constant="424" id="Iph-k0-JUx"/>
+                            <constraint firstItem="ec6-uJ-Cwq" firstAttribute="top" secondItem="dtM-1r-qlC" secondAttribute="top" constant="211" id="wAU-1g-TH7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dtM-1r-qlC"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jnr-D3-Dzc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PGO-gH-EFD"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="v0T-IW-CYs" id="EiB-0J-rO4"/>
+                        <outlet property="cancelButton" destination="PGO-gH-EFD" id="Rsb-dq-6Wc"/>
+                        <outlet property="textField" destination="Pqm-JF-1Dh" id="4XD-9w-mHQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7et-6r-2cX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663.768115942029" y="0.0"/>
+        </scene>
+    </scenes>
+</document>
