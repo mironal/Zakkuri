@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         ThemeAppier().apply()
 
+        Models.shared.notify.scheduleGlobalReminder()
+
         return true
     }
 

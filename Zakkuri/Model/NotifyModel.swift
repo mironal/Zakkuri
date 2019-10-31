@@ -16,9 +16,23 @@ public protocol NotifyModelProtocol {
     func requestAuthorization() -> Single<Bool>
 
     func applicationWillEnterForeground()
+    func scheduleGlobalReminder()
 }
 
 class NotifyModel: NotifyModelProtocol {
+    enum NotificationType {
+        case globalReminder
+
+        var identifier: String {
+            return "dev.mironal.zakkuri.notification." + {
+                switch self {
+                case .globalReminder:
+                    return "globalReminder"
+                }
+            }()
+        }
+    }
+
     private let center = UNUserNotificationCenter.current()
 
     private func reloadNotificationSettings() {
@@ -57,5 +71,18 @@ class NotifyModel: NotifyModelProtocol {
 
             return Disposables.create()
         }
+    }
+
+    func scheduleGlobalReminder() {
+        let date = DateComponents(hour: 21, minute: 00)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+
+        let content = UNMutableNotificationContent()
+        content.title = "リマインダー"
+        content.body = "今日の達成した時間を記録しましょう."
+
+        let request = UNNotificationRequest(identifier: NotificationType.globalReminder.identifier, content: content, trigger: trigger)
+
+        center.add(request)
     }
 }
