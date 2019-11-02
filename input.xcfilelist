@@ -6,3 +6,4 @@ $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework
 $(SRCROOT)/Carthage/Build/iOS/SwifterSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/FloatingPanel.framework
+$(SRCROOT)/Carthage/Build/iOS/CalendarView_iOS.framework

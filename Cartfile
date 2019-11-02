@@ -2,4 +2,5 @@ github "ReactiveX/RxSwift" ~> 5.0
 github "RxSwiftCommunity/RxSwiftExt"
 github "SwifterSwift/SwifterSwift" ~> 5.1.0
 github "scenee/FloatingPanel" ~> 1.7.0
+github "mmick66/CalendarView" ~> 1.8.2
 
