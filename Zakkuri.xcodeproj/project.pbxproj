@@ -33,6 +33,7 @@
 		4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */; };
 		4E6CC53E232A6B7700E367E3 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */; };
 		4E81A3002338B7290042188A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81A2FF2338B7290042188A /* AlertController.swift */; };
+		4E8EF477236D2B9C00280369 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8EF476236D2B9C00280369 /* Formatter.swift */; };
 		4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0722351C8A200F0B4F2 /* Habit.swift */; };
 		4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */; };
 		4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */; };
@@ -94,6 +95,7 @@
 		4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewModel.swift; sourceTree = "<group>"; };
 		4E6CC53D232A6B7700E367E3 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		4E81A2FF2338B7290042188A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		4E8EF476236D2B9C00280369 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		4EA3F0722351C8A200F0B4F2 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		4EA3F0742351C8BB00F0B4F2 /* GoalSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSpan.swift; sourceTree = "<group>"; };
 		4EA3F0762351C8D300F0B4F2 /* HabitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecord.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				4EAC5A9723388589009334F3 /* NavigationController.swift */,
 				4E81A2FF2338B7290042188A /* AlertController.swift */,
 				4EF09C97235061C100691A57 /* UIViewController.swift */,
+				4E8EF476236D2B9C00280369 /* Formatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */,
 				4EA3F0732351C8A200F0B4F2 /* Habit.swift in Sources */,
 				4E81A3002338B7290042188A /* AlertController.swift in Sources */,
+				4E8EF477236D2B9C00280369 /* Formatter.swift in Sources */,
 				4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */,
 				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,

@@ -29,7 +29,7 @@ public class SummaryViewModel {
     public struct Outputs {
         let showRecordView: Observable<RecordViewModel>
         let showHabitForm: Observable<HabitFormViewModel>
-        let habits: Observable<[HabitSummary]>
+        let habitCells: Observable<[SummaryCellState]>
     }
 
     private let disposeBag = DisposeBag()
@@ -50,10 +50,12 @@ public class SummaryViewModel {
             .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .subscribe(weak: self, onNext: SummaryViewModel.deleteHabit).disposed(by: disposeBag)
 
+        let habitCells: Observable<[SummaryCellState]> = habitModel.habits.map { $0.map { $0 as SummaryCellState } }
+
         return Outputs(
             showRecordView: showRecordView,
             showHabitForm: showGoalForm,
-            habits: habitModel.habits
+            habitCells: habitCells
         )
     }
 

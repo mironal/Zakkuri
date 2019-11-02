@@ -29,9 +29,9 @@ class SummaryViewController: UITableViewController {
 
         tableView.dataSource = nil
 
-        outputs.habits.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, summary, cell in
+        outputs.habitCells.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, state, cell in
 
-            cell.state = SummaryCellState(summary: summary)
+            cell.state = state
 
         }.disposed(by: disposeBag)
 
@@ -93,5 +93,19 @@ class SummaryViewController: UITableViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension HabitSummary: SummaryCellState {
+    public var title: String {
+        return habit.title
+    }
+
+    public var goalSpan: GoalSpan {
+        return habit.goalSpan
+    }
+
+    public var progress: Float {
+        return Float(spentTimeInDuration / habit.targetTime)
     }
 }

@@ -8,8 +8,11 @@
 
 import UIKit
 
-public struct SummaryCellState {
-    let summary: HabitSummary
+public protocol SummaryCellState {
+    var title: String { get }
+    var spentTimeInDuration: TimeInterval { get }
+    var goalSpan: GoalSpan { get }
+    var progress: Float { get }
 }
 
 public class SummaryCell: UITableViewCell {
@@ -20,9 +23,13 @@ public class SummaryCell: UITableViewCell {
 
     var state: SummaryCellState! {
         didSet {
-            titleLabel.text = state.summary.habit.title
-            descriptionLabel.text = state.summary.summary
-            progressView.progress = Float(state.summary.spentTimeInDuration / state.summary.habit.targetTime)
+            titleLabel.text = state.title
+
+            let fmt = Formatters.spentTime
+            let summary = "You spent \(fmt.string(from: state.spentTimeInDuration) ?? "0") in the last \(state.goalSpan.localizedString)"
+
+            descriptionLabel.text = summary
+            progressView.progress = state.progress
         }
     }
 }
