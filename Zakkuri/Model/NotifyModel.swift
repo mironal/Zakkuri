@@ -20,15 +20,15 @@ public protocol NotifyModelProtocol {
 
 class NotifyModel: NotifyModelProtocol {
     enum NotificationType {
-        case globalReminder
+        case habitReminder(HabitID)
 
+        static let Prefix = "dev.mironal.zakkuri.notification."
+        static let HabitNotificationPrefix: String = "\(Prefix)_"
         var identifier: String {
-            return "dev.mironal.zakkuri.notification." + {
-                switch self {
-                case .globalReminder:
-                    return "globalReminder"
-                }
-            }()
+            switch self {
+            case let .habitReminder(id):
+                return "\(NotificationType.HabitNotificationPrefix)\(id)"
+            }
         }
     }
 
@@ -72,24 +72,42 @@ class NotifyModel: NotifyModelProtocol {
         }
     }
 
-    private func scheduleReminder(for habit: HabitSummary) {
+    private func scheduleReminder(for summary: HabitSummary) {
         let date = DateComponents(hour: 21, minute: 00)
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
         let content = UNMutableNotificationContent()
-        content.title = habit.habit.title
+        content.title = summary.habit.title
         content.body = "入力を忘れていませんか？"
 
-        let request = UNNotificationRequest(identifier: NotificationType.globalReminder.identifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: NotificationType.habitReminder(summary.habit.id).identifier, content: content, trigger: trigger)
 
         center.add(request)
     }
 
-    func scheduleReminderIfNeeded(_ habits: [HabitSummary]) {
-        habits.filter {
-            $0.habit.notify
-                && $0.spentTimeInDuration < $0.habit.targetTime
+    private func cancelPendingHabitNotification(_ complete: @escaping () -> Void) {
+        center.getPendingNotificationRequests { [weak self] in
+
+            let ns: [String] = $0.compactMap {
+                $0.identifier.hasPrefix(NotificationType.HabitNotificationPrefix) ? $0.identifier : nil
+            }
+            self?.center.removePendingNotificationRequests(withIdentifiers: ns)
+            complete()
         }
-        .forEach(scheduleReminder(for:))
+    }
+
+    func scheduleReminderIfNeeded(_ habits: [HabitSummary]) {
+        // 短期間に連続して呼び出されると不整合が発生しそうだが、今の所そこまでの頻度で呼び出されないと思うので問題が発生したら考える.
+
+        cancelPendingHabitNotification { [weak self] in
+
+            guard let self = self else { return }
+
+            habits.filter {
+                $0.habit.notify
+                    && $0.spentTimeInDuration < $0.habit.targetTime
+            }
+            .forEach(self.scheduleReminder(for:))
+        }
     }
 }
