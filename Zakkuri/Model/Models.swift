@@ -7,12 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 public struct Models {
+    private static let disposeBag = DisposeBag()
+
     public static let shared: Models = {
         let storage = UserDefaultsStorage()
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
+
+        habitModel.habits.subscribe(onNext: {
+            notifyModel.scheduleReminderIfNeeded($0)
+        }).disposed(by: disposeBag)
+
         return .init(habit: habitModel,
                      notify: notifyModel)
     }()

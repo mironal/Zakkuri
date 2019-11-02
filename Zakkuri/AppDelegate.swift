@@ -16,9 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         ThemeAppier().apply()
-
-        Models.shared.notify.scheduleGlobalReminder()
-
         return true
     }
 

@@ -16,7 +16,6 @@ public protocol NotifyModelProtocol {
     func requestAuthorization() -> Single<Bool>
 
     func applicationWillEnterForeground()
-    func scheduleGlobalReminder()
 }
 
 class NotifyModel: NotifyModelProtocol {
@@ -73,16 +72,24 @@ class NotifyModel: NotifyModelProtocol {
         }
     }
 
-    func scheduleGlobalReminder() {
+    private func scheduleReminder(for habit: HabitSummary) {
         let date = DateComponents(hour: 21, minute: 00)
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
         let content = UNMutableNotificationContent()
-        content.title = "リマインダー"
-        content.body = "今日の達成した時間を記録しましょう."
+        content.title = habit.habit.title
+        content.body = "入力を忘れていませんか？"
 
         let request = UNNotificationRequest(identifier: NotificationType.globalReminder.identifier, content: content, trigger: trigger)
 
         center.add(request)
+    }
+
+    func scheduleReminderIfNeeded(_ habits: [HabitSummary]) {
+        habits.filter {
+            $0.habit.notify
+                && $0.spentTimeInDuration < $0.habit.targetTime
+        }
+        .forEach(scheduleReminder(for:))
     }
 }
