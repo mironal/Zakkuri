@@ -10,7 +10,7 @@ import Foundation
 
 public typealias HabitID = String
 
-public struct Habit: Codable, Equatable {
+public struct Habit: Codable, Equatable, Hashable {
     public let id: HabitID
     public let title: String
     public let goalSpan: GoalSpan

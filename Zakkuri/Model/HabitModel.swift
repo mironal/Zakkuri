@@ -13,8 +13,11 @@ import RxSwiftExt
 import SwifterSwift
 
 public protocol HabitModelProtocol {
+    typealias HabitRecordMap = [Date: [Habit: [HabitRecord]]]
+    var habitRecordMap: Observable<HabitRecordMap> { get }
+
     /// Behavior
-    var habits: Observable<[HabitSummary]> { get }
+    var habitsSummary: Observable<[HabitSummary]> { get }
     var oldestHabitRecord: Observable<HabitRecord?> { get }
 
     var allHabitRecords: Observable<[HabitRecord]> { get }
@@ -57,14 +60,49 @@ public class HabitModel: HabitModelProtocol {
             .subscribe(onNext: r.accept).disposed(by: disposeBag)
     }
 
-    private lazy var habitsRelay: BehaviorRelay<[HabitSummary]> = {
+    public var habitRecordMap: Observable<HabitModelProtocol.HabitRecordMap> {
+        return Observable.combineLatest(storage.restoreHabits().asObservable(),
+                                        storage.restoreHabitRecords().asObservable())
+            .map { (hs: [Habit], hrs: [HabitRecord]) -> HabitRecordMap in
+                self.makeHabitMap(hs: hs, records: hrs)
+            }
+    }
+
+    private func makeHabitMap(hs: [Habit], records: [HabitRecord]) -> HabitRecordMap {
+        let dates = records.reduce(into: [Date]()) { result, record in
+            guard let rounded = record.createdAt.beginning(of: .day) else { return }
+            if !result.contains(rounded) {
+                result.append(rounded)
+            }
+        }
+
+        let habitMap = dates.reduce(into: HabitRecordMap()) { result, date in
+
+            let habitRecords: [Habit: [HabitRecord]] = records.filter { $0.createdAt.beginning(of: .day) == date }
+                .reduce(into: [HabitID: [HabitRecord]]()) { result, r in
+                    var records = result[r.habitId] ?? []
+                    records.append(r)
+                    result[r.habitId] = records
+                }.compactMapKeysAndValues { (arg) -> (Habit, [HabitRecord])? in
+                    let (key, value) = arg
+                    guard let habit = hs.first(where: { $0.id == key }) else { return nil }
+                    return (habit, value)
+                }
+
+            result[date] = habitRecords
+        }
+
+        return habitMap
+    }
+
+    private lazy var habitsSummaryRelay: BehaviorRelay<[HabitSummary]> = {
         let r = BehaviorRelay<[HabitSummary]>(value: [])
         loadHabitsSummary(r)
         return r
     }()
 
-    public var habits: Observable<[HabitSummary]> {
-        return habitsRelay.asObservable()
+    public var habitsSummary: Observable<[HabitSummary]> {
+        return habitsSummaryRelay.asObservable()
     }
 
     public var oldestHabitRecord: Observable<HabitRecord?> {
@@ -95,11 +133,11 @@ public class HabitModel: HabitModelProtocol {
     public func add(_ habit: Habit) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            var value = self.habitsRelay.value
+            var value = self.habitsSummaryRelay.value
 
             let summary = HabitSummary(habit: habit, spentTimeInDuration: 0)
             value.append(summary)
-            self.habitsRelay.accept(value)
+            self.habitsSummaryRelay.accept(value)
 
             _ = self.storage.add(habit)
         }
@@ -109,7 +147,7 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.deleteHabitAndRecords(habitId)
-            self.loadHabitsSummary(self.habitsRelay)
+            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 
@@ -117,7 +155,7 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.deleteRecord(recordId)
-            self.loadHabitsSummary(self.habitsRelay)
+            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 
@@ -130,7 +168,7 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.add(record)
-            self.loadHabitsSummary(self.habitsRelay)
+            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 }

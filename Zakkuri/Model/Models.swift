@@ -17,7 +17,7 @@ public struct Models {
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 
-        habitModel.habits.subscribe(onNext: {
+        habitModel.habitsSummary.subscribe(onNext: {
             notifyModel.scheduleReminderIfNeeded($0)
         }).disposed(by: disposeBag)
 

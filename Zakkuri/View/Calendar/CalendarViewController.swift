@@ -15,10 +15,12 @@ import UIKit
 class CalendarViewController: UIViewController {
     @IBOutlet var calendarView: JTACMonthView!
     private let disposeBag = DisposeBag()
+    @IBOutlet var tableView: UITableView!
 
     var viewModel: CalendarViewModel! = .init(Models.shared)
 
     private var calendarParameters = ConfigurationParameters(startDate: Date(), endDate: Date())
+    private let didSelectDate = PublishSubject<Date>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,13 @@ class CalendarViewController: UIViewController {
         calendarView.allowsRangedSelection = false
         calendarView.alpha = 0
 
-        let outputs = viewModel.bind(.init())
+        let outputs = viewModel.bind(.init(
+            selectDate: didSelectDate
+        ))
+
+        outputs.cellState.bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, state, cell in
+            cell.textLabel?.text = state
+        }.disposed(by: disposeBag)
 
         outputs.calendarRange.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
@@ -77,9 +85,10 @@ extension CalendarViewController: JTACMonthViewDelegate {
         return cell
     }
 
-    func calendar(_: JTACMonthView, didSelectDate _: Date, cell: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) {
+    func calendar(_: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) {
         if let cell = cell as? CalendarDayCell {
             configureCell(cell, cellState: cellState)
+            didSelectDate.onNext(date)
         }
     }
 
@@ -108,5 +117,16 @@ extension CalendarViewController: JTACMonthViewDelegate {
 extension CalendarViewController: JTACMonthViewDataSource {
     func configureCalendar(_: JTACMonthView) -> ConfigurationParameters {
         return calendarParameters
+    }
+}
+
+extension CalendarViewController: UITableViewDataSource {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
     }
 }

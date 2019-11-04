@@ -43,14 +43,14 @@ public class SummaryViewModel {
         let showGoalForm = inputs.tapAdd.map { HabitFormViewModel() }
 
         let showRecordView = inputs.selectItem
-            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
+            .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .map { RecordViewModel(habitId: $0) }
 
         inputs.deleteItem
-            .withLatestFrom(habitModel.habits) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
+            .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> String in habits[indexPath.row].habit.id }
             .subscribe(weak: self, onNext: SummaryViewModel.deleteHabit).disposed(by: disposeBag)
 
-        let habitCells: Observable<[SummaryCellState]> = habitModel.habits.map { $0.map { $0 as SummaryCellState } }
+        let habitCells: Observable<[SummaryCellState]> = habitModel.habitsSummary.map { $0.map { $0 as SummaryCellState } }
 
         return Outputs(
             showRecordView: showRecordView,

@@ -20,11 +20,16 @@ extension Models: CalendarViewModelService {}
 
 public final class CalendarViewModel {
     public typealias DateRange = (start: Date, end: Date)
-    public typealias RecordsMap = [Date: [HabitID]]
-    public struct Inputs {}
+    public typealias RecordsMap = [Date: [Habit]]
+
+    public struct Inputs {
+        let selectDate: Observable<Date>
+    }
+
     public struct Outputs {
         let calendarRange: Observable<DateRange>
         let didChangeRecords: Observable<Void>
+        let cellState: Observable<[String]>
     }
 
     private let disposeBag = DisposeBag()
@@ -36,7 +41,7 @@ public final class CalendarViewModel {
         habitModel = service.habit
     }
 
-    public func bind(_: Inputs) -> Outputs {
+    public func bind(_ inputs: Inputs) -> Outputs {
         let calendarRange: Observable<DateRange> = habitModel.oldestHabitRecord
             .compactMap {
                 guard let oldest = $0?.createdAt else { return nil }
@@ -45,22 +50,28 @@ public final class CalendarViewModel {
                 return (start: start, end: end)
             }
 
-        let habitRecords = habitModel.allHabitRecords.share()
+        let habitRecords = habitModel.habitRecordMap
 
-        let didChangeRecords = habitRecords.map {
-            $0.reduce(into: RecordsMap()) { result, record in
-                if let date = record.createdAt.beginning(of: .day) {
-                    var ids = result[date] ?? []
-                    ids.append(record.habitId)
-                    result[date] = ids
-                }
+        let recordsMap = habitRecords.map {
+            $0.mapKeysAndValues { arg -> (Date, [Habit]) in
+
+                let (key, value) = arg
+
+                let habits = value.keys.map { $0 }
+                return (key, habits)
             }
         }.do(onNext: { self.recordsMap = $0 })
-            .mapTo(())
+            .share()
+
+        let cellState = inputs.selectDate.withLatestFrom(recordsMap) { (date, records) -> [String] in
+            let habits = records[date] ?? []
+            return habits.map { $0.title }
+        }
 
         return .init(
             calendarRange: calendarRange,
-            didChangeRecords: didChangeRecords
+            didChangeRecords: recordsMap.mapTo(()),
+            cellState: cellState
         )
     }
 }
