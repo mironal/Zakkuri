@@ -26,6 +26,9 @@ class CalendarViewController: UIViewController {
         calendarView.calendarDelegate = self
         calendarView.calendarDataSource = self
         calendarView.scrollingMode = .stopAtEachCalendarFrame
+        calendarView.allowsMultipleSelection = false
+        calendarView.allowsRangedSelection = false
+        calendarView.alpha = 0
 
         let outputs = viewModel.bind(.init())
 
@@ -34,6 +37,10 @@ class CalendarViewController: UIViewController {
 
             self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
             self.calendarView.reloadData()
+            self.calendarView.selectDates(from: Date(), to: Date())
+            self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
+                self.calendarView.alpha = 1
+            }
 
         }).disposed(by: disposeBag)
 
@@ -42,6 +49,8 @@ class CalendarViewController: UIViewController {
             self.calendarView.reloadData()
         }).disposed(by: disposeBag)
     }
+
+    private var selectedDate: Date?
 }
 
 extension CalendarViewController: JTACMonthViewDelegate {
@@ -68,11 +77,30 @@ extension CalendarViewController: JTACMonthViewDelegate {
         return cell
     }
 
+    func calendar(_: JTACMonthView, didSelectDate _: Date, cell: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) {
+        if let cell = cell as? CalendarDayCell {
+            configureCell(cell, cellState: cellState)
+        }
+    }
+
+    func calendar(_: JTACMonthView, didDeselectDate _: Date, cell: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) {
+        if let cell = cell as? CalendarDayCell {
+            configureCell(cell, cellState: cellState)
+        }
+    }
+
+    func calendar(_: JTACMonthView, shouldSelectDate _: Date, cell _: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) -> Bool {
+        return cellState.dateBelongsTo == .thisMonth
+    }
+
     private func configureCell(_ cell: CalendarDayCell, cellState: CellState) {
         guard let date = cellState.date.beginning(of: .day) else { return }
 
         let numDots = viewModel.recordsMap[date]?.count ?? 0
-        let state = CalendarDayCell.State(day: cellState.text, numOfDots: numDots, thisMonth: cellState.dateBelongsTo == .thisMonth)
+        let state = CalendarDayCell.State(day: cellState.text,
+                                          numOfDots: numDots,
+                                          thisMonth: cellState.dateBelongsTo == .thisMonth,
+                                          selected: cellState.isSelected)
         cell.state = state
     }
 }

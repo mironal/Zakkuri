@@ -16,14 +16,29 @@ class CalendarDayCell: JTACDayCell {
         let day: String
         let numOfDots: Int
         let thisMonth: Bool
+        let selected: Bool
+
+        static let empty: State = .init(day: "1", numOfDots: 0, thisMonth: false, selected: false)
     }
 
     @IBOutlet var dayLabel: UILabel!
     @IBOutlet var dotStackView: UIStackView!
+    @IBOutlet var selectedView: UIView!
 
-    public var state: State = .init(day: "1", numOfDots: 0, thisMonth: false) {
+    public var state: State = .empty {
         didSet {
             dayLabel.text = state.day
+            dayLabel.textColor = state.thisMonth ? .black : .gray
+
+            selectedView.isHidden = !state.selected
+            borderWidth = state.selected ? 1 : 0
+
+            if state.selected {
+                cornerRadius = 6
+                borderColor = .lightGray
+                dayLabel.textColor = .white
+                selectedView.cornerRadius = selectedView.height / 2
+            }
 
             // removeFromSuperview も呼ばないと view が消えない...
             dotStackView.arrangedSubviews.forEach {
@@ -41,19 +56,6 @@ class CalendarDayCell: JTACDayCell {
                 dotStackView.insertArrangedSubview(UIView(frame: .zero), at: 0)
                 dotStackView.addArrangedSubview(UIView(frame: .zero))
             }
-
-            dayLabel.textColor = state.thisMonth ? .black : .gray
         }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        layer.addBorder(edge: .bottom, color: .gray, thickness: 1)
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        state = .init(day: "1", numOfDots: 0, thisMonth: false)
     }
 }

@@ -28,36 +28,61 @@
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarDayCell" id="EoL-9m-TwF" customClass="CalendarDayCell" customModule="Zakkuri" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Co-x1-l6B">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH8-Qq-EnT">
-                                                    <rect key="frame" x="4" y="8" width="42" height="20.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pop-e2-umr">
+                                                    <rect key="frame" x="10" y="4" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.93646389249999995" green="0.53912019730000005" blue="0.4470226169" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="3gc-ob-h3d"/>
+                                                        <constraint firstAttribute="width" constant="30" id="93S-Ek-mBv"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH8-Qq-EnT">
+                                                    <rect key="frame" x="10" y="4" width="30" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jA7-kg-y6b">
-                                                    <rect key="frame" x="4" y="33" width="42" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="AvG-sH-ITd"/>
-                                                        <constraint firstAttribute="width" constant="42" id="q5X-88-BIT"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="4" y="36" width="42" height="12"/>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGA-va-0Wa">
+                                                    <rect key="frame" x="0.0" y="49" width="50" height="1"/>
+                                                    <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="mYI-Bo-0c7"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="IH8-Qq-EnT" secondAttribute="trailing" constant="4" id="2LT-LJ-Cnh"/>
-                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="leading" secondItem="8Co-x1-l6B" secondAttribute="leading" constant="4" id="FSD-Og-bcc"/>
-                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="top" secondItem="8Co-x1-l6B" secondAttribute="top" constant="8" id="Ffz-22-c49"/>
-                                                <constraint firstItem="jA7-kg-y6b" firstAttribute="top" secondItem="IH8-Qq-EnT" secondAttribute="bottom" constant="4.5" id="VcZ-Tl-AWK"/>
-                                                <constraint firstItem="jA7-kg-y6b" firstAttribute="centerX" secondItem="8Co-x1-l6B" secondAttribute="centerX" id="oU8-Zz-W9O"/>
+                                                <constraint firstItem="PGA-va-0Wa" firstAttribute="leading" secondItem="8Co-x1-l6B" secondAttribute="leading" id="0Ni-yj-F2R"/>
+                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="top" secondItem="Pop-e2-umr" secondAttribute="top" id="1Q3-fv-KPw"/>
+                                                <constraint firstItem="Pop-e2-umr" firstAttribute="top" secondItem="8Co-x1-l6B" secondAttribute="top" constant="4" id="GZi-H4-gCi"/>
+                                                <constraint firstItem="jA7-kg-y6b" firstAttribute="top" secondItem="Pop-e2-umr" secondAttribute="bottom" constant="2" id="Olj-Co-2IL"/>
+                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="trailing" secondItem="Pop-e2-umr" secondAttribute="trailing" id="RXO-ZD-CxI"/>
+                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="leading" secondItem="Pop-e2-umr" secondAttribute="leading" id="YRN-4J-sna"/>
+                                                <constraint firstAttribute="trailing" secondItem="PGA-va-0Wa" secondAttribute="trailing" id="c90-je-BO6"/>
+                                                <constraint firstAttribute="bottom" secondItem="PGA-va-0Wa" secondAttribute="bottom" id="gWP-Lw-AH1"/>
+                                                <constraint firstAttribute="bottom" secondItem="jA7-kg-y6b" secondAttribute="bottom" priority="750" constant="2" id="qTC-uO-sgz"/>
+                                                <constraint firstItem="jA7-kg-y6b" firstAttribute="leading" secondItem="8Co-x1-l6B" secondAttribute="leading" constant="4" id="r2z-cm-JvB"/>
+                                                <constraint firstItem="IH8-Qq-EnT" firstAttribute="bottom" secondItem="Pop-e2-umr" secondAttribute="bottom" id="roW-bp-Z76"/>
+                                                <constraint firstAttribute="trailing" secondItem="jA7-kg-y6b" secondAttribute="trailing" constant="4" id="rzy-rM-UDM"/>
+                                                <constraint firstItem="Pop-e2-umr" firstAttribute="centerX" secondItem="8Co-x1-l6B" secondAttribute="centerX" id="vFa-y9-S1u"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="PGA-va-0Wa"/>
+                                                </mask>
+                                            </variation>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="dayLabel" destination="IH8-Qq-EnT" id="uok-F7-S7n"/>
                                             <outlet property="dotStackView" destination="jA7-kg-y6b" id="vTo-X6-v6D"/>
+                                            <outlet property="selectedView" destination="Pop-e2-umr" id="fYT-x9-9T8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
