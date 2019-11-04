@@ -17,6 +17,7 @@
 		4E242BD2236FDBE40050F23A /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD1236FDBE40050F23A /* MonthHeaderView.swift */; };
 		4E242BD4236FE0020050F23A /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD3236FE0020050F23A /* CALayer.swift */; };
 		4E242BD6236FEBED0050F23A /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD5236FEBED0050F23A /* DotView.swift */; };
+		4E242BD8237001E60050F23A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD7237001E60050F23A /* CalendarViewModel.swift */; };
 		4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */; };
 		4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC530232A5FC500E367E3 /* RxTest.framework */; };
 		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
@@ -86,6 +87,7 @@
 		4E242BD1236FDBE40050F23A /* MonthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthHeaderView.swift; sourceTree = "<group>"; };
 		4E242BD3236FE0020050F23A /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		4E242BD5236FEBED0050F23A /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
+		4E242BD7237001E60050F23A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
 		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitFormViewController.storyboard; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
 				4E06F3A7233747BD0083606C /* RecordViewModel.swift */,
 				4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */,
+				4E242BD7237001E60050F23A /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */,
 				4E242BD4236FE0020050F23A /* CALayer.swift in Sources */,
 				4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */,
+				4E242BD8237001E60050F23A /* CalendarViewModel.swift in Sources */,
 				4EAC5A942338637B009334F3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

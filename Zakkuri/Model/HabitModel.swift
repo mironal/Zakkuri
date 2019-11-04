@@ -15,7 +15,7 @@ import SwifterSwift
 public protocol HabitModelProtocol {
     /// Behavior
     var habits: Observable<[HabitSummary]> { get }
-
+    var oldestHabitRecord: Observable<HabitRecord?> { get }
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
 
     func add(_ habit: Habit)
@@ -34,8 +34,8 @@ public class HabitModel: HabitModelProtocol {
     private let disposeBag = DisposeBag()
 
     private func createHabitSummary(_ habit: Habit) -> Observable<HabitSummary> {
-        return Observable.just(habit)
-            .flatMap { self.storage.restoreHabitRecords(by: $0.id) }
+        return Observable.just(())
+            .flatMap { self.storage.restoreHabitRecords().map { $0.filter { r in habit.id == r.habitId } } }
             .map {
                 guard let endOfToday = Date().end(of: .day) else { fatalError() }
                 let from = endOfToday.addingTimeInterval(-habit.goalSpan.duration)
@@ -65,8 +65,25 @@ public class HabitModel: HabitModelProtocol {
         return habitsRelay.asObservable()
     }
 
+    public var oldestHabitRecord: Observable<HabitRecord?> {
+        return storage.restoreHabitRecords()
+            .asObservable()
+            .map { records -> HabitRecord? in
+
+                guard let first = records.first else { return nil }
+                let record: HabitRecord? = records.reduce(into: first) { result, record in
+                    if result.createdAt > record.createdAt {
+                        result = record
+                    }
+                }
+                return record
+            }
+    }
+
     public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {
-        return storage.restoreHabitRecords(by: habitId).asObservable()
+        return storage.restoreHabitRecords().map {
+            $0.filter { $0.habitId == habitId }
+        }.asObservable()
     }
 
     public func add(_ habit: Habit) {

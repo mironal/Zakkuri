@@ -17,8 +17,5 @@ class CalendarDayCell: JTACDayCell {
         super.awakeFromNib()
 
         layer.addBorder(edge: .bottom, color: .gray, thickness: 1)
-
-        let dotView = DotView(frame: .zero)
-        dotStackView.addArrangedSubview(dotView)
     }
 }

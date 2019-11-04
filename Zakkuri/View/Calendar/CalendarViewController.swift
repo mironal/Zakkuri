@@ -7,17 +7,35 @@
 //
 
 import JTAppleCalendar
+import RxCocoa
+import RxSwift
+import SwifterSwift
 import UIKit
 
 class CalendarViewController: UIViewController {
     @IBOutlet var calendarView: JTACMonthView!
+    private let disposeBag = DisposeBag()
+
+    var viewModel: CalendarViewModel! = .init(Models.shared)
+
+    private var calendarParameters = ConfigurationParameters(startDate: Date(), endDate: Date())
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        calendarView.calendarDataSource = self
         calendarView.calendarDelegate = self
+        calendarView.calendarDataSource = self
         calendarView.scrollingMode = .stopAtEachCalendarFrame
+
+        let outputs = viewModel.bind(.init())
+
+        outputs.calendarRange.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+
+            self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
+            self.calendarView.reloadData()
+
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -60,10 +78,6 @@ extension CalendarViewController: JTACMonthViewDelegate {
 
 extension CalendarViewController: JTACMonthViewDataSource {
     func configureCalendar(_: JTACMonthView) -> ConfigurationParameters {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2019 01 01")!
-        let endDate = Date()
-        return ConfigurationParameters(startDate: startDate, endDate: endDate)
+        return calendarParameters
     }
 }
