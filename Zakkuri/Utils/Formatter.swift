@@ -17,4 +17,11 @@ struct Formatters {
         fmt.unitsStyle = .short
         return fmt
     }()
+
+    public static let calendarHeader: DateFormatter = {
+        let template = DateFormatter.dateFormat(fromTemplate: "yMMMM", options: 0, locale: Locale.current)
+        let fmt = DateFormatter()
+        fmt.dateFormat = template
+        return fmt
+    }()
 }
