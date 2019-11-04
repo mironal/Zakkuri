@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="99N-Jm-i6G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="99N-Jm-i6G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,12 +81,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjB-YB-9da" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2643.4782608695655" y="-154.01785714285714"/>
+            <point key="canvasLocation" x="3553.6231884057975" y="-154.01785714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ohz-GN-eY4">
             <objects>
                 <navigationController id="99N-Jm-i6G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="goforward" catalog="system" id="j4R-Zw-jlK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aVS-Nv-Hi1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -98,7 +99,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Mp-oQ-9v1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724" y="-154"/>
+            <point key="canvasLocation" x="2633.3333333333335" y="-154.01785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="goforward" catalog="system" width="60" height="64"/>
+    </resources>
 </document>
