@@ -31,8 +31,12 @@ class DotView: UIView {
     }()
 
     private func updateDot(_ shapeLayer: CAShapeLayer) {
-        shapeLayer.path = UIBezierPath(ovalOf: .init(width: dotSize, height: dotSize), centered: true).cgPath
-        shapeLayer.position = .init(x: layer.bounds.midX, y: layer.bounds.midY)
+        shapeLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        shapeLayer.path = UIBezierPath(arcCenter: .init(x: bounds.midX, y: bounds.midY),
+                                       radius: dotSize / 2,
+                                       startAngle: 0,
+                                       endAngle: CGFloat.pi * 2,
+                                       clockwise: true).cgPath
     }
 
     override func layoutSubviews() {

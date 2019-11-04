@@ -45,6 +45,8 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: JTACMonthViewDelegate {
+    func calendar(_: JTACMonthView, willDisplay _: JTACDayCell, forItemAt _: Date, cellState _: CellState, indexPath _: IndexPath) {}
+
     func calendarSizeForMonths(_: JTACMonthView?) -> MonthSize? {
         return .init(defaultSize: 50)
     }
@@ -58,15 +60,11 @@ extension CalendarViewController: JTACMonthViewDelegate {
         return header
     }
 
-    func calendar(_: JTACMonthView, willDisplay _: JTACDayCell, forItemAt _: Date, cellState _: CellState, indexPath _: IndexPath) {}
-
     func calendar(_ calendar: JTACMonthView, cellForItemAt _: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath)
-
         if let cell = cell as? CalendarDayCell {
             configureCell(cell, cellState: cellState)
         }
-
         return cell
     }
 

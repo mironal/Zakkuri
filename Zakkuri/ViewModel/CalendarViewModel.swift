@@ -40,7 +40,7 @@ public final class CalendarViewModel {
         let calendarRange: Observable<DateRange> = habitModel.oldestHabitRecord
             .compactMap {
                 guard let oldest = $0?.createdAt else { return nil }
-                guard let start = oldest.beginning(of: .month),
+                guard let start = oldest.beginning(of: .month)?.adding(.month, value: -1),
                     let end = Date().end(of: .month) else { return nil }
                 return (start: start, end: end)
             }

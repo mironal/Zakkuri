@@ -24,10 +24,22 @@ class CalendarDayCell: JTACDayCell {
     public var state: State = .init(day: "1", numOfDots: 0, thisMonth: false) {
         didSet {
             dayLabel.text = state.day
+
+            // removeFromSuperview も呼ばないと view が消えない...
+            dotStackView.arrangedSubviews.forEach {
+                $0.removeFromSuperview()
+            }
             dotStackView.removeArrangedSubviews()
-            Array(repeating: (), count: state.numOfDots).forEach {
-                let view = DotView(frame: .zero)
-                dotStackView.addArrangedSubview(view)
+
+            let views = Array(repeating: (), count: state.numOfDots).map {
+                DotView(frame: .zero)
+            }
+
+            dotStackView.addArrangedSubviews(views)
+            // 2個の場合は間延びするので両側に空の View を入れて dot を中央に寄せる
+            if state.numOfDots == 2 {
+                dotStackView.insertArrangedSubview(UIView(frame: .zero), at: 0)
+                dotStackView.addArrangedSubview(UIView(frame: .zero))
             }
 
             dayLabel.textColor = state.thisMonth ? .black : .gray
@@ -38,5 +50,10 @@ class CalendarDayCell: JTACDayCell {
         super.awakeFromNib()
 
         layer.addBorder(edge: .bottom, color: .gray, thickness: 1)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        state = .init(day: "1", numOfDots: 0, thisMonth: false)
     }
 }

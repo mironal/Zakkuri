@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="EfL-lL-Ah4">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
@@ -65,21 +65,78 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEh-sB-xqw" userLabel="MonthLabel">
-                                            <rect key="frame" x="8" y="8" width="398" height="34"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEh-sB-xqw" userLabel="MonthLabel">
+                                            <rect key="frame" x="8" y="8" width="398" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-uP-9Dd">
+                                            <rect key="frame" x="0.0" y="33" width="414" height="17"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edG-Hx-KbJ" userLabel="Sun">
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <color key="textColor" red="0.93646389245986938" green="0.53912019729614258" blue="0.44702261686325073" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9c-3q-tWQ">
+                                                    <rect key="frame" x="59" y="0.0" width="59.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTn-En-ykN" userLabel="Tue">
+                                                    <rect key="frame" x="118.5" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-N3-ubU" userLabel="Wed">
+                                                    <rect key="frame" x="177.5" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7b-xo-g19" userLabel="Thu">
+                                                    <rect key="frame" x="236.5" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB8-fa-lcW" userLabel="Fri">
+                                                    <rect key="frame" x="295.5" y="0.0" width="59.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5d-mZ-zs5" userLabel="Sat">
+                                                    <rect key="frame" x="355" y="0.0" width="59" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="UEh-sB-xqw" secondAttribute="trailing" id="5Lh-QF-Hu8"/>
+                                        <constraint firstAttribute="bottom" secondItem="VXZ-uP-9Dd" secondAttribute="bottom" id="Er3-IF-Y9z"/>
+                                        <constraint firstItem="VXZ-uP-9Dd" firstAttribute="top" secondItem="UEh-sB-xqw" secondAttribute="bottom" constant="8" id="M7x-Wq-s4q"/>
                                         <constraint firstItem="UEh-sB-xqw" firstAttribute="top" secondItem="LJI-BV-hau" secondAttribute="topMargin" id="Pv2-sP-BmH"/>
+                                        <constraint firstAttribute="trailing" secondItem="VXZ-uP-9Dd" secondAttribute="trailing" id="fqm-U8-N2f"/>
                                         <constraint firstItem="UEh-sB-xqw" firstAttribute="leading" secondItem="LJI-BV-hau" secondAttribute="leadingMargin" id="roz-P3-xhA"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="UEh-sB-xqw" secondAttribute="bottom" id="tMa-5w-fVr"/>
+                                        <constraint firstItem="VXZ-uP-9Dd" firstAttribute="leading" secondItem="LJI-BV-hau" secondAttribute="leading" id="sZr-ac-9En"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="friLabel" destination="HB8-fa-lcW" id="I6K-gW-tib"/>
+                                        <outlet property="monLabel" destination="W9c-3q-tWQ" id="fep-1r-q2a"/>
                                         <outlet property="monthLabel" destination="UEh-sB-xqw" id="y1L-DD-Q6s"/>
+                                        <outlet property="satLabel" destination="V5d-mZ-zs5" id="GSe-R6-bxZ"/>
+                                        <outlet property="sunLabel" destination="edG-Hx-KbJ" id="JwK-hZ-lUM"/>
+                                        <outlet property="thuLabel" destination="o7b-xo-g19" id="WvM-mk-5zt"/>
+                                        <outlet property="tueLabel" destination="hTn-En-ykN" id="5Sv-Hk-GRJ"/>
+                                        <outlet property="wedLabel" destination="5TC-N3-ubU" id="ef3-VR-3ne"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
