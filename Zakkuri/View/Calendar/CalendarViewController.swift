@@ -36,6 +36,11 @@ class CalendarViewController: UIViewController {
             self.calendarView.reloadData()
 
         }).disposed(by: disposeBag)
+
+        outputs.didChangeRecords.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.calendarView.reloadData()
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -59,20 +64,18 @@ extension CalendarViewController: JTACMonthViewDelegate {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath)
 
         if let cell = cell as? CalendarDayCell {
-            configureCell(cell, state: cellState)
+            configureCell(cell, cellState: cellState)
         }
 
         return cell
     }
 
-    private func configureCell(_ cell: CalendarDayCell, state: CellState) {
-        cell.dayLabel.text = state.text
+    private func configureCell(_ cell: CalendarDayCell, cellState: CellState) {
+        guard let date = cellState.date.beginning(of: .day) else { return }
 
-        if state.dateBelongsTo == .thisMonth {
-            cell.dayLabel.textColor = .black
-        } else {
-            cell.dayLabel.textColor = .gray
-        }
+        let numDots = viewModel.recordsMap[date]?.count ?? 0
+        let state = CalendarDayCell.State(day: cellState.text, numOfDots: numDots, thisMonth: cellState.dateBelongsTo == .thisMonth)
+        cell.state = state
     }
 }
 

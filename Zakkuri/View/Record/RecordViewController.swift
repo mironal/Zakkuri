@@ -183,9 +183,7 @@ private class FPLayout: FloatingPanelLayout {
 }
 
 extension RecordViewController: FloatingPanelControllerDelegate {
-    func floatingPanelDidEndRemove(_: FloatingPanelController) {
-        print("floatingPanelDidEndRemove")
-    }
+    func floatingPanelDidEndRemove(_: FloatingPanelController) {}
 
     func floatingPanel(_: FloatingPanelController, layoutFor _: UITraitCollection) -> FloatingPanelLayout? {
         return FPLayout()

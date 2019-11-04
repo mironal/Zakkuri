@@ -16,6 +16,8 @@ public protocol HabitModelProtocol {
     /// Behavior
     var habits: Observable<[HabitSummary]> { get }
     var oldestHabitRecord: Observable<HabitRecord?> { get }
+
+    var allHabitRecords: Observable<[HabitRecord]> { get }
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
 
     func add(_ habit: Habit)
@@ -84,6 +86,10 @@ public class HabitModel: HabitModelProtocol {
         return storage.restoreHabitRecords().map {
             $0.filter { $0.habitId == habitId }
         }.asObservable()
+    }
+
+    public var allHabitRecords: Observable<[HabitRecord]> {
+        return storage.restoreHabitRecords().asObservable()
     }
 
     public func add(_ habit: Habit) {
