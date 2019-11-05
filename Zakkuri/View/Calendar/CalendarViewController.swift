@@ -49,8 +49,10 @@ class CalendarViewController: UIViewController {
                 self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
                 self.calendarView.calendarDataSource = self
                 self.calendarView.reloadData {
-                    self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
-                        self.calendarView.selectDates(from: Date(), to: Date())
+                    let date = Date()
+                    self.updateTitle(date)
+                    self.calendarView.scrollToDate(date, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
+                        self.calendarView.selectDates([date])
                         self.calendarView.alpha = 1
                     }
                 }
@@ -65,6 +67,11 @@ class CalendarViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
 
+    func updateTitle(_ date: Date) {
+        navigationItem.title =
+            Formatters.calendarHeader.string(from: date)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -76,6 +83,10 @@ class CalendarViewController: UIViewController {
         tabBarController?.delegate = nil
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     private var selectedDate: Date?
 }
 
@@ -84,19 +95,6 @@ extension CalendarViewController: JTACMonthViewDelegate {
         if let cell = cell as? CalendarDayCell {
             configureCell(cell, cellState: cellState)
         }
-    }
-
-    func calendarSizeForMonths(_: JTACMonthView?) -> MonthSize? {
-        return .init(defaultSize: 50)
-    }
-
-    func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
-        let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "MonthHeaderView", for: indexPath)
-
-        if let header = header as? MonthHeaderView {
-            header.monthLabel.text = Formatters.calendarHeader.string(from: range.start)
-        }
-        return header
     }
 
     func calendar(_ calendar: JTACMonthView, cellForItemAt _: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
@@ -117,6 +115,12 @@ extension CalendarViewController: JTACMonthViewDelegate {
     func calendar(_: JTACMonthView, didDeselectDate _: Date, cell: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) {
         if let cell = cell as? CalendarDayCell {
             configureCell(cell, cellState: cellState)
+        }
+    }
+
+    func calendar(_: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        if let date = visibleDates.monthDates.first?.date {
+            updateTitle(date)
         }
     }
 

@@ -24,7 +24,10 @@ class ThemeAppier {
     func apply() {
         UISlider.appearance().tintColor = theme.baseColor
 
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().barTintColor = theme.baseColor
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
     }
