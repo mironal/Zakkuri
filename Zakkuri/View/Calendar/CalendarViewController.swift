@@ -33,7 +33,8 @@ class CalendarViewController: UIViewController {
         calendarView.alpha = 0
 
         let outputs = viewModel.bind(.init(
-            selectDate: didSelectDate
+            selectDate: didSelectDate,
+            selectHabit: tableView.rx.itemSelected.asObservable()
         ))
 
         outputs.cellState
@@ -66,11 +67,24 @@ class CalendarViewController: UIViewController {
                 guard let self = self else { return }
                 self.calendarView.reloadData()
             }).disposed(by: disposeBag)
+
+        outputs.deselectTableViewCell.asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.tableView.deselectRow(at: $0, animated: true)
+            }).disposed(by: disposeBag)
+
+        outputs.pushRecordList
+            .asSignal(onErrorSignalWith: .never())
+            .emit(onNext: {
+                guard let vc = UIStoryboard(name: "RecordListViewController", bundle: .main).instantiateViewController(withClass: RecordListViewController.self) else { return }
+                vc.viewModel = $0
+                self.navigationController?.pushViewController(vc)
+            }).disposed(by: disposeBag)
     }
 
     func updateTitle(_ date: Date) {
-        navigationItem.title =
-            Formatters.calendarHeader.string(from: date)
+        navigationItem.title = Formatters.calendarHeader.string(from: date)
     }
 
     override func viewWillAppear(_ animated: Bool) {

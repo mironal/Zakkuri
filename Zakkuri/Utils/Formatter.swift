@@ -18,6 +18,13 @@ struct Formatters {
         return fmt
     }()
 
+    public static let recordingDate: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .short
+        fmt.timeStyle = .short
+        return fmt
+    }()
+
     public static let calendarHeader: DateFormatter = {
         let template = DateFormatter.dateFormat(fromTemplate: "yMMMM", options: 0, locale: Locale.current)
         let fmt = DateFormatter()

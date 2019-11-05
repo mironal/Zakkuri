@@ -20,6 +20,7 @@ public protocol HabitModelProtocol {
     var habitsSummary: Observable<[HabitSummary]> { get }
     var oldestHabitRecord: Observable<HabitRecord?> { get }
 
+    func habit(by habitId: HabitID) -> Observable<Habit?>
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
 
     func add(_ habit: Habit)
@@ -104,6 +105,10 @@ public class HabitModel: HabitModelProtocol {
                 }
                 return record
             }.share(replay: 1)
+    }
+
+    public func habit(by habitId: HabitID) -> Observable<Habit?> {
+        return storage.habits.map { $0.first(where: { $0.id == habitId }) }
     }
 
     public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {

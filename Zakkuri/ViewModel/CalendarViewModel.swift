@@ -20,6 +20,7 @@ extension Models: CalendarViewModelService {}
 
 public final class CalendarViewModel {
     public struct CellState {
+        let habitId: HabitID
         let title: String
         let duration: String
     }
@@ -29,12 +30,15 @@ public final class CalendarViewModel {
 
     public struct Inputs {
         let selectDate: Observable<Date>
+        let selectHabit: Observable<IndexPath>
     }
 
     public struct Outputs {
         let calendarRange: Observable<DateRange>
         let didChangeRecords: Observable<Void>
         let cellState: Observable<[CellState]>
+        let deselectTableViewCell: Observable<IndexPath>
+        let pushRecordList: Observable<RecordListViewModel>
     }
 
     private let disposeBag = DisposeBag()
@@ -79,14 +83,24 @@ public final class CalendarViewModel {
         let cellState = Observable.combineLatest(recordsMap, inputs.selectDate) { (records, date) -> [CellState] in
             let habits = records[date] ?? []
             return habits.map {
-                CellState(title: $0.habit.title, duration: Formatters.spentTime.string(from: $0.duration) ?? "")
+                CellState(habitId: $0.habit.id,
+                          title: $0.habit.title,
+                          duration: Formatters.spentTime.string(from: $0.duration) ?? "")
             }
-        }
+        }.share()
+
+        let pushRecordList = inputs.selectHabit
+            .debug("selectHabit")
+            .withLatestFrom(cellState) { indexPath, states in
+                states[indexPath.row]
+            }.map { RecordListViewModel($0.habitId, service: Models.shared) }
 
         return .init(
             calendarRange: calendarRange,
             didChangeRecords: recordsMap.mapTo(()),
-            cellState: cellState
+            cellState: cellState,
+            deselectTableViewCell: inputs.selectHabit,
+            pushRecordList: pushRecordList
         )
     }
 }

@@ -6,22 +6,30 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 class RecordListViewController: UIViewController {
+    var viewModel: RecordListViewModel!
+
+    @IBOutlet var tableView: UITableView!
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let outputs = viewModel.bind(.init())
+
+        outputs.title
+            .asDriver(onErrorDriveWith: .never())
+            .drive(navigationItem.rx.title)
+            .disposed(by: disposeBag)
+
+        outputs.cellStates
+            .bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, state, cell in
+                cell.textLabel?.text = state.title
+                cell.detailTextLabel?.text = state.detail
+            }.disposed(by: disposeBag)
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
 }
