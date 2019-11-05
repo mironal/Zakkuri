@@ -84,11 +84,11 @@
             </objects>
             <point key="canvasLocation" x="3553.6231884057975" y="-154.01785714285714"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Habits-->
         <scene sceneID="Ohz-GN-eY4">
             <objects>
                 <navigationController id="99N-Jm-i6G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="goforward" catalog="system" id="j4R-Zw-jlK"/>
+                    <tabBarItem key="tabBarItem" title="Habits" image="repeat" catalog="system" id="j4R-Zw-jlK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aVS-Nv-Hi1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -104,6 +104,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="goforward" catalog="system" width="60" height="64"/>
+        <image name="repeat" catalog="system" width="64" height="48"/>
     </resources>
 </document>

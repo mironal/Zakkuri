@@ -30,5 +30,7 @@ class ThemeAppier {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
+
+        UITabBar.appearance().tintColor = theme.baseColor
     }
 }

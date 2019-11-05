@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="R87-N1-cJb">
             <objects>
-                <tabBarController id="LsF-Po-z8S" sceneMemberID="viewController">
+                <tabBarController id="LsF-Po-z8S" customClass="TabBarController" customModule="Zakkuri" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fO-DM-Vh5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

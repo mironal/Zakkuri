@@ -197,12 +197,13 @@
             </objects>
             <point key="canvasLocation" x="2137.68115942029" y="40.848214285714285"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Records-->
         <scene sceneID="Mu2-42-J62">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jrT-XH-QI0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="C1Z-E2-OMc"/>
+                    <tabBarItem key="tabBarItem" title="Records" image="calendar" catalog="system" id="C1Z-E2-OMc"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Syu-Le-OCD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

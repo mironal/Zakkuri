@@ -48,6 +48,7 @@
 		4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */; };
 		4EA6072F237193B9004051CA /* RecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6072E237193B9004051CA /* RecordListViewController.swift */; };
 		4EA60731237193C2004051CA /* RecordListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EA60730237193C2004051CA /* RecordListViewController.storyboard */; };
+		4EA607332371A263004051CA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA607322371A263004051CA /* TabBarController.swift */; };
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC19513233C590A0090BC66 /* InMemoryStorage.swift */; };
@@ -120,6 +121,7 @@
 		4EA3F0782351C8E600F0B4F2 /* HabitSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSummary.swift; sourceTree = "<group>"; };
 		4EA6072E237193B9004051CA /* RecordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListViewController.swift; sourceTree = "<group>"; };
 		4EA60730237193C2004051CA /* RecordListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordListViewController.storyboard; sourceTree = "<group>"; };
+		4EA607322371A263004051CA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4EC19513233C590A0090BC66 /* InMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		4E6CC53A232A616D00E367E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EA607342371A268004051CA /* Tap */,
 				4EA6072D2371939E004051CA /* RecordList */,
 				4E7DE8DC236FC87100AC7009 /* Calendar */,
 				4E06F3AC23379B680083606C /* Detail */,
@@ -318,6 +321,14 @@
 				4EA60730237193C2004051CA /* RecordListViewController.storyboard */,
 			);
 			path = RecordList;
+			sourceTree = "<group>";
+		};
+		4EA607342371A268004051CA /* Tap */ = {
+			isa = PBXGroup;
+			children = (
+				4EA607322371A263004051CA /* TabBarController.swift */,
+			);
+			path = Tap;
 			sourceTree = "<group>";
 		};
 		4ECE99B3232A596600215BFE = {
@@ -544,6 +555,7 @@
 				4E7DE8DE236FC88D00AC7009 /* CalendarViewController.swift in Sources */,
 				4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */,
 				4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */,
+				4EA607332371A263004051CA /* TabBarController.swift in Sources */,
 				4EF09C98235061C100691A57 /* UIViewController.swift in Sources */,
 				4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */,
 				4E33B5FD232C9F53007D42A5 /* Models.swift in Sources */,
