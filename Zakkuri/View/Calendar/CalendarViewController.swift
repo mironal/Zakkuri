@@ -169,12 +169,16 @@ extension CalendarViewController: JTACMonthViewDataSource {
 
 extension CalendarViewController: UITabBarControllerDelegate {
     func tabBarController(_: UITabBarController, didSelect viewController: UIViewController) {
-        guard viewController == self else { return }
+        guard let nav = viewController as? UINavigationController else {
+            return
+        }
 
-        // 画面が表示されてから delegate を set しているのでここが呼ばれるのは常に reselect
+        if nav.visibleViewController == self {
+            // 画面が表示されてから delegate を set しているのでここが呼ばれるのは常に reselect
 
-        let today = Date()
-        calendarView.scrollToDate(today)
-        calendarView.selectDates(from: today, to: today)
+            let today = Date()
+            calendarView.scrollToDate(today)
+            calendarView.selectDates(from: today, to: today)
+        }
     }
 }
