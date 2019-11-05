@@ -129,8 +129,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-OJ-4Hs">
+                                <rect key="frame" x="0.0" y="317" width="320" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="kjE-11-b3G"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IgY-kz-VDh">
-                                <rect key="frame" x="0.0" y="317" width="320" height="158"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="157"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="280" id="0pl-cQ-4lP"/>
@@ -168,7 +175,6 @@
                         <constraints>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="bottom" secondItem="MeI-8x-BRT" secondAttribute="bottom" id="1tF-0T-8L5"/>
                             <constraint firstItem="MeI-8x-BRT" firstAttribute="trailing" secondItem="ZrR-wv-v2Z" secondAttribute="trailing" id="1vi-hC-H2s"/>
-                            <constraint firstItem="IgY-kz-VDh" firstAttribute="top" secondItem="ZrR-wv-v2Z" secondAttribute="bottom" id="2ST-Br-2Rl"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="7OU-hf-evw"/>
                             <constraint firstItem="VXZ-uP-9Dd" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="9kU-lA-RiR"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="trailing" secondItem="MeI-8x-BRT" secondAttribute="trailing" id="FIx-0X-9fX"/>
@@ -178,10 +184,14 @@
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="bottom" secondItem="MeI-8x-BRT" secondAttribute="bottom" id="Ivr-Tg-98w"/>
                             <constraint firstItem="zVu-Af-9Sn" firstAttribute="leading" secondItem="VXZ-uP-9Dd" secondAttribute="leading" id="OCy-s5-USG"/>
                             <constraint firstItem="zVu-Af-9Sn" firstAttribute="bottom" secondItem="VXZ-uP-9Dd" secondAttribute="bottom" id="Phj-bk-13K"/>
+                            <constraint firstItem="MeI-8x-BRT" firstAttribute="trailing" secondItem="gXk-OJ-4Hs" secondAttribute="trailing" id="Rc7-Lc-rdN"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="trailing" secondItem="MeI-8x-BRT" secondAttribute="trailing" id="UgL-yH-RrE"/>
                             <constraint firstItem="VXZ-uP-9Dd" firstAttribute="top" secondItem="MeI-8x-BRT" secondAttribute="top" id="Wc0-ef-rzw"/>
                             <constraint firstItem="MeI-8x-BRT" firstAttribute="trailing" secondItem="VXZ-uP-9Dd" secondAttribute="trailing" id="dCy-pg-pkF"/>
+                            <constraint firstItem="gXk-OJ-4Hs" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="gKl-OC-Y6O"/>
                             <constraint firstItem="zVu-Af-9Sn" firstAttribute="trailing" secondItem="VXZ-uP-9Dd" secondAttribute="trailing" id="mUK-vD-kSq"/>
+                            <constraint firstItem="IgY-kz-VDh" firstAttribute="top" secondItem="gXk-OJ-4Hs" secondAttribute="bottom" id="s5h-KE-M1A"/>
+                            <constraint firstItem="gXk-OJ-4Hs" firstAttribute="top" secondItem="ZrR-wv-v2Z" secondAttribute="bottom" id="tsf-or-Idg"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="xXA-pk-RDW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MeI-8x-BRT"/>
@@ -189,13 +199,14 @@
                     <navigationItem key="navigationItem" id="bhb-au-ByE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="borderView" destination="gXk-OJ-4Hs" id="h4L-gR-5PA"/>
                         <outlet property="calendarView" destination="ZrR-wv-v2Z" id="jbt-vf-75H"/>
                         <outlet property="tableView" destination="IgY-kz-VDh" id="VdF-sK-Fy1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rc0-EP-HoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137.68115942029" y="40.848214285714285"/>
+            <point key="canvasLocation" x="2137.5" y="40.140845070422536"/>
         </scene>
         <!--Records-->
         <scene sceneID="Mu2-42-J62">

@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController {
     private let disposeBag = DisposeBag()
     @IBOutlet var tableView: UITableView!
 
+    @IBOutlet var borderView: UIView!
     var viewModel: CalendarViewModel! = .init(Models.shared)
 
     private var calendarParameters = ConfigurationParameters(startDate: Date(), endDate: Date())
@@ -85,6 +86,13 @@ class CalendarViewController: UIViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        borderView.layer.sublayers = nil
+        borderView.layer.addBorder(edge: .bottom, color: .lightGray, thickness: 1)
     }
 
     private var selectedDate: Date?
