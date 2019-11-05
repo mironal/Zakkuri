@@ -26,7 +26,6 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
 
         calendarView.calendarDelegate = self
-        calendarView.calendarDataSource = self
         calendarView.scrollingMode = .stopAtEachCalendarFrame
         calendarView.allowsMultipleSelection = false
         calendarView.allowsRangedSelection = false
@@ -36,27 +35,34 @@ class CalendarViewController: UIViewController {
             selectDate: didSelectDate
         ))
 
-        outputs.cellState.bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, state, cell in
-            cell.textLabel?.text = state.title
-            cell.detailTextLabel?.text = state.duration
-        }.disposed(by: disposeBag)
+        outputs.cellState
+            .bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, state, cell in
+                cell.textLabel?.text = state.title
+                cell.detailTextLabel?.text = state.duration
+            }.disposed(by: disposeBag)
 
-        outputs.calendarRange.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
+        outputs.calendarRange
+            .asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
 
-            self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
-            self.calendarView.reloadData()
-            self.calendarView.selectDates(from: Date(), to: Date())
-            self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
-                self.calendarView.alpha = 1
-            }
+                self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
+                self.calendarView.calendarDataSource = self
+                self.calendarView.reloadData {
+                    self.calendarView.selectDates(from: Date(), to: Date())
+                    self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
+                        self.calendarView.alpha = 1
+                    }
+                }
 
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
 
-        outputs.didChangeRecords.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
-            self.calendarView.reloadData()
-        }).disposed(by: disposeBag)
+        outputs.didChangeRecords
+            .asDriver(onErrorDriveWith: .never())
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.calendarView.reloadData()
+            }).disposed(by: disposeBag)
     }
 
     private var selectedDate: Date?

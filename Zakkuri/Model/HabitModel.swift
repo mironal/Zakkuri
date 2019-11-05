@@ -20,7 +20,6 @@ public protocol HabitModelProtocol {
     var habitsSummary: Observable<[HabitSummary]> { get }
     var oldestHabitRecord: Observable<HabitRecord?> { get }
 
-    var allHabitRecords: Observable<[HabitRecord]> { get }
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
 
     func add(_ habit: Habit)
@@ -40,7 +39,7 @@ public class HabitModel: HabitModelProtocol {
 
     private func createHabitSummary(_ habit: Habit) -> Observable<HabitSummary> {
         return Observable.just(())
-            .flatMap { self.storage.restoreHabitRecords().map { $0.filter { r in habit.id == r.habitId } } }
+            .flatMap { self.storage.habitRecords.map { $0.filter { r in habit.id == r.habitId } } }
             .map {
                 guard let endOfToday = Date().end(of: .day) else { fatalError() }
                 let from = endOfToday.addingTimeInterval(-habit.goalSpan.duration)
@@ -52,17 +51,9 @@ public class HabitModel: HabitModelProtocol {
             }
     }
 
-    private func loadHabitsSummary(_ r: BehaviorRelay<[HabitSummary]>) {
-        storage.restoreHabits()
-            .asObservable()
-            .map { $0.map { self.createHabitSummary($0) } }
-            .flatMap { Observable.zip($0) }
-            .subscribe(onNext: r.accept).disposed(by: disposeBag)
-    }
-
     public var habitRecordMap: Observable<HabitModelProtocol.HabitRecordMap> {
-        return Observable.combineLatest(storage.restoreHabits().asObservable(),
-                                        storage.restoreHabitRecords().asObservable())
+        return Observable.combineLatest(storage.habits,
+                                        storage.habitRecords)
             .map { (hs: [Habit], hrs: [HabitRecord]) -> HabitRecordMap in
                 self.makeHabitMap(hs: hs, records: hrs)
             }
@@ -95,21 +86,16 @@ public class HabitModel: HabitModelProtocol {
         return habitMap
     }
 
-    private lazy var habitsSummaryRelay: BehaviorRelay<[HabitSummary]> = {
-        let r = BehaviorRelay<[HabitSummary]>(value: [])
-        loadHabitsSummary(r)
-        return r
-    }()
-
     public var habitsSummary: Observable<[HabitSummary]> {
-        return habitsSummaryRelay.asObservable()
+        return storage.habits
+            .map { $0.map { self.createHabitSummary($0) } }
+            .flatMap { Observable.zip($0) }
+            .share()
     }
 
     public var oldestHabitRecord: Observable<HabitRecord?> {
-        return storage.restoreHabitRecords()
-            .asObservable()
+        return storage.habitRecords.take(1)
             .map { records -> HabitRecord? in
-
                 guard let first = records.first else { return nil }
                 let record: HabitRecord? = records.reduce(into: first) { result, record in
                     if result.createdAt > record.createdAt {
@@ -117,27 +103,18 @@ public class HabitModel: HabitModelProtocol {
                     }
                 }
                 return record
-            }
+            }.share(replay: 1)
     }
 
     public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {
-        return storage.restoreHabitRecords().map {
+        return storage.habitRecords.map {
             $0.filter { $0.habitId == habitId }
-        }.asObservable()
-    }
-
-    public var allHabitRecords: Observable<[HabitRecord]> {
-        return storage.restoreHabitRecords().asObservable()
+        }
     }
 
     public func add(_ habit: Habit) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            var value = self.habitsSummaryRelay.value
-
-            let summary = HabitSummary(habit: habit, spentTimeInDuration: 0)
-            value.append(summary)
-            self.habitsSummaryRelay.accept(value)
 
             _ = self.storage.add(habit)
         }
@@ -147,7 +124,6 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.deleteHabitAndRecords(habitId)
-            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 
@@ -155,7 +131,6 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.deleteRecord(recordId)
-            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 
@@ -168,7 +143,6 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
             _ = self.storage.add(record)
-            self.loadHabitsSummary(self.habitsSummaryRelay)
         }
     }
 }

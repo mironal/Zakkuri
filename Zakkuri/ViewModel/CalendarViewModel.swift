@@ -76,7 +76,7 @@ public final class CalendarViewModel {
         .do(onNext: { self.recordsMap = $0 })
         .share()
 
-        let cellState = inputs.selectDate.withLatestFrom(recordsMap) { (date, records) -> [CellState] in
+        let cellState = Observable.combineLatest(recordsMap, inputs.selectDate) { (records, date) -> [CellState] in
             let habits = records[date] ?? []
             return habits.map {
                 CellState(title: $0.habit.title, duration: Formatters.spentTime.string(from: $0.duration) ?? "")
