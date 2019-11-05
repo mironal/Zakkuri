@@ -113,7 +113,7 @@ public class HabitModel: HabitModelProtocol {
 
     public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {
         return storage.habitRecords.map {
-            $0.filter { $0.habitId == habitId }
+            $0.filter { $0.habitId == habitId }.sorted(by: \.createdAt).reversed()
         }
     }
 
