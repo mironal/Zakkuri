@@ -4,7 +4,7 @@
 
 毎日の習慣とかそういうのじゃなくて "1週間で合計3時間は英語の勉強をする" みたいなゆるい目標を管理できるアプリ.
 
-![sample](./docs/sample.gif)
+[![Zakkuri sample video](https://img.youtube.com/vi/F5aAE_Dt-34/0.jpg)](http://www.youtube.com/watch?v=F5aAE_Dt-34)
 
 ### 機能
 
