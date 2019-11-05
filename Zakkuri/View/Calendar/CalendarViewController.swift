@@ -80,7 +80,11 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: JTACMonthViewDelegate {
-    func calendar(_: JTACMonthView, willDisplay _: JTACDayCell, forItemAt _: Date, cellState _: CellState, indexPath _: IndexPath) {}
+    func calendar(_: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt _: Date, cellState: CellState, indexPath _: IndexPath) {
+        if let cell = cell as? CalendarDayCell {
+            configureCell(cell, cellState: cellState)
+        }
+    }
 
     func calendarSizeForMonths(_: JTACMonthView?) -> MonthSize? {
         return .init(defaultSize: 50)
@@ -116,12 +120,11 @@ extension CalendarViewController: JTACMonthViewDelegate {
         }
     }
 
-    func calendar(_: JTACMonthView, shouldSelectDate _: Date, cell _: JTACDayCell?, cellState: CellState, indexPath _: IndexPath) -> Bool {
-        return cellState.dateBelongsTo == .thisMonth
-    }
-
     private func configureCell(_ cell: CalendarDayCell, cellState: CellState) {
-        guard let date = cellState.date.beginning(of: .day) else { return }
+        guard let date = cellState.date.beginning(of: .day) else {
+            print("warn: skip configure cell", cell, cellState)
+            return
+        }
 
         let numDots = viewModel.recordsMap[date]?.count ?? 0
         let state = CalendarDayCell.State(day: cellState.text,

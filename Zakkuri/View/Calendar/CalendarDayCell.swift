@@ -56,6 +56,13 @@ class CalendarDayCell: JTACDayCell {
                 dotStackView.insertArrangedSubview(UIView(frame: .zero), at: 0)
                 dotStackView.addArrangedSubview(UIView(frame: .zero))
             }
+            setNeedsDisplay()
         }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        state = .empty
     }
 }
