@@ -24,10 +24,14 @@ public final class RecordListViewModel {
         let detail: String?
     }
 
-    public struct Inputs {}
+    public struct Inputs {
+        let changeCollapse: Observable<Void>
+    }
+
     public struct Outputs {
         let title: Observable<String?>
         let cellStates: Observable<[CellState]>
+        let collapse: Observable<Bool>
     }
 
     private let habitId: HabitID
@@ -40,24 +44,29 @@ public final class RecordListViewModel {
         habitModel = service.habit
     }
 
-    public func bind(_: Inputs) -> Outputs {
+    public func bind(_ inputs: Inputs) -> Outputs {
         let date = self.date
         let title = habitModel.habit(by: habitId).map { $0?.title }
+        let collapse = inputs.changeCollapse
+            .scan(true) { last, _ in !last }
+            .startWith(true)
+            .share(replay: 1)
 
-        let cellStates: Observable<[CellState]> = habitModel.habitRecords(by: habitId)
-            .map {
-                $0.filter {
-                    Calendar.current.isDate($0.createdAt, inSameDayAs: date)
+        let cellStates: Observable<[CellState]> =
+            .combineLatest(habitModel.habitRecords(by: habitId), collapse, resultSelector: { (records, collapse) -> [RecordListViewModel.CellState] in
+                records.filter {
+                    !collapse || Calendar.current.isDate($0.createdAt, inSameDayAs: date)
                 }.map {
                     let duration = Formatters.spentTime.string(from: $0.duration)
                     let createdAt = Formatters.recordingDate.string(from: $0.createdAt)
                     return CellState(title: duration, detail: createdAt)
                 }
-            }
+            })
 
         return .init(
             title: title,
-            cellStates: cellStates
+            cellStates: cellStates,
+            collapse: collapse
         )
     }
 }
