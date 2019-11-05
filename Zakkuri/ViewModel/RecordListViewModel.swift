@@ -52,16 +52,16 @@ public final class RecordListViewModel {
             .startWith(true)
             .share(replay: 1)
 
-        let cellStates: Observable<[CellState]> =
-            .combineLatest(habitModel.habitRecords(by: habitId), collapse, resultSelector: { (records, collapse) -> [RecordListViewModel.CellState] in
-                records.filter {
-                    !collapse || Calendar.current.isDate($0.createdAt, inSameDayAs: date)
-                }.map {
-                    let duration = Formatters.spentTime.string(from: $0.duration)
-                    let createdAt = Formatters.recordingDate.string(from: $0.createdAt)
-                    return CellState(title: duration, detail: createdAt)
-                }
-            })
+        let cellStates: Observable<[CellState]> = .combineLatest(habitModel.habitRecords(by: habitId),
+                                                                 collapse) { (records, collapse) -> [RecordListViewModel.CellState] in
+            records.filter {
+                !collapse || Calendar.current.isDate($0.createdAt, inSameDayAs: date)
+            }.map {
+                let duration = Formatters.spentTime.string(from: $0.duration)
+                let createdAt = Formatters.recordingDate.string(from: $0.createdAt)
+                return CellState(title: duration, detail: createdAt)
+            }
+        }
 
         return .init(
             title: title,
