@@ -71,7 +71,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZrR-wv-v2Z" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="17" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="23" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="muA-1N-Wew"/>
@@ -130,14 +130,14 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-OJ-4Hs">
-                                <rect key="frame" x="0.0" y="317" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="323" width="414" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kjE-11-b3G"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IgY-kz-VDh">
-                                <rect key="frame" x="0.0" y="318" width="414" height="407"/>
+                                <rect key="frame" x="0.0" y="324" width="414" height="401"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="280" id="0pl-cQ-4lP"/>
                                 </constraints>
@@ -178,7 +178,7 @@
                             <constraint firstItem="VXZ-uP-9Dd" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="9kU-lA-RiR"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="trailing" secondItem="MeI-8x-BRT" secondAttribute="trailing" id="FIx-0X-9fX"/>
                             <constraint firstItem="ZrR-wv-v2Z" firstAttribute="leading" secondItem="MeI-8x-BRT" secondAttribute="leading" id="FxT-pJ-GPq"/>
-                            <constraint firstItem="ZrR-wv-v2Z" firstAttribute="top" secondItem="zVu-Af-9Sn" secondAttribute="bottom" id="GKa-Tn-biW"/>
+                            <constraint firstItem="ZrR-wv-v2Z" firstAttribute="top" secondItem="zVu-Af-9Sn" secondAttribute="bottom" constant="6" id="GKa-Tn-biW"/>
                             <constraint firstItem="zVu-Af-9Sn" firstAttribute="top" secondItem="VXZ-uP-9Dd" secondAttribute="top" id="HWC-MI-iCS"/>
                             <constraint firstItem="IgY-kz-VDh" firstAttribute="bottom" secondItem="MeI-8x-BRT" secondAttribute="bottom" id="Ivr-Tg-98w"/>
                             <constraint firstItem="zVu-Af-9Sn" firstAttribute="leading" secondItem="VXZ-uP-9Dd" secondAttribute="leading" id="OCy-s5-USG"/>
