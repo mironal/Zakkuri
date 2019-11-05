@@ -37,7 +37,8 @@ class CalendarViewController: UIViewController {
         ))
 
         outputs.cellState.bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, state, cell in
-            cell.textLabel?.text = state
+            cell.textLabel?.text = state.title
+            cell.detailTextLabel?.text = state.duration
         }.disposed(by: disposeBag)
 
         outputs.calendarRange.subscribe(onNext: { [weak self] in

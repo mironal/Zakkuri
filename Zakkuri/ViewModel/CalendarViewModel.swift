@@ -19,8 +19,13 @@ public protocol CalendarViewModelService {
 extension Models: CalendarViewModelService {}
 
 public final class CalendarViewModel {
+    public struct CellState {
+        let title: String
+        let duration: String
+    }
+
     public typealias DateRange = (start: Date, end: Date)
-    public typealias RecordsMap = [Date: [Habit]]
+    public typealias RecordsMap = [Date: [(habit: Habit, duration: TimeInterval)]]
 
     public struct Inputs {
         let selectDate: Observable<Date>
@@ -29,7 +34,7 @@ public final class CalendarViewModel {
     public struct Outputs {
         let calendarRange: Observable<DateRange>
         let didChangeRecords: Observable<Void>
-        let cellState: Observable<[String]>
+        let cellState: Observable<[CellState]>
     }
 
     private let disposeBag = DisposeBag()
@@ -53,19 +58,29 @@ public final class CalendarViewModel {
         let habitRecords = habitModel.habitRecordMap
 
         let recordsMap = habitRecords.map {
-            $0.mapKeysAndValues { arg -> (Date, [Habit]) in
+            $0.mapKeysAndValues { arg -> (Date, [(habit: Habit, duration: TimeInterval)]) in
 
                 let (key, value) = arg
 
-                let habits = value.keys.map { $0 }
-                return (key, habits)
-            }
-        }.do(onNext: { self.recordsMap = $0 })
-            .share()
+                let habits: [Habit] = value.keys.map { $0 }
+                let habitDurations = habits.map { habit -> (habit: Habit, duration: TimeInterval) in
+                    let duration = (value[habit] ?? []).reduce(into: 0) { sum, r in
+                        sum += r.duration
+                    }
+                    return (habit: habit, duration: duration)
+                }
 
-        let cellState = inputs.selectDate.withLatestFrom(recordsMap) { (date, records) -> [String] in
+                return (key, habitDurations)
+            }
+        }
+        .do(onNext: { self.recordsMap = $0 })
+        .share()
+
+        let cellState = inputs.selectDate.withLatestFrom(recordsMap) { (date, records) -> [CellState] in
             let habits = records[date] ?? []
-            return habits.map { $0.title }
+            return habits.map {
+                CellState(title: $0.habit.title, duration: Formatters.spentTime.string(from: $0.duration) ?? "")
+            }
         }
 
         return .init(
