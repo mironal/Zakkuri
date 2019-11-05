@@ -90,7 +90,6 @@ public final class CalendarViewModel {
         }.share()
 
         let pushRecordList = inputs.selectHabit
-            .debug("selectHabit")
             .withLatestFrom(cellState) { indexPath, states in
                 states[indexPath.row]
             }.map { RecordListViewModel($0.habitId, service: Models.shared) }
