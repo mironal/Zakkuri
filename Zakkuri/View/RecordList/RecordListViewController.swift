@@ -32,4 +32,8 @@ class RecordListViewController: UIViewController {
                 cell.detailTextLabel?.text = state.detail
             }.disposed(by: disposeBag)
     }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
