@@ -89,10 +89,10 @@ public final class CalendarViewModel {
             }
         }.share()
 
-        let pushRecordList = Observable.combineLatest(inputs.selectHabit, inputs.selectDate) { ($0, $1) }
-            .withLatestFrom(cellState) { (arg, states) -> RecordListViewModel in
+        let pushRecordList = inputs.selectHabit
+            .withLatestFrom(Observable.combineLatest(cellState, inputs.selectDate) { ($0, $1) }) { (indexPath, args) -> RecordListViewModel in
 
-                let (indexPath, date) = arg
+                let (states, date) = args
                 let habitId = states[indexPath.row].habitId
                 return RecordListViewModel(habitId, date: date, service: Models.shared)
             }
