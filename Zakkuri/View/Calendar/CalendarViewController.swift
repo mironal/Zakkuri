@@ -138,17 +138,6 @@ extension CalendarViewController: JTACMonthViewDataSource {
     }
 }
 
-extension CalendarViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
-    }
-}
-
 extension CalendarViewController: UITabBarControllerDelegate {
     func tabBarController(_: UITabBarController, didSelect viewController: UIViewController) {
         guard viewController == self else { return }
