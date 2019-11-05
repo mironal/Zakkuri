@@ -49,8 +49,8 @@ class CalendarViewController: UIViewController {
                 self.calendarParameters = ConfigurationParameters(startDate: $0.start, endDate: $0.end)
                 self.calendarView.calendarDataSource = self
                 self.calendarView.reloadData {
-                    self.calendarView.selectDates(from: Date(), to: Date())
                     self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0) {
+                        self.calendarView.selectDates(from: Date(), to: Date())
                         self.calendarView.alpha = 1
                     }
                 }
@@ -63,6 +63,17 @@ class CalendarViewController: UIViewController {
                 guard let self = self else { return }
                 self.calendarView.reloadData()
             }).disposed(by: disposeBag)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tabBarController?.delegate = self
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.delegate = nil
     }
 
     private var selectedDate: Date?
@@ -135,5 +146,17 @@ extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         return cell
+    }
+}
+
+extension CalendarViewController: UITabBarControllerDelegate {
+    func tabBarController(_: UITabBarController, didSelect viewController: UIViewController) {
+        guard viewController == self else { return }
+
+        // 画面が表示されてから delegate を set しているのでここが呼ばれるのは常に reselect
+
+        let today = Date()
+        calendarView.scrollToDate(today)
+        calendarView.selectDates(from: today, to: today)
     }
 }
