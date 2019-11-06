@@ -47,12 +47,12 @@ class CalendarDayCell: JTACDayCell {
             dotStackView.removeArrangedSubviews()
 
             let views = Array(repeating: (), count: state.numOfDots).map {
-                DotView(frame: .zero)
+                DotView(dotColor: Theme.defailt.accentColor)
             }
 
             dotStackView.addArrangedSubviews(views)
-            // 2個の場合は間延びするので両側に空の View を入れて dot を中央に寄せる
-            if state.numOfDots == 2 {
+            // 隙間が間延びするので両側に空の View を入れて dot を中央に寄せる
+            if state.numOfDots < 6 {
                 dotStackView.insertArrangedSubview(UIView(frame: .zero), at: 0)
                 dotStackView.addArrangedSubview(UIView(frame: .zero))
             }

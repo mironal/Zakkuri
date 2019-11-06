@@ -22,6 +22,12 @@ class DotView: UIView {
         }
     }
 
+    convenience init(dotSize: CGFloat = 4, dotColor: UIColor = .black) {
+        self.init(frame: .zero)
+        self.dotSize = dotSize
+        self.dotColor = dotColor
+    }
+
     private lazy var shapeLayer: CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
         updateDot(shapeLayer)
