@@ -34,6 +34,7 @@
 		4E33B605232E3165007D42A5 /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B604232E3165007D42A5 /* FloatingPanel.framework */; };
 		4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B607232E35BF007D42A5 /* RecordViewController.swift */; };
 		4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */; };
+		4E4AE87B2372EB10009C4B82 /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */; };
 		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
 		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
 		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
@@ -62,6 +63,7 @@
 		4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99D6232A596800215BFE /* ZakkuriTests.swift */; };
 		4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */; };
 		4EE2B6692372E17E009C2AA1 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE2B6682372E17E009C2AA1 /* XCGLogger.framework */; };
+		4EE2B66D2372E1F2009C2AA1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2B66C2372E1F2009C2AA1 /* UserModel.swift */; };
 		4EF09C98235061C100691A57 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF09C97235061C100691A57 /* UIViewController.swift */; };
 		559F53EE286BC1FBD733E966 /* Pods_ZakkuriTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */; };
 		AE0C3C2B89221B2491F33D8C /* Pods_Zakkuri_ZakkuriUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EB348ACB57E47ACFC025D1 /* Pods_Zakkuri_ZakkuriUITests.framework */; };
@@ -113,6 +115,7 @@
 		4E33B607232E35BF007D42A5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
 		4E3B807C23458ADB00A81971 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStorage.swift; sourceTree = "<group>"; };
 		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
 		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 		4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakkuriUITests.swift; sourceTree = "<group>"; };
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE2B6682372E17E009C2AA1 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = "<group>"; };
+		4EE2B66C2372E1F2009C2AA1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4EF09C97235061C100691A57 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZakkuriTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCFEC244EC69D1B048A208B /* Pods-ZakkuriTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZakkuriTests.debug.xcconfig"; path = "Target Support Files/Pods-ZakkuriTests/Pods-ZakkuriTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				4E33B5FA232C8B70007D42A5 /* HabitModel.swift */,
 				4E33B5FC232C9F53007D42A5 /* Models.swift */,
 				4E1E70742346CB7900B2E107 /* NotifyModel.swift */,
+				4EE2B66C2372E1F2009C2AA1 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			children = (
 				4E33B602232CF795007D42A5 /* Storage.swift */,
 				4EAC5A932338637B009334F3 /* Theme.swift */,
+				4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -722,12 +728,14 @@
 				4E242BD0236FD4B70050F23A /* CalendarDayCell.swift in Sources */,
 				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
 				4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */,
+				4E4AE87B2372EB10009C4B82 /* FirestoreStorage.swift in Sources */,
 				4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */,
 				4E1E70752346CB7900B2E107 /* NotifyModel.swift in Sources */,
 				4E33B5F7232BC957007D42A5 /* SummaryViewModel.swift in Sources */,
 				4E33B5FB232C8B70007D42A5 /* HabitModel.swift in Sources */,
 				4E242BD6236FEBED0050F23A /* DotView.swift in Sources */,
 				4E33B603232CF795007D42A5 /* Storage.swift in Sources */,
+				4EE2B66D2372E1F2009C2AA1 /* UserModel.swift in Sources */,
 				4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */,
 				4E242BD4236FE0020050F23A /* CALayer.swift in Sources */,
 				4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */,

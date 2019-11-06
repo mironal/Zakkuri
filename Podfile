@@ -9,6 +9,7 @@ target 'Zakkuri' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
+  pod 'FirebaseFirestoreSwift'
 
   target 'ZakkuriTests' do
     inherit! :search_paths
