@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		287BDD1F4B1D2B3D68BE232D /* Pods_Zakkuri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A1DBC0CC6517646891CB43 /* Pods_Zakkuri.framework */; };
 		4E06F3A8233747BD0083606C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3A7233747BD0083606C /* RecordViewModel.swift */; };
 		4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */; };
 		4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */; };
@@ -18,6 +19,7 @@
 		4E242BD4236FE0020050F23A /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD3236FE0020050F23A /* CALayer.swift */; };
 		4E242BD6236FEBED0050F23A /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD5236FEBED0050F23A /* DotView.swift */; };
 		4E242BD8237001E60050F23A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD7237001E60050F23A /* CalendarViewModel.swift */; };
+		4E2C582D237264910041A606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C582C237264910041A606 /* GoogleService-Info.plist */; };
 		4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */; };
 		4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC530232A5FC500E367E3 /* RxTest.framework */; };
 		4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */; };
@@ -60,6 +62,8 @@
 		4ECE99D7232A596800215BFE /* ZakkuriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99D6232A596800215BFE /* ZakkuriTests.swift */; };
 		4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */; };
 		4EF09C98235061C100691A57 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF09C97235061C100691A57 /* UIViewController.swift */; };
+		559F53EE286BC1FBD733E966 /* Pods_ZakkuriTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */; };
+		AE0C3C2B89221B2491F33D8C /* Pods_Zakkuri_ZakkuriUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EB348ACB57E47ACFC025D1 /* Pods_Zakkuri_ZakkuriUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22EB348ACB57E47ACFC025D1 /* Pods_Zakkuri_ZakkuriUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zakkuri_ZakkuriUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38EDE54F5E835BC5D3864A02 /* Pods-Zakkuri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zakkuri.debug.xcconfig"; path = "Target Support Files/Pods-Zakkuri/Pods-Zakkuri.debug.xcconfig"; sourceTree = "<group>"; };
 		4E06F3A7233747BD0083606C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 		4E242BD3236FE0020050F23A /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		4E242BD5236FEBED0050F23A /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
 		4E242BD7237001E60050F23A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		4E2C582C237264910041A606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
 		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitFormViewController.storyboard; sourceTree = "<group>"; };
@@ -141,6 +148,13 @@
 		4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakkuriUITests.swift; sourceTree = "<group>"; };
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF09C97235061C100691A57 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZakkuriTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCFEC244EC69D1B048A208B /* Pods-ZakkuriTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZakkuriTests.debug.xcconfig"; path = "Target Support Files/Pods-ZakkuriTests/Pods-ZakkuriTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7D99A4354511AA39222F2513 /* Pods-Zakkuri-ZakkuriUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zakkuri-ZakkuriUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zakkuri-ZakkuriUITests/Pods-Zakkuri-ZakkuriUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		82AE2C9A67C7BE480AD22D51 /* Pods-Zakkuri-ZakkuriUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zakkuri-ZakkuriUITests.release.xcconfig"; path = "Target Support Files/Pods-Zakkuri-ZakkuriUITests/Pods-Zakkuri-ZakkuriUITests.release.xcconfig"; sourceTree = "<group>"; };
+		95B79F29777390BCFB1EBA39 /* Pods-Zakkuri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zakkuri.release.xcconfig"; path = "Target Support Files/Pods-Zakkuri/Pods-Zakkuri.release.xcconfig"; sourceTree = "<group>"; };
+		E2A1DBC0CC6517646891CB43 /* Pods_Zakkuri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zakkuri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E961DCEC1751833030A8049B /* Pods-ZakkuriTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZakkuriTests.release.xcconfig"; path = "Target Support Files/Pods-ZakkuriTests/Pods-ZakkuriTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +169,7 @@
 				4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */,
 				4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */,
 				4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */,
+				287BDD1F4B1D2B3D68BE232D /* Pods_Zakkuri.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +179,7 @@
 			files = (
 				4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */,
 				4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */,
+				559F53EE286BC1FBD733E966 /* Pods_ZakkuriTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,12 +187,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE0C3C2B89221B2491F33D8C /* Pods_Zakkuri_ZakkuriUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B7AB308CA0C967E2869B7CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38EDE54F5E835BC5D3864A02 /* Pods-Zakkuri.debug.xcconfig */,
+				95B79F29777390BCFB1EBA39 /* Pods-Zakkuri.release.xcconfig */,
+				7D99A4354511AA39222F2513 /* Pods-Zakkuri-ZakkuriUITests.debug.xcconfig */,
+				82AE2C9A67C7BE480AD22D51 /* Pods-Zakkuri-ZakkuriUITests.release.xcconfig */,
+				6FCFEC244EC69D1B048A208B /* Pods-ZakkuriTests.debug.xcconfig */,
+				E961DCEC1751833030A8049B /* Pods-ZakkuriTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4E06F3A9233751240083606C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +295,9 @@
 				4E6CC52D232A5FC500E367E3 /* RxRelay.framework */,
 				4E6CC52F232A5FC500E367E3 /* RxSwift.framework */,
 				4E6CC530232A5FC500E367E3 /* RxTest.framework */,
+				E2A1DBC0CC6517646891CB43 /* Pods_Zakkuri.framework */,
+				22EB348ACB57E47ACFC025D1 /* Pods_Zakkuri_ZakkuriUITests.framework */,
+				53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -344,6 +377,7 @@
 				4ECE99E0232A596800215BFE /* ZakkuriUITests */,
 				4ECE99BD232A596600215BFE /* Products */,
 				4E6CC52C232A5FC500E367E3 /* Frameworks */,
+				4B7AB308CA0C967E2869B7CD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -370,6 +404,7 @@
 				4ECE99C8232A596700215BFE /* Assets.xcassets */,
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
 				4E7DE8DA236FC84000AC7009 /* Main.storyboard */,
+				4E2C582C237264910041A606 /* GoogleService-Info.plist */,
 				4ECE99CD232A596700215BFE /* Info.plist */,
 			);
 			path = Zakkuri;
@@ -402,10 +437,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ECE99E6232A596800215BFE /* Build configuration list for PBXNativeTarget "Zakkuri" */;
 			buildPhases = (
+				BEC3E25B16BEAE40E6752874 /* [CP] Check Pods Manifest.lock */,
 				4ECE99B8232A596600215BFE /* Sources */,
 				4ECE99B9232A596600215BFE /* Frameworks */,
 				4ECE99BA232A596600215BFE /* Resources */,
 				4E6CC538232A5FDA00E367E3 /* Carthage */,
+				AA82C276A4152AA843899D4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -420,6 +457,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ECE99E9232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriTests" */;
 			buildPhases = (
+				16C0B8353F70904D11D577CC /* [CP] Check Pods Manifest.lock */,
 				4ECE99CE232A596800215BFE /* Sources */,
 				4ECE99CF232A596800215BFE /* Frameworks */,
 				4ECE99D0232A596800215BFE /* Resources */,
@@ -438,9 +476,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ECE99EC232A596800215BFE /* Build configuration list for PBXNativeTarget "ZakkuriUITests" */;
 			buildPhases = (
+				D4D0B0684AC78EACD4828CF2 /* [CP] Check Pods Manifest.lock */,
 				4ECE99D9232A596800215BFE /* Sources */,
 				4ECE99DA232A596800215BFE /* Frameworks */,
 				4ECE99DB232A596800215BFE /* Resources */,
+				111CBAFE92E4C057FA4B4F32 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,6 +548,7 @@
 				4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */,
 				4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */,
 				4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */,
+				4E2C582D237264910041A606 /* GoogleService-Info.plist in Resources */,
 				4EA60731237193C2004051CA /* RecordListViewController.storyboard in Resources */,
 				4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */,
 			);
@@ -530,6 +571,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		111CBAFE92E4C057FA4B4F32 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zakkuri-ZakkuriUITests/Pods-Zakkuri-ZakkuriUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zakkuri-ZakkuriUITests/Pods-Zakkuri-ZakkuriUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zakkuri-ZakkuriUITests/Pods-Zakkuri-ZakkuriUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		16C0B8353F70904D11D577CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZakkuriTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4E6CC538232A5FDA00E367E3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,6 +629,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "carthage copy-frameworks\n";
+		};
+		AA82C276A4152AA843899D4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zakkuri/Pods-Zakkuri-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zakkuri/Pods-Zakkuri-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zakkuri/Pods-Zakkuri-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEC3E25B16BEAE40E6752874 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Zakkuri-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4D0B0684AC78EACD4828CF2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Zakkuri-ZakkuriUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -757,6 +898,7 @@
 		};
 		4ECE99E7232A596800215BFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38EDE54F5E835BC5D3864A02 /* Pods-Zakkuri.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -780,6 +922,7 @@
 		};
 		4ECE99E8232A596800215BFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95B79F29777390BCFB1EBA39 /* Pods-Zakkuri.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -803,6 +946,7 @@
 		};
 		4ECE99EA232A596800215BFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FCFEC244EC69D1B048A208B /* Pods-ZakkuriTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -828,6 +972,7 @@
 		};
 		4ECE99EB232A596800215BFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E961DCEC1751833030A8049B /* Pods-ZakkuriTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -853,6 +998,7 @@
 		};
 		4ECE99ED232A596800215BFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D99A4354511AA39222F2513 /* Pods-Zakkuri-ZakkuriUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -873,6 +1019,7 @@
 		};
 		4ECE99EE232A596800215BFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82AE2C9A67C7BE480AD22D51 /* Pods-Zakkuri-ZakkuriUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

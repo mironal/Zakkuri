@@ -48,14 +48,13 @@ playground.xcworkspace
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-# Pods/
+Pods/
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
 
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 Carthage/Checkouts
-
 Carthage/Build
 
 # Accio dependency management
@@ -78,5 +77,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+Zakkuri/GoogleService-Info.plist
 
 # End of https://www.gitignore.io/api/swift
