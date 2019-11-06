@@ -15,11 +15,11 @@ public protocol StorageProtocol {
     var habits: Observable<[Habit]> { get }
     var habitRecords: Observable<[HabitRecord]> { get }
 
-    func add(_ habit: Habit) -> Single<Void>
-    func add(_ record: HabitRecord) -> Single<Void>
+    func add(_ habit: Habit)
+    func add(_ record: HabitRecord)
 
-    func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID>
-    func deleteRecord(_ recordId: String) -> Single<String>
+    func deleteHabitAndRecords(_ habitId: HabitID)
+    func deleteRecord(_ recordId: String)
 }
 
 public class UserDefaultsStorage: StorageProtocol {
@@ -52,26 +52,23 @@ public class UserDefaultsStorage: StorageProtocol {
         return habitRecordsSubject.asObservable()
     }
 
-    public func add(_ habit: Habit) -> Single<Void> {
+    public func add(_ habit: Habit) {
         var habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         habits.append(habit)
         defaults.set(object: habits, forKey: Keys.habits.rawValue)
 
         habitsSubject.accept(habitsSubject.value + [habit])
-        return .just(())
     }
 
-    public func add(_ record: HabitRecord) -> Single<Void> {
+    public func add(_ record: HabitRecord) {
         var records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
         records.append(record)
         defaults.set(object: records, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(habitRecordsSubject.value + [record])
-
-        return .just(())
     }
 
-    public func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID> {
+    public func deleteHabitAndRecords(_ habitId: HabitID) {
         let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         let filteredHabits = habits.reject(where: { $0.id == habitId })
         defaults.set(object: filteredHabits, forKey: Keys.habits.rawValue)
@@ -83,16 +80,13 @@ public class UserDefaultsStorage: StorageProtocol {
         defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(filteredRecords)
-
-        return .just(habitId)
     }
 
-    public func deleteRecord(_ recordId: String) -> Single<String> {
+    public func deleteRecord(_ recordId: String) {
         let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
-        let filteredRecords = records.reject(where: { $0.recordId == recordId })
+        let filteredRecords = records.reject(where: { $0.id == recordId })
         defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(filteredRecords)
-        return .just(recordId)
     }
 }

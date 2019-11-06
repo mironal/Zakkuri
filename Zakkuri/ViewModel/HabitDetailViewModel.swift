@@ -39,7 +39,7 @@ public class HabitDetailViewModel {
         let habitRecords = habitModel.habitRecords(by: habitId).share(replay: 1)
 
         inputs.deleteItem
-            .withLatestFrom(habitRecords) { (indexPath, habits) -> String in habits[indexPath.row].recordId }
+            .withLatestFrom(habitRecords) { (indexPath, habits) -> String? in habits[indexPath.row].id }
             .subscribe(weak: self, onNext: HabitDetailViewModel.deleteRecord)
             .disposed(by: disposeBag)
 
@@ -49,7 +49,9 @@ public class HabitDetailViewModel {
         )
     }
 
-    private func deleteRecord(_ recordId: String) {
-        habitModel.deleteRecord(recordId)
+    private func deleteRecord(_ recordId: String?) {
+        if let recordId = recordId {
+            habitModel.deleteRecord(recordId)
+        }
     }
 }

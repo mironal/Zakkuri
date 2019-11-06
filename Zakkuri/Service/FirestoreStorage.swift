@@ -11,6 +11,33 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 import RxSwift
+import XCGLogger
+
+func observeUser(_ auth: Auth) -> Observable<User> {
+    return .create { o -> Disposable in
+        XCGLogger.default.debug("addStateDidChangeListener")
+        let handle = auth.addStateDidChangeListener { auth, user in
+
+            if let user = user {
+                XCGLogger.default.debug("onNext:\(user)")
+                o.onNext(user)
+                return
+            }
+
+            auth.signInAnonymously { _, error in
+                if let error = error {
+                    XCGLogger.default.error(error)
+                    o.onError(error)
+                }
+            }
+        }
+
+        return Disposables.create {
+            auth.removeStateDidChangeListener(handle)
+            XCGLogger.default.debug("removeStateDidChangeListener")
+        }
+    }
+}
 
 extension Firestore {
     var usersCollection: CollectionReference {
@@ -28,6 +55,7 @@ extension Firestore {
 
 private func observeHabits(_ uid: String, firestore: Firestore) -> Observable<[Habit]> {
     return .create { o in
+        XCGLogger.default.debug("Create observeHabits")
         let hanble = firestore.habitsCollection(uid).addSnapshotListener { snapshot, error in
             if let error = error {
                 o.onError(error)
@@ -130,55 +158,54 @@ private func deleteHabitRecord(_ recordId: String, user uid: String, firestore: 
 public class FirestoreStorage: StorageProtocol {
     private let auth: Auth
     private let firestore: Firestore
+    private let disposeBag = DisposeBag()
 
     init(auth: Auth, firestore: Firestore) {
         self.auth = auth
         self.firestore = firestore
     }
 
-    private lazy var currentUser: Observable<User> = {
-        .never() // TODO:
-    }()
+    private lazy var currentUser: Observable<User> = observeUser(self.auth).share(replay: 1).debug("currentUser")
 
     public private(set) lazy var habits: Observable<[Habit]> = {
         let firestore = self.firestore
         return self.currentUser.flatMapLatest {
             observeHabits($0.uid, firestore: firestore)
-        }
+        }.share(replay: 1)
     }()
 
     public var habitRecords: Observable<[HabitRecord]> {
         let firestore = self.firestore
         return currentUser.flatMapLatest {
             observeHabitRecords($0.uid, firestore: firestore)
-        }
+        }.share(replay: 1)
     }
 
-    public func add(_ habit: Habit) -> Single<Void> {
+    public func add(_ habit: Habit) {
         let firestore = self.firestore
-        return currentUser.flatMapLatest {
+        currentUser.flatMapLatest {
             addHabit(habit, user: $0.uid, firestore: firestore)
-        }.asSingle()
+        }.subscribe().disposed(by: disposeBag)
     }
 
-    public func add(_ record: HabitRecord) -> Single<Void> {
+    public func add(_ record: HabitRecord) {
         let firestore = self.firestore
         return currentUser.flatMapLatest {
             addHabitRecord(record, user: $0.uid, firestore: firestore)
-        }.asSingle()
+        }.subscribe().disposed(by: disposeBag)
     }
 
-    public func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID> {
+    public func deleteHabitAndRecords(_ habitId: HabitID) {
         let firestore = self.firestore
         return currentUser.flatMapLatest {
             deleteHabit(habitId, user: $0.uid, firestore: firestore)
-        }.asSingle()
+        }.subscribe().disposed(by: disposeBag)
     }
 
-    public func deleteRecord(_ recordId: String) -> Single<String> {
+    public func deleteRecord(_ recordId: String) {
         let firestore = self.firestore
         return currentUser.flatMapLatest {
             deleteHabitRecord(recordId, user: $0.uid, firestore: firestore)
-        }.asSingle()
+        }.subscribe().disposed(by: disposeBag)
     }
 }

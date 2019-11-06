@@ -6,14 +6,17 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import Firebase
 import Foundation
 import RxSwift
 
 public struct Models {
     private static let disposeBag = DisposeBag()
 
-    public static let shared: Models = {
-        let storage = UserDefaultsStorage()
+    public static var shared: Models = {
+        FirebaseApp.configure()
+
+        let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 

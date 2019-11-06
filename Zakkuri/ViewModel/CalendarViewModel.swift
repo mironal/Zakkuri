@@ -83,7 +83,7 @@ public final class CalendarViewModel {
         let cellState = Observable.combineLatest(recordsMap, inputs.selectDate) { (records, date) -> [CellState] in
             let habits = records[date] ?? []
             return habits.map {
-                CellState(habitId: $0.habit.id,
+                CellState(habitId: $0.habit.id ?? "",
                           title: $0.habit.title,
                           duration: Formatters.spentTime.string(from: $0.duration) ?? "")
             }

@@ -6,7 +6,6 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
-import Firebase
 import UIKit
 
 @UIApplicationMain
@@ -14,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
         ThemeAppier().apply()
         return true
     }
