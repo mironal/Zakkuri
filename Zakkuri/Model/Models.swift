@@ -17,6 +17,18 @@ public struct Models {
         FirebaseApp.configure()
 
         let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
+
+        let oldStorage = UserDefaultsStorage()
+
+        oldStorage.__habits.forEach {
+            storage.add($0)
+        }
+        // oldStorage.deleteAllHabits()
+        oldStorage.__record.forEach {
+            storage.add($0)
+        }
+        // oldStorage.deleteAllRecords()
+
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 

@@ -31,6 +31,24 @@ public class UserDefaultsStorage: StorageProtocol {
 
     private let disposeBag = DisposeBag()
 
+    public var __habits: [Habit] {
+        let habits = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
+        print("habits", habits)
+        return habits
+    }
+
+    public func deleteAllHabits() {
+        return defaults.removeObject(forKey: Keys.habits.rawValue)
+    }
+
+    public var __record: [HabitRecord] {
+        return defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
+    }
+
+    public func deleteAllRecords() {
+        defaults.removeObject(forKey: Keys.habitRecords.rawValue)
+    }
+
     private lazy var habitsSubject: BehaviorRelay<[Habit]> = {
         let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         let subject = BehaviorRelay<[Habit]>(value: habits)
