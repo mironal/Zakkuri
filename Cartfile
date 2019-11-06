@@ -4,3 +4,5 @@ github "SwifterSwift/SwifterSwift" ~> 5.1.0
 github "scenee/FloatingPanel" ~> 1.7.0
 github "mmick66/CalendarView" ~> 1.8.2
 github "patchthecode/JTAppleCalendar" "master"
+github "DaveWoodCom/XCGLogger" ~> 7.0.0
+

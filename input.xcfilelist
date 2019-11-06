@@ -7,3 +7,5 @@ $(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework
 $(SRCROOT)/Carthage/Build/iOS/SwifterSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/FloatingPanel.framework
 $(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework
+$(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework
+$(SRCROOT)/Carthage/Build/iOS/ObjcExceptionBridging.framework
