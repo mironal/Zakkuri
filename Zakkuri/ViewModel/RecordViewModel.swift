@@ -55,7 +55,7 @@ class RecordViewModel {
         let showDetail = menuItemSelectedSubject
             .filter { $0 == .detail }
             .withLatestFrom(current)
-            .map { HabitDetailViewModel(habitId: $0.id) }
+            .compactMap { $0.id.map { HabitDetailViewModel(habitId: $0) } }
 
         let showEdit = menuItemSelectedSubject
             .filter { $0 == .edit }

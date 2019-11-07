@@ -6,14 +6,18 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import Firebase
 import Foundation
 import RxSwift
 
 public struct Models {
     private static let disposeBag = DisposeBag()
 
-    public static let shared: Models = {
-        let storage = UserDefaultsStorage()
+    public static var shared: Models = {
+        FirebaseApp.configure()
+
+        let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
+
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 
@@ -21,10 +25,29 @@ public struct Models {
             notifyModel.scheduleReminderIfNeeded($0)
         }).disposed(by: disposeBag)
 
-        return .init(habit: habitModel,
-                     notify: notifyModel)
+        return .init(
+            storage: storage,
+            habit: habitModel,
+            notify: notifyModel
+        )
     }()
 
+    public func migrate() {
+        let oldStorage = UserDefaultsStorage()
+
+        oldStorage.__habits.forEach {
+            print("migrate:", $0)
+            storage.add($0)
+        }
+        oldStorage.deleteAllHabits()
+        oldStorage.__record.forEach {
+            print("migrate:", $0)
+            storage.add($0)
+        }
+        oldStorage.deleteAllRecords()
+    }
+
+    private let storage: StorageProtocol
     public let habit: HabitModelProtocol
     public let notify: NotifyModelProtocol
 }

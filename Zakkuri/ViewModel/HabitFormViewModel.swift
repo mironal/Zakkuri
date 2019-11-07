@@ -102,7 +102,7 @@ public class HabitFormViewModel {
             .startWith(initialHabit.title)
 
         let habit: Observable<Habit> = Observable.combineLatest(
-            Observable<HabitID>.just(initialHabit.id),
+            Observable<HabitID?>.just(initialHabit.id),
             title,
             inputs.selectSpan.startWith(initialHabit.goalSpan),
             inputs.selectGoalTime.startWith(initialHabit.targetTime),

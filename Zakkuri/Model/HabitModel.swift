@@ -45,7 +45,7 @@ public class HabitModel: HabitModelProtocol {
                 guard let endOfToday = Date().end(of: .day) else { fatalError() }
                 let from = endOfToday.addingTimeInterval(-habit.goalSpan.duration)
                 let spentTimeInDuration = $0.filter {
-                    $0.createdAt.isBetween(from, endOfToday)
+                    $0.createdAt?.isBetween(from, endOfToday) ?? false
                 }.reduce(0.0) { $0 + $1.duration }
                 return HabitSummary(habit: habit,
                                     spentTimeInDuration: spentTimeInDuration)
@@ -62,7 +62,7 @@ public class HabitModel: HabitModelProtocol {
 
     private func makeHabitMap(hs: [Habit], records: [HabitRecord]) -> HabitRecordMap {
         let dates = records.reduce(into: [Date]()) { result, record in
-            guard let rounded = record.createdAt.beginning(of: .day) else { return }
+            guard let rounded = record.createdAt?.beginning(of: .day) else { return }
             if !result.contains(rounded) {
                 result.append(rounded)
             }
@@ -70,7 +70,7 @@ public class HabitModel: HabitModelProtocol {
 
         let habitMap = dates.reduce(into: HabitRecordMap()) { result, date in
 
-            let habitRecords: [Habit: [HabitRecord]] = records.filter { $0.createdAt.beginning(of: .day) == date }
+            let habitRecords: [Habit: [HabitRecord]] = records.filter { $0.createdAt?.beginning(of: .day) == date }
                 .reduce(into: [HabitID: [HabitRecord]]()) { result, r in
                     var records = result[r.habitId] ?? []
                     records.append(r)
@@ -99,7 +99,9 @@ public class HabitModel: HabitModelProtocol {
             .map { records -> HabitRecord? in
                 guard let first = records.first else { return nil }
                 let record: HabitRecord? = records.reduce(into: first) { result, record in
-                    if result.createdAt > record.createdAt {
+                    guard let a = result.createdAt, let b = record.createdAt else { return }
+
+                    if a > b {
                         result = record
                     }
                 }
@@ -113,7 +115,8 @@ public class HabitModel: HabitModelProtocol {
 
     public func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]> {
         return storage.habitRecords.map {
-            $0.filter { $0.habitId == habitId }.sorted(by: \.createdAt).reversed()
+            // TODO: sort は storage 側の query で行う
+            $0.filter { $0.habitId == habitId } // .sorted(by: \.createdAt).reversed()
         }
     }
 
@@ -140,7 +143,7 @@ public class HabitModel: HabitModelProtocol {
     }
 
     public func addTimeSpent(duration: TimeInterval, to habitId: HabitID) {
-        let record = HabitRecord(habitId: habitId, duration: duration, createdAt: Date())
+        let record = HabitRecord(habitId: habitId, duration: duration)
         add(record)
     }
 

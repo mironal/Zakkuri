@@ -38,7 +38,7 @@ public class HabitDetailViewController: UITableViewController {
 
         outputs.habitRecords.bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, record, cell in
             cell.textLabel?.text = formatter.string(from: record.duration)
-            cell.detailTextLabel?.text = dateFormatter.string(from: record.createdAt)
+            cell.detailTextLabel?.text = record.createdAt.map { dateFormatter.string(from: $0) }
         }.disposed(by: disposeBag)
 
         outputs.dismiss.asSignal(onErrorJustReturn: ())

@@ -73,6 +73,7 @@ class NotifyModel: NotifyModelProtocol {
     }
 
     private func scheduleReminder(for summary: HabitSummary) {
+        guard let habitId = summary.habit.id else { return }
         let date = DateComponents(hour: 21, minute: 00)
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
@@ -80,7 +81,7 @@ class NotifyModel: NotifyModelProtocol {
         content.title = summary.habit.title
         content.body = "入力を忘れていませんか？"
 
-        let request = UNNotificationRequest(identifier: NotificationType.habitReminder(summary.habit.id).identifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: NotificationType.habitReminder(habitId).identifier, content: content, trigger: trigger)
 
         center.add(request)
     }

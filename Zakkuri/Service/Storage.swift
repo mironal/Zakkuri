@@ -15,11 +15,11 @@ public protocol StorageProtocol {
     var habits: Observable<[Habit]> { get }
     var habitRecords: Observable<[HabitRecord]> { get }
 
-    func add(_ habit: Habit) -> Single<Void>
-    func add(_ record: HabitRecord) -> Single<Void>
+    func add(_ habit: Habit)
+    func add(_ record: HabitRecord)
 
-    func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID>
-    func deleteRecord(_ recordId: String) -> Single<String>
+    func deleteHabitAndRecords(_ habitId: HabitID)
+    func deleteRecord(_ recordId: String)
 }
 
 public class UserDefaultsStorage: StorageProtocol {
@@ -30,6 +30,53 @@ public class UserDefaultsStorage: StorageProtocol {
     }
 
     private let disposeBag = DisposeBag()
+
+    public var __habits: [Habit] {
+        guard let data = defaults.object(forKey: Keys.habits.rawValue) as? Data,
+            let arr = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
+            return []
+        }
+
+        let habits: [Habit] = arr.compactMap {
+            guard let id = $0["id"] as? String,
+                let title = $0["title"] as? String,
+                let targetTime = $0["targetTime"] as? TimeInterval,
+                let notifyValue = $0["notify"] as? Int,
+                let goalSpanValue = $0["goalSpan"] as? Int,
+                let goalSpan = GoalSpan(rawValue: goalSpanValue)
+            else {
+                return nil
+            }
+
+            return Habit(id: id, title: title, goalSpan: goalSpan, targetTime: targetTime, notify: notifyValue == 1)
+        }
+
+        return habits
+    }
+
+    public func deleteAllHabits() {
+        return defaults.removeObject(forKey: Keys.habits.rawValue)
+    }
+
+    public var __record: [HabitRecord] {
+        guard let data = defaults.object(forKey: Keys.habitRecords.rawValue) as? Data,
+            let arr = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
+            return []
+        }
+
+        let records: [HabitRecord] = arr.compactMap {
+            guard let habitId = $0["habitId"] as? String,
+                let duration = $0["duration"] as? TimeInterval,
+                let createdAt = $0["createdAt"] as? TimeInterval else { return nil }
+
+            return HabitRecord(id: nil, habitId: habitId, duration: duration, createdAt: Date(timeIntervalSinceReferenceDate: createdAt))
+        }
+        return records
+    }
+
+    public func deleteAllRecords() {
+        defaults.removeObject(forKey: Keys.habitRecords.rawValue)
+    }
 
     private lazy var habitsSubject: BehaviorRelay<[Habit]> = {
         let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
@@ -52,26 +99,23 @@ public class UserDefaultsStorage: StorageProtocol {
         return habitRecordsSubject.asObservable()
     }
 
-    public func add(_ habit: Habit) -> Single<Void> {
+    public func add(_ habit: Habit) {
         var habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         habits.append(habit)
         defaults.set(object: habits, forKey: Keys.habits.rawValue)
 
         habitsSubject.accept(habitsSubject.value + [habit])
-        return .just(())
     }
 
-    public func add(_ record: HabitRecord) -> Single<Void> {
+    public func add(_ record: HabitRecord) {
         var records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
         records.append(record)
         defaults.set(object: records, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(habitRecordsSubject.value + [record])
-
-        return .just(())
     }
 
-    public func deleteHabitAndRecords(_ habitId: HabitID) -> Single<HabitID> {
+    public func deleteHabitAndRecords(_ habitId: HabitID) {
         let habits: [Habit] = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
         let filteredHabits = habits.reject(where: { $0.id == habitId })
         defaults.set(object: filteredHabits, forKey: Keys.habits.rawValue)
@@ -83,16 +127,13 @@ public class UserDefaultsStorage: StorageProtocol {
         defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(filteredRecords)
-
-        return .just(habitId)
     }
 
-    public func deleteRecord(_ recordId: String) -> Single<String> {
+    public func deleteRecord(_ recordId: String) {
         let records: [HabitRecord] = defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
-        let filteredRecords = records.reject(where: { $0.recordId == recordId })
+        let filteredRecords = records.reject(where: { $0.id == recordId })
         defaults.set(object: filteredRecords, forKey: Keys.habitRecords.rawValue)
 
         habitRecordsSubject.accept(filteredRecords)
-        return .just(recordId)
     }
 }

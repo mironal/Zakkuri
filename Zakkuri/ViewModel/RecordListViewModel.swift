@@ -55,10 +55,10 @@ public final class RecordListViewModel {
         let cellStates: Observable<[CellState]> = .combineLatest(habitModel.habitRecords(by: habitId),
                                                                  collapse) { (records, collapse) -> [RecordListViewModel.CellState] in
             records.filter {
-                !collapse || Calendar.current.isDate($0.createdAt, inSameDayAs: date)
+                !collapse || $0.createdAt.map { Calendar.current.isDate($0, inSameDayAs: date) } ?? false
             }.map {
                 let duration = Formatters.spentTime.string(from: $0.duration)
-                let createdAt = Formatters.recordingDate.string(from: $0.createdAt)
+                let createdAt = $0.createdAt.map { Formatters.recordingDate.string(from: $0) }
                 return CellState(title: duration, detail: createdAt)
             }
         }
