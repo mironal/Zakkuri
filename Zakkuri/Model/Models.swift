@@ -18,17 +18,6 @@ public struct Models {
 
         let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
 
-        let oldStorage = UserDefaultsStorage()
-
-        oldStorage.__habits.forEach {
-            storage.add($0)
-        }
-        // oldStorage.deleteAllHabits()
-        oldStorage.__record.forEach {
-            storage.add($0)
-        }
-        // oldStorage.deleteAllRecords()
-
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 
@@ -36,10 +25,29 @@ public struct Models {
             notifyModel.scheduleReminderIfNeeded($0)
         }).disposed(by: disposeBag)
 
-        return .init(habit: habitModel,
-                     notify: notifyModel)
+        return .init(
+            storage: storage,
+            habit: habitModel,
+            notify: notifyModel
+        )
     }()
 
+    public func migrate() {
+        let oldStorage = UserDefaultsStorage()
+
+        oldStorage.__habits.forEach {
+            print("migrate:", $0)
+            storage.add($0)
+        }
+        oldStorage.deleteAllHabits()
+        oldStorage.__record.forEach {
+            print("migrate:", $0)
+            storage.add($0)
+        }
+        oldStorage.deleteAllRecords()
+    }
+
+    private let storage: StorageProtocol
     public let habit: HabitModelProtocol
     public let notify: NotifyModelProtocol
 }

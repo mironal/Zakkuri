@@ -13,6 +13,10 @@ import Foundation
 import RxSwift
 import XCGLogger
 
+public enum FirestoreStorageError: Error, LocalizedError {
+    case invalidOperation
+}
+
 func observeUser(_ auth: Auth) -> Observable<User> {
     return .create { o -> Disposable in
         XCGLogger.default.debug("addStateDidChangeListener")
@@ -97,6 +101,9 @@ private func observeHabitRecords(_ uid: String, firestore: Firestore) -> Observa
 }
 
 private func addHabit(_ habit: Habit, user uid: String, firestore: Firestore) -> Single<Void> {
+    if habit.id != nil {
+        return .error(FirestoreStorageError.invalidOperation)
+    }
     return .create { single in
         do {
             _ = try firestore.habitsCollection(uid).addDocument(from: habit) { error in
@@ -106,6 +113,28 @@ private func addHabit(_ habit: Habit, user uid: String, firestore: Firestore) ->
         } catch let e { single(.error(e)) }
         return Disposables.create {}
     }
+}
+
+private func updateHabit(_ habit: Habit, user uid: String, firestore: Firestore) -> Single<Void> {
+    guard let habitId = habit.id else {
+        return .error(FirestoreStorageError.invalidOperation)
+    }
+    return .create { single in
+        do {
+            try firestore.habitsCollection(uid).document(habitId).setData(from: habit) { error in
+                if let error = error { single(.error(error)) }
+                else { single(.success(())) }
+            }
+        } catch let e { single(.error(e)) }
+        return Disposables.create {}
+    }
+}
+
+private func addOrUpdateHabit(_ habit: Habit, user uid: String, firestore: Firestore) -> Single<Void> {
+    if habit.id == nil {
+        return addHabit(habit, user: uid, firestore: firestore)
+    }
+    return updateHabit(habit, user: uid, firestore: firestore)
 }
 
 private func addHabitRecord(_ record: HabitRecord, user uid: String, firestore: Firestore) -> Single<Void> {
@@ -165,7 +194,7 @@ public class FirestoreStorage: StorageProtocol {
         self.firestore = firestore
     }
 
-    private lazy var currentUser: Observable<User> = observeUser(self.auth).share(replay: 1).debug("currentUser")
+    private lazy var currentUser: Observable<User> = observeUser(self.auth).share(replay: 1)
 
     public private(set) lazy var habits: Observable<[Habit]> = {
         let firestore = self.firestore
@@ -184,7 +213,7 @@ public class FirestoreStorage: StorageProtocol {
     public func add(_ habit: Habit) {
         let firestore = self.firestore
         currentUser.flatMapLatest {
-            addHabit(habit, user: $0.uid, firestore: firestore)
+            addOrUpdateHabit(habit, user: $0.uid, firestore: firestore)
         }.subscribe().disposed(by: disposeBag)
     }
 

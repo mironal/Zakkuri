@@ -32,8 +32,25 @@ public class UserDefaultsStorage: StorageProtocol {
     private let disposeBag = DisposeBag()
 
     public var __habits: [Habit] {
-        let habits = defaults.object([Habit].self, with: Keys.habits.rawValue) ?? []
-        print("habits", habits)
+        guard let data = defaults.object(forKey: Keys.habits.rawValue) as? Data,
+            let arr = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
+            return []
+        }
+
+        let habits: [Habit] = arr.compactMap {
+            guard let id = $0["id"] as? String,
+                let title = $0["title"] as? String,
+                let targetTime = $0["targetTime"] as? TimeInterval,
+                let notifyValue = $0["notify"] as? Int,
+                let goalSpanValue = $0["goalSpan"] as? Int,
+                let goalSpan = GoalSpan(rawValue: goalSpanValue)
+            else {
+                return nil
+            }
+
+            return Habit(id: id, title: title, goalSpan: goalSpan, targetTime: targetTime, notify: notifyValue == 1)
+        }
+
         return habits
     }
 
@@ -42,7 +59,19 @@ public class UserDefaultsStorage: StorageProtocol {
     }
 
     public var __record: [HabitRecord] {
-        return defaults.object([HabitRecord].self, with: Keys.habitRecords.rawValue) ?? []
+        guard let data = defaults.object(forKey: Keys.habitRecords.rawValue) as? Data,
+            let arr = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
+            return []
+        }
+
+        let records: [HabitRecord] = arr.compactMap {
+            guard let habitId = $0["habitId"] as? String,
+                let duration = $0["duration"] as? TimeInterval,
+                let createdAt = $0["createdAt"] as? TimeInterval else { return nil }
+
+            return HabitRecord(id: nil, habitId: habitId, duration: duration, createdAt: Date(timeIntervalSinceReferenceDate: createdAt))
+        }
+        return records
     }
 
     public func deleteAllRecords() {
