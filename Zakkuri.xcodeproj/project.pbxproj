@@ -56,6 +56,7 @@
 		4EAC5A942338637B009334F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A932338637B009334F3 /* Theme.swift */; };
 		4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAC5A9723388589009334F3 /* NavigationController.swift */; };
 		4EC19514233C590A0090BC66 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC19513233C590A0090BC66 /* InMemoryStorage.swift */; };
+		4EC4E6D92377BFA2006F5654 /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC4E6D82377BFA2006F5654 /* RxGesture.framework */; };
 		4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99BF232A596600215BFE /* AppDelegate.swift */; };
 		4ECE99C2232A596600215BFE /* HabitFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99C1232A596600215BFE /* HabitFormViewController.swift */; };
 		4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ECE99C8232A596700215BFE /* Assets.xcassets */; };
@@ -139,6 +140,7 @@
 		4EAC5A932338637B009334F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4EAC5A9723388589009334F3 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		4EC19513233C590A0090BC66 /* InMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
+		4EC4E6D82377BFA2006F5654 /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
 		4ECE99BC232A596600215BFE /* Zakkuri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zakkuri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECE99BF232A596600215BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ECE99C1232A596600215BFE /* HabitFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFormViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				4E242BCC236FD2ED0050F23A /* JTAppleCalendar.framework in Frameworks */,
 				4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */,
 				4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */,
+				4EC4E6D92377BFA2006F5654 /* RxGesture.framework in Frameworks */,
 				4E33B5EF232BC373007D42A5 /* SwifterSwift.framework in Frameworks */,
 				287BDD1F4B1D2B3D68BE232D /* Pods_Zakkuri.framework in Frameworks */,
 				4EE2B6692372E17E009C2AA1 /* XCGLogger.framework in Frameworks */,
@@ -295,6 +298,7 @@
 		4E6CC52C232A5FC500E367E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4EC4E6D82377BFA2006F5654 /* RxGesture.framework */,
 				4EE2B6682372E17E009C2AA1 /* XCGLogger.framework */,
 				4E242BCB236FD2ED0050F23A /* JTAppleCalendar.framework */,
 				4E33B604232E3165007D42A5 /* FloatingPanel.framework */,

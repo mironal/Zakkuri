@@ -9,3 +9,4 @@ $(SRCROOT)/Carthage/Build/iOS/FloatingPanel.framework
 $(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework
 $(SRCROOT)/Carthage/Build/iOS/XCGLogger.framework
 $(SRCROOT)/Carthage/Build/iOS/ObjcExceptionBridging.framework
+$(SRCROOT)/Carthage/Build/iOS/RxGesture.framework

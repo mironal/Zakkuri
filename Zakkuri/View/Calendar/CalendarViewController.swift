@@ -6,8 +6,10 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FloatingPanel
 import JTAppleCalendar
 import RxCocoa
+import RxGesture
 import RxSwift
 import SwifterSwift
 import UIKit
@@ -32,8 +34,20 @@ class CalendarViewController: UIViewController {
         calendarView.allowsRangedSelection = false
         calendarView.alpha = 0
 
+        let longPressDate: Observable<Date> = calendarView.rx
+            .longPressGesture()
+            .compactMap {
+                guard $0.state == .began else { return nil }
+                guard let collectionView = $0.view as? JTACMonthView else { return nil }
+
+                let point = $0.location(in: collectionView)
+                let state = collectionView.cellStatus(at: point)
+                return state?.date
+            }
+
         let outputs = viewModel.bind(.init(
             selectDate: didSelectDate,
+            longPressDate: longPressDate,
             selectHabit: tableView.rx.itemSelected.asObservable()
         ))
 
@@ -80,6 +94,38 @@ class CalendarViewController: UIViewController {
                 guard let vc = UIStoryboard(name: "RecordListViewController", bundle: .main).instantiateViewController(withClass: RecordListViewController.self) else { return }
                 vc.viewModel = $0
                 self.navigationController?.pushViewController(vc)
+            }).disposed(by: disposeBag)
+
+        outputs.showHabitsSheet
+            .asSignal(onErrorSignalWith: .never())
+            .map { props -> UIAlertController in
+
+                let sheet = UIAlertController(title: "記録を追加", message: nil, preferredStyle: .actionSheet)
+
+                props.habits.forEach { h in
+                    sheet.addAction(UIAlertAction(title: h.title, style: .default) { _ in
+                        props.subject.onNext(h.habitId)
+                    })
+                }
+                sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                return sheet
+            }
+
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.present($0, animated: true)
+            }).disposed(by: disposeBag)
+
+        outputs.showRecordView
+            .asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let vc = UIStoryboard(name: "RecordViewController", bundle: .main).instantiateViewController(withClass: RecordViewController.self) else { return }
+
+                vc.viewModel = $0
+
+                let fpc = FloatingPanelController(wrap: vc)
+                self.present(fpc, animated: true)
             }).disposed(by: disposeBag)
     }
 

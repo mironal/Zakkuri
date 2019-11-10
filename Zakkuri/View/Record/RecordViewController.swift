@@ -189,3 +189,18 @@ extension RecordViewController: FloatingPanelControllerDelegate {
         return FPLayout()
     }
 }
+
+extension FloatingPanelController {
+    convenience init(wrap vc: RecordViewController) {
+        self.init(delegate: vc)
+
+        surfaceView.shadowHidden = false
+        surfaceView.width = view.width
+        (surfaceView as UIView).cornerRadius = 9
+        (surfaceView as UIView).borderWidth = 1.0 / traitCollection.displayScale
+        (surfaceView as UIView).borderColor = UIColor.black.withAlphaComponent(0.2)
+        backdropView.alpha = 1
+        isRemovalInteractionEnabled = true
+        set(contentViewController: vc)
+    }
+}

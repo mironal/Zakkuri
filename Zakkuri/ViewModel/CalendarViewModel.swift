@@ -27,9 +27,11 @@ public final class CalendarViewModel {
 
     public typealias DateRange = (start: Date, end: Date)
     public typealias RecordsMap = [Date: [(habit: Habit, duration: TimeInterval)]]
+    public typealias HabitSheetProps = (subject: PublishSubject<HabitID>, habits: [(habitId: HabitID, title: String)])
 
     public struct Inputs {
         let selectDate: Observable<Date>
+        let longPressDate: Observable<Date>
         let selectHabit: Observable<IndexPath>
     }
 
@@ -39,6 +41,8 @@ public final class CalendarViewModel {
         let cellState: Observable<[CellState]>
         let deselectTableViewCell: Observable<IndexPath>
         let pushRecordList: Observable<RecordListViewModel>
+        let showHabitsSheet: Observable<HabitSheetProps>
+        let showRecordView: Observable<RecordViewModel>
     }
 
     private let disposeBag = DisposeBag()
@@ -89,9 +93,25 @@ public final class CalendarViewModel {
             }
         }.share()
 
+        let selectHabitSubject = PublishSubject<HabitID>()
+
+        let reselectWithLongPress = inputs.longPressDate
+            .withLatestFrom(inputs.selectDate) { ($0, $1) }
+            .filterMap { $0.0 == $0.1 ? .map($0.0) : .ignore }
+
+        let showHabitsSheet: Observable<HabitSheetProps> = reselectWithLongPress
+            .withLatestFrom(cellState)
+            .map {
+                let habits = $0.map { (habitId: $0.habitId, title: $0.title) }
+                return (subject: selectHabitSubject, habits: habits)
+            }
+
+        let showRecordView = selectHabitSubject.map {
+            RecordViewModel(habitId: $0, service: Models.shared)
+        }
+
         let pushRecordList = inputs.selectHabit
             .withLatestFrom(Observable.combineLatest(cellState, inputs.selectDate) { ($0, $1) }) { (indexPath, args) -> RecordListViewModel in
-
                 let (states, date) = args
                 let habitId = states[indexPath.row].habitId
                 return RecordListViewModel(habitId, date: date, service: Models.shared)
@@ -102,7 +122,9 @@ public final class CalendarViewModel {
             didChangeRecords: recordsMap.mapTo(()),
             cellState: cellState,
             deselectTableViewCell: inputs.selectHabit,
-            pushRecordList: pushRecordList
+            pushRecordList: pushRecordList,
+            showHabitsSheet: showHabitsSheet,
+            showRecordView: showRecordView
         )
     }
 }

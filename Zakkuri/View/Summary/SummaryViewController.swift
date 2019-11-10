@@ -37,19 +37,13 @@ class SummaryViewController: UITableViewController {
 
         outputs.showRecordView
             .asSignal(onErrorSignalWith: .never())
-            .emit(onNext: {
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
+
                 guard let vc = UIStoryboard(name: "RecordViewController", bundle: .main).instantiateViewController(withClass: RecordViewController.self) else { return }
                 vc.viewModel = $0
 
-                let fpc = FloatingPanelController(delegate: vc)
-                fpc.surfaceView.shadowHidden = false
-                fpc.surfaceView.width = self.view.width
-                (fpc.surfaceView as UIView).cornerRadius = 9
-                (fpc.surfaceView as UIView).borderWidth = 1.0 / self.traitCollection.displayScale
-                (fpc.surfaceView as UIView).borderColor = UIColor.black.withAlphaComponent(0.2)
-                fpc.backdropView.alpha = 1
-                fpc.isRemovalInteractionEnabled = true
-                fpc.set(contentViewController: vc)
+                let fpc = FloatingPanelController(wrap: vc)
                 self.present(fpc, animated: true)
 
             }).disposed(by: disposeBag)
