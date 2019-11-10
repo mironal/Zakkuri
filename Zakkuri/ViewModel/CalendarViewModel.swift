@@ -100,9 +100,9 @@ public final class CalendarViewModel {
             .filterMap { $0.0 == $0.1 ? .map($0.0) : .ignore }
 
         let showHabitsSheet: Observable<HabitSheetProps> = reselectWithLongPress
-            .withLatestFrom(cellState)
+            .withLatestFrom(habitModel.habitsSummary)
             .map {
-                let habits = $0.map { (habitId: $0.habitId, title: $0.title) }
+                let habits = $0.map { (habitId: $0.habit.id ?? "ありえん", title: $0.title) }
                 return (subject: selectHabitSubject, habits: habits)
             }
 
