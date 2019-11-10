@@ -27,6 +27,7 @@ public protocol HabitModelProtocol {
     func delete(_ habitId: HabitID)
     func deleteRecord(_ recordId: String)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
+    func addTimeSpent(duration: TimeInterval, to habitId: HabitID, createdAt date: Date?)
 }
 
 public class HabitModel: HabitModelProtocol {
@@ -124,33 +125,37 @@ public class HabitModel: HabitModelProtocol {
         queue.async { [weak self] in
             guard let self = self else { return }
 
-            _ = self.storage.add(habit)
+            self.storage.add(habit)
         }
     }
 
     public func delete(_ habitId: HabitID) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            _ = self.storage.deleteHabitAndRecords(habitId)
+            self.storage.deleteHabitAndRecords(habitId)
         }
     }
 
     public func deleteRecord(_ recordId: String) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            _ = self.storage.deleteRecord(recordId)
+            self.storage.deleteRecord(recordId)
         }
     }
 
     public func addTimeSpent(duration: TimeInterval, to habitId: HabitID) {
-        let record = HabitRecord(habitId: habitId, duration: duration)
+        addTimeSpent(duration: duration, to: habitId, createdAt: nil)
+    }
+
+    public func addTimeSpent(duration: TimeInterval, to habitId: HabitID, createdAt date: Date? = nil) {
+        let record = HabitRecord(habitId: habitId, duration: duration, createdAt: date)
         add(record)
     }
 
     public func add(_ record: HabitRecord) {
         queue.async { [weak self] in
             guard let self = self else { return }
-            _ = self.storage.add(record)
+            self.storage.add(record)
         }
     }
 }

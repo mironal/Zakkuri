@@ -24,6 +24,7 @@ class RecordViewModel {
     public struct Inputs {
         public let tapDone: Observable<TimeInterval>
         public let tapOthers: Observable<Void>
+        public let createdAt: Observable<Date?>
     }
 
     public struct Outputs {
@@ -35,11 +36,13 @@ class RecordViewModel {
     }
 
     private let habitId: HabitID
+    private let createdAt: Date?
     private let habitModel: HabitModelProtocol
     private let disposeBag = DisposeBag()
 
-    public init(habitId: HabitID, service: RecordViewModelService = Models.shared) {
+    public init(habitId: HabitID, createdAt: Date? = nil, service: RecordViewModelService = Models.shared) {
         self.habitId = habitId
+        self.createdAt = createdAt
         habitModel = service.habit
     }
 
@@ -48,7 +51,12 @@ class RecordViewModel {
 
         let done = inputs.tapDone.share()
 
-        done.subscribeNext(weak: self, RecordViewModel.addTimeSpent).disposed(by: disposeBag)
+        done.withLatestFrom(inputs.createdAt.startWith(createdAt)) { duration, createdAt in
+            (duration: duration, createdAt: createdAt)
+        }.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.addTimeSpent($0.duration, createdAt: $0.createdAt)
+        }).disposed(by: disposeBag)
 
         let menuItemSelectedSubject = PublishSubject<MenuItem>()
 
@@ -76,7 +84,7 @@ class RecordViewModel {
         return habitModel.habitsSummary.compactMap { $0.first(where: { $0.habit.id == id }).map { $0.habit } }
     }
 
-    private func addTimeSpent(_ duration: TimeInterval) {
-        habitModel.addTimeSpent(duration: duration, to: habitId)
+    private func addTimeSpent(_ duration: TimeInterval, createdAt date: Date?) {
+        habitModel.addTimeSpent(duration: duration, to: habitId, createdAt: date)
     }
 }

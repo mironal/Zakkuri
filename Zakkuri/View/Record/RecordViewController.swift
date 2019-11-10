@@ -85,7 +85,8 @@ class RecordViewController: UIViewController {
         let outputs = viewModel.bind(.init(
             // https://stackoverflow.com/questions/42685774/uidatepicker-change-event-not-firing-on-first-spin-swift
             tapDone: doneButton.rx.tap.asObservable().map { self.timePicker.countDownDuration },
-            tapOthers: othersButtons.rx.tap.asObservable()
+            tapOthers: othersButtons.rx.tap.asObservable(),
+            createdAt: .never()
         ))
         timePicker.countDownDuration = 30 * 60
 

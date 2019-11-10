@@ -103,11 +103,12 @@ class CalendarViewController: UIViewController {
             .asSignal(onErrorSignalWith: .never())
             .map { props -> UIAlertController in
 
-                let sheet = UIAlertController(title: "記録を追加", message: nil, preferredStyle: .actionSheet)
+                let message = "\(Formatters.dateOnly.string(from: props.date)) に記録を追加"
+                let sheet = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
 
                 props.habits.forEach { h in
                     sheet.addAction(UIAlertAction(title: h.title, style: .default) { _ in
-                        props.subject.onNext(h.habitId)
+                        props.subject.onNext((date: props.date, habit: h.habitId))
                     })
                 }
                 sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))

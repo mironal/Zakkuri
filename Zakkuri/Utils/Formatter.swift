@@ -18,6 +18,13 @@ struct Formatters {
         return fmt
     }()
 
+    public static let dateOnly: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .short
+        fmt.timeStyle = .none
+        return fmt
+    }()
+
     public static let recordingDate: DateFormatter = {
         let fmt = DateFormatter()
         fmt.dateStyle = .short
