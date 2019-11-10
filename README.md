@@ -1,8 +1,8 @@
-## Zakkuri
+## Zakkuri (i.e. Roughly)
 
 ゆるい目標管理アプリ.
 
-A loose goal management app.
+A rough goal management app.
 
 このアプリは、正確にスケジュールされた目標ではなく、「週に合計3時間の英語学習」などの大まかな目標を管理します。
 
