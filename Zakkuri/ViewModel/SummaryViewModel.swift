@@ -50,7 +50,8 @@ public class SummaryViewModel {
             .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> HabitID? in habits[indexPath.row].habit.id }
             .subscribe(weak: self, onNext: SummaryViewModel.deleteHabit).disposed(by: disposeBag)
 
-        let habitCells: Observable<[SummaryCellState]> = habitModel.habitsSummary.map { $0.map { $0 as SummaryCellState } }.debug("habitsSummary cells")
+        let habitCells: Observable<[SummaryCellState]> = habitModel.habitsSummary
+            .map { $0.map { $0 as SummaryCellState } }
 
         return Outputs(
             showRecordView: showRecordView,
