@@ -5,6 +5,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - EmptyDataSet-Swift (5.0.0)
   - Firebase/Analytics (6.12.0):
     - Firebase/Core
   - Firebase/Auth (6.12.0):
@@ -121,6 +122,7 @@ PODS:
   - Protobuf (3.10.0)
 
 DEPENDENCIES:
+  - EmptyDataSet-Swift (~> 5.0.0)
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
@@ -129,6 +131,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BoringSSL-GRPC
+    - EmptyDataSet-Swift
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -152,6 +155,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
   Firebase: da031bc7012374e3bed17a6731b89327b29863b9
   FirebaseAnalytics: 4e53a7eb7b76bc703c4d9239bc964545e9b23361
   FirebaseAuth: b401a012cc33b04df3b52bb308b04e8766f2693e
@@ -173,6 +177,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
 
-PODFILE CHECKSUM: 7ac6f2cec87bbc12df9ccf8ce845f54d45e68f0e
+PODFILE CHECKSUM: 8f62aaa9f4707c6750513afd7889e16098e0c4cd
 
-COCOAPODS: 1.8.0
+COCOAPODS: 1.8.4

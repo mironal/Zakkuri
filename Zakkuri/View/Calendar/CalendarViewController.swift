@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import EmptyDataSet_Swift
 import FloatingPanel
 import JTAppleCalendar
 import RxCocoa
@@ -27,6 +28,8 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.emptyDataSetSource = self
 
         calendarView.calendarDelegate = self
         calendarView.scrollingMode = .stopAtEachCalendarFrame
@@ -226,5 +229,11 @@ extension CalendarViewController: UITabBarControllerDelegate {
             calendarView.scrollToDate(today)
             calendarView.selectDates(from: today, to: today)
         }
+    }
+}
+
+extension CalendarViewController: EmptyDataSetSource {
+    func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
+        return .init(string: "日付を長押しで記録を追加できます.")
     }
 }

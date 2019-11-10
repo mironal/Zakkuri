@@ -11,6 +11,8 @@ target 'Zakkuri' do
   pod 'Firebase/Analytics'
   pod 'FirebaseFirestoreSwift'
 
+  pod 'EmptyDataSet-Swift', '~> 5.0.0'
+
   target 'ZakkuriTests' do
     inherit! :search_paths
     # Pods for testing
