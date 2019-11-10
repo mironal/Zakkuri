@@ -18,7 +18,7 @@ public protocol HabitModelProtocol {
 
     /// Behavior
     var habitsSummary: Observable<[HabitSummary]> { get }
-    var oldestHabitRecord: Observable<HabitRecord?> { get }
+    var visibleCalendarRange: Observable<(start: Date, end: Date)> { get }
 
     func habit(by habitId: HabitID) -> Observable<Habit?>
     func habitRecords(by habitId: HabitID) -> Observable<[HabitRecord]>
@@ -40,14 +40,13 @@ public class HabitModel: HabitModelProtocol {
     private let disposeBag = DisposeBag()
 
     private func createHabitSummary(_ habit: Habit) -> Observable<HabitSummary> {
-        return Observable.just(())
-            .flatMap { self.storage.habitRecords.map { $0.filter { r in habit.id == r.habitId } } }
+        return storage.habitRecords
+            .map { $0.filter { $0.habitId == habit.id } }
             .map {
                 guard let endOfToday = Date().end(of: .day) else { fatalError() }
                 let from = endOfToday.addingTimeInterval(-habit.goalSpan.duration)
-                let spentTimeInDuration = $0.filter {
-                    $0.createdAt?.isBetween(from, endOfToday) ?? false
-                }.reduce(0.0) { $0 + $1.duration }
+                let spentTimeInDuration = $0.filter { $0.createdAt?.isBetween(from, endOfToday) ?? false }
+                    .reduce(0.0) { $0 + $1.duration }
                 return HabitSummary(habit: habit,
                                     spentTimeInDuration: spentTimeInDuration)
             }
@@ -88,15 +87,15 @@ public class HabitModel: HabitModelProtocol {
         return habitMap
     }
 
-    public var habitsSummary: Observable<[HabitSummary]> {
-        return storage.habits
+    public private(set) lazy var habitsSummary: Observable<[HabitSummary]> = {
+        storage.habits
             .map { $0.map { self.createHabitSummary($0) } }
-            .flatMap { Observable.zip($0) }
+            .flatMapLatest { $0.isEmpty ? .just([]) : Observable.zip($0) }
             .share()
-    }
+    }()
 
-    public var oldestHabitRecord: Observable<HabitRecord?> {
-        return storage.habitRecords.take(1)
+    public var visibleCalendarRange: Observable<(start: Date, end: Date)> {
+        return storage.habitRecords
             .map { records -> HabitRecord? in
                 guard let first = records.first else { return nil }
                 let record: HabitRecord? = records.reduce(into: first) { result, record in
@@ -107,7 +106,27 @@ public class HabitModel: HabitModelProtocol {
                     }
                 }
                 return record
-            }.share(replay: 1)
+            }
+            .map { record in
+
+                func makeRange(_ d: Date) -> (start: Date, end: Date) {
+                    if let start = d.beginning(of: .month)?.adding(.month, value: -1),
+                        let end = d.end(of: .month) {
+                        return (start: start, end: end)
+                    }
+
+                    // fallback
+                    return (start: Date(), end: Date())
+                }
+
+                if let date = record?.createdAt {
+                    return makeRange(date)
+                }
+
+                // record ゼロ件のときはげ今日を起点にする
+                return makeRange(Date())
+            }
+            .share(replay: 1)
     }
 
     public func habit(by habitId: HabitID) -> Observable<Habit?> {
