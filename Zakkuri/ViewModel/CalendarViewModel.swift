@@ -43,6 +43,7 @@ public final class CalendarViewModel {
         let pushRecordList: Observable<RecordListViewModel>
         let showHabitsSheet: Observable<HabitSheetProps>
         let showRecordView: Observable<RecordViewModel>
+        let showLongPressGuideWhenEmpty: Observable<Bool>
     }
 
     private let disposeBag = DisposeBag()
@@ -95,6 +96,7 @@ public final class CalendarViewModel {
 
         let showHabitsSheet: Observable<HabitSheetProps> = reselectWithLongPress
             .withLatestFrom(habitModel.habitsSummary) { (date: $0, habits: $1) }
+            .filter { $0.date.isInPast }
             .map {
                 let habits = $0.habits.map { (habitId: $0.habit.id ?? "ありえん", title: $0.title) }
                 return (date: $0.date, subject: selectHabitSubject, habits: habits)
@@ -114,6 +116,8 @@ public final class CalendarViewModel {
                 return RecordListViewModel(habitId, date: date, service: Models.shared)
             }
 
+        let showLongPressGuideWhenEmpty = inputs.selectDate.map { $0.isInPast }
+
         return .init(
             calendarRange: calendarRange,
             didChangeRecords: recordsMap.mapTo(()),
@@ -121,7 +125,8 @@ public final class CalendarViewModel {
             deselectTableViewCell: inputs.selectHabit,
             pushRecordList: pushRecordList,
             showHabitsSheet: showHabitsSheet,
-            showRecordView: showRecordView
+            showRecordView: showRecordView,
+            showLongPressGuideWhenEmpty: showLongPressGuideWhenEmpty
         )
     }
 }

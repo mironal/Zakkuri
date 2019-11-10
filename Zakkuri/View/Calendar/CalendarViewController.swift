@@ -26,6 +26,8 @@ class CalendarViewController: UIViewController {
     private var calendarParameters = ConfigurationParameters(startDate: Date(), endDate: Date())
     private let didSelectDate = PublishSubject<Date>()
 
+    private let showLongPressGuideWhenEmptyRelay = BehaviorRelay<Bool>(value: false)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -131,6 +133,11 @@ class CalendarViewController: UIViewController {
                 let fpc = FloatingPanelController(wrap: vc)
                 self.present(fpc, animated: true)
             }).disposed(by: disposeBag)
+
+        outputs.showLongPressGuideWhenEmpty
+            .asSignal(onErrorSignalWith: .never())
+            .emit(to: showLongPressGuideWhenEmptyRelay)
+            .disposed(by: disposeBag)
     }
 
     func updateTitle(_ date: Date) {
@@ -235,7 +242,7 @@ extension CalendarViewController: UITabBarControllerDelegate {
 
 extension CalendarViewController: EmptyDataSetSource {
     func description(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
-        return .init(string: "日付を長押しで記録を追加できます.")
+        return showLongPressGuideWhenEmptyRelay.value ? .init(string: "日付を長押しで記録を追加できます.") : nil
     }
 
     func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
