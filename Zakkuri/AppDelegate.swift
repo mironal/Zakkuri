@@ -6,16 +6,26 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FirebaseAuth
 import UIKit
+import XCGLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ThemeAppier().apply()
+        #if DEBUG
+            XCGLogger.default.outputLevel = .debug
+        #else
+            XCGLogger.default.outputLevel = .error
+        #endif
 
+        ThemeAppier().apply()
         Models.shared.migrate()
+
+        XCGLogger.default.debug("Current user: \(Auth.auth().currentUser?.uid ?? "not login")")
+
         return true
     }
 
