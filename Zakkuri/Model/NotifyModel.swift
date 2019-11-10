@@ -20,7 +20,8 @@ public protocol NotifyModelProtocol {
 
 class NotifyModel: NotifyModelProtocol {
     enum NotificationType {
-        case habitReminder(HabitID)
+        case globalReminder
+        case habitReminder(HabitID) // 前使っていた.
 
         static let Prefix = "dev.mironal.zakkuri.notification."
         static let HabitNotificationPrefix: String = "\(Prefix)_"
@@ -28,6 +29,8 @@ class NotifyModel: NotifyModelProtocol {
             switch self {
             case let .habitReminder(id):
                 return "\(NotificationType.HabitNotificationPrefix)\(id)"
+            case .globalReminder:
+                return "\(NotificationType.HabitNotificationPrefix)global"
             }
         }
     }
@@ -72,16 +75,14 @@ class NotifyModel: NotifyModelProtocol {
         }
     }
 
-    private func scheduleReminder(for summary: HabitSummary) {
-        guard let habitId = summary.habit.id else { return }
+    private func scheduleReminder(for _: Int) {
         let date = DateComponents(hour: 21, minute: 00)
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
         let content = UNMutableNotificationContent()
-        content.title = summary.habit.title
-        content.body = "入力を忘れていませんか？"
+        content.title = "入力を忘れていませんか？"
 
-        let request = UNNotificationRequest(identifier: NotificationType.habitReminder(habitId).identifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: NotificationType.globalReminder.identifier, content: content, trigger: trigger)
 
         center.add(request)
     }
@@ -104,11 +105,11 @@ class NotifyModel: NotifyModelProtocol {
 
             guard let self = self else { return }
 
-            habits.filter {
+            let num = habits.count {
                 $0.habit.notify
                     && $0.spentTimeInDuration < $0.habit.targetTime
             }
-            .forEach(self.scheduleReminder(for:))
+            self.scheduleReminder(for: num)
         }
     }
 }
