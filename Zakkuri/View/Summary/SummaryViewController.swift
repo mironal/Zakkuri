@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import EmptyDataSet_Swift
 import FloatingPanel
 import RxCocoa
 import RxSwift
@@ -28,6 +29,7 @@ class SummaryViewController: UITableViewController {
         ))
 
         tableView.dataSource = nil
+        tableView.emptyDataSetSource = self
 
         outputs.habitCells.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, state, cell in
 
@@ -101,5 +103,15 @@ extension HabitSummary: SummaryCellState {
 
     public var progress: Float {
         return Float(spentTimeInDuration / habit.targetTime)
+    }
+}
+
+extension SummaryViewController: EmptyDataSetSource {
+    func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
+        return .init(string: "まだ習慣がありません")
+    }
+
+    func description(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
+        return .init(string: "右上の + ボタンから1つ目の週間を追加しましょう！")
     }
 }
