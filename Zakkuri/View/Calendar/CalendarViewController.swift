@@ -136,6 +136,7 @@ class CalendarViewController: UIViewController {
 
         outputs.showLongPressGuideWhenEmpty
             .asSignal(onErrorSignalWith: .never())
+            .do(afterNext: { [weak self] _ in self?.tableView.reloadEmptyDataSet() })
             .emit(to: showLongPressGuideWhenEmptyRelay)
             .disposed(by: disposeBag)
     }
