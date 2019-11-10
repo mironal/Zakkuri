@@ -110,13 +110,14 @@ public class HabitModel: HabitModelProtocol {
             .map { record in
 
                 func makeRange(_ d: Date) -> (start: Date, end: Date) {
+                    let today = Date()
                     if let start = d.beginning(of: .month)?.adding(.month, value: -1),
-                        let end = d.end(of: .month) {
+                        let end = today.end(of: .month) {
                         return (start: start, end: end)
                     }
 
                     // fallback
-                    return (start: Date(), end: Date())
+                    return (start: today, end: today)
                 }
 
                 if let date = record?.createdAt {
