@@ -91,7 +91,7 @@ public class HabitModel: HabitModelProtocol {
         storage.habits
             .map { $0.map { self.createHabitSummary($0) } }
             .flatMapLatest { $0.isEmpty ? .just([]) : Observable.zip($0) }
-            .share()
+            .share(replay: 1)
     }()
 
     public var visibleCalendarRange: Observable<(start: Date, end: Date)> {
