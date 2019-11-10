@@ -233,7 +233,11 @@ extension CalendarViewController: UITabBarControllerDelegate {
 }
 
 extension CalendarViewController: EmptyDataSetSource {
-    func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
+    func description(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
         return .init(string: "日付を長押しで記録を追加できます.")
+    }
+
+    func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
+        return .init(string: "記録がありません")
     }
 }
