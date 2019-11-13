@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FirebaseAnalytics
 import Foundation
 import RxRelay
 import RxSwift
@@ -39,11 +40,13 @@ class RecordViewModel {
     private let createdAt: Date?
     private let habitModel: HabitModelProtocol
     private let disposeBag = DisposeBag()
+    private let analyticsContext: String
 
-    public init(habitId: HabitID, createdAt: Date? = nil, service: RecordViewModelService = Models.shared) {
+    public init(habitId: HabitID, createdAt: Date? = nil, service: RecordViewModelService = Models.shared, analytics context: String) {
         self.habitId = habitId
         self.createdAt = createdAt
         habitModel = service.habit
+        analyticsContext = context
     }
 
     public func bind(_ inputs: Inputs) -> Outputs {
@@ -86,5 +89,7 @@ class RecordViewModel {
 
     private func addTimeSpent(_ duration: TimeInterval, createdAt date: Date?) {
         habitModel.addTimeSpent(duration: duration, to: habitId, createdAt: date)
+        Analytics.logEvent(AnalyticsEventSelectContent,
+                           value: SelectContentEventValue.addedRecord(analyticsContext))
     }
 }

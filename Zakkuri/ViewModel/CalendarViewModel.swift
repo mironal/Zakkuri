@@ -106,7 +106,7 @@ public final class CalendarViewModel {
             .map {
                 // 今日の場合は createdAt を nil にして現在時刻が記録されるようにする
                 let createdAt = $0.date.isInToday ? nil : $0.date
-                return RecordViewModel(habitId: $0.habit, createdAt: createdAt, service: Models.shared)
+                return RecordViewModel(habitId: $0.habit, createdAt: createdAt, service: Models.shared, analytics: "calendar")
             }
 
         let pushRecordList = inputs.selectHabit

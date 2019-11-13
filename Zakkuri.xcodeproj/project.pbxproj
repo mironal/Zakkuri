@@ -65,6 +65,7 @@
 		4ECE99E2232A596800215BFE /* ZakkuriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECE99E1232A596800215BFE /* ZakkuriUITests.swift */; };
 		4EE2B6692372E17E009C2AA1 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE2B6682372E17E009C2AA1 /* XCGLogger.framework */; };
 		4EE2B66D2372E1F2009C2AA1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2B66C2372E1F2009C2AA1 /* UserModel.swift */; };
+		4EE3020C237C43ED00087BE0 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE3020B237C43ED00087BE0 /* FirebaseConstants.swift */; };
 		4EF09C98235061C100691A57 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF09C97235061C100691A57 /* UIViewController.swift */; };
 		559F53EE286BC1FBD733E966 /* Pods_ZakkuriTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */; };
 		AE0C3C2B89221B2491F33D8C /* Pods_Zakkuri_ZakkuriUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EB348ACB57E47ACFC025D1 /* Pods_Zakkuri_ZakkuriUITests.framework */; };
@@ -155,6 +156,7 @@
 		4ECE99E3232A596800215BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE2B6682372E17E009C2AA1 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/iOS/XCGLogger.framework; sourceTree = "<group>"; };
 		4EE2B66C2372E1F2009C2AA1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4EE3020B237C43ED00087BE0 /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		4EF09C97235061C100691A57 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		53A1C4AA55D1DECBEC2CC8E2 /* Pods_ZakkuriTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZakkuriTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCFEC244EC69D1B048A208B /* Pods-ZakkuriTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZakkuriTests.debug.xcconfig"; path = "Target Support Files/Pods-ZakkuriTests/Pods-ZakkuriTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				4E33B602232CF795007D42A5 /* Storage.swift */,
 				4EAC5A932338637B009334F3 /* Theme.swift */,
 				4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */,
+				4EE3020B237C43ED00087BE0 /* FirebaseConstants.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 			files = (
 				4E7DE8DE236FC88D00AC7009 /* CalendarViewController.swift in Sources */,
 				4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */,
+				4EE3020C237C43ED00087BE0 /* FirebaseConstants.swift in Sources */,
 				4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */,
 				4EA607332371A263004051CA /* TabBarController.swift in Sources */,
 				4E1F60362371A7F20020AA2C /* RecordListViewModel.swift in Sources */,

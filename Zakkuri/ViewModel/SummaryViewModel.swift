@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FirebaseAnalytics
 import Foundation
 import RxRelay
 import RxSwift
@@ -44,7 +45,7 @@ public class SummaryViewModel {
 
         let showRecordView = inputs.selectItem
             .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> HabitID? in habits[indexPath.row].habit.id }
-            .compactMap { $0.map { RecordViewModel(habitId: $0) } }
+            .compactMap { $0.map { RecordViewModel(habitId: $0, analytics: "summary") } }
 
         inputs.deleteItem
             .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> HabitID? in habits[indexPath.row].habit.id }
@@ -62,5 +63,7 @@ public class SummaryViewModel {
 
     private func deleteHabit(_ habitId: HabitID?) {
         habitId.map { habitModel.delete($0) }
+        Analytics.logEvent(AnalyticsEventSelectContent,
+                           value: SelectContentEventValue.deletedHabit)
     }
 }

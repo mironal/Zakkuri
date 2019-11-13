@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FirebaseAnalytics
 import Foundation
 import RxRelay
 import RxSwift
@@ -113,7 +114,13 @@ public class HabitFormViewModel {
 
     private func addHabit(_ habit: Habit) -> Observable<Void> {
         habitModel.add(habit)
-
+        if habit.id == nil {
+            Analytics.logEvent(AnalyticsEventSelectContent,
+                               value: SelectContentEventValue.addedHabit)
+        } else {
+            Analytics.logEvent(AnalyticsEventSelectContent,
+                               value: SelectContentEventValue.editedHabit)
+        }
         return .just(())
     }
 }
