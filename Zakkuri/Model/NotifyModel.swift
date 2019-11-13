@@ -10,6 +10,7 @@ import Foundation
 import RxRelay
 import RxSwift
 import UserNotifications
+import XCGLogger
 
 public protocol NotifyModelProtocol {
     var deniedNotification: Observable<Bool> { get }
@@ -21,14 +22,11 @@ public protocol NotifyModelProtocol {
 class NotifyModel: NotifyModelProtocol {
     enum NotificationType {
         case globalReminder
-        case habitReminder(HabitID) // 前使っていた.
 
         static let Prefix = "dev.mironal.zakkuri.notification."
         static let HabitNotificationPrefix: String = "\(Prefix)_"
         var identifier: String {
             switch self {
-            case let .habitReminder(id):
-                return "\(NotificationType.HabitNotificationPrefix)\(id)"
             case .globalReminder:
                 return "\(NotificationType.HabitNotificationPrefix)global"
             }
@@ -89,11 +87,7 @@ class NotifyModel: NotifyModelProtocol {
 
     private func cancelPendingHabitNotification(_ complete: @escaping () -> Void) {
         center.getPendingNotificationRequests { [weak self] in
-
-            let ns: [String] = $0.compactMap {
-                $0.identifier.hasPrefix(NotificationType.HabitNotificationPrefix) ? $0.identifier : nil
-            }
-            self?.center.removePendingNotificationRequests(withIdentifiers: ns)
+            self?.center.removePendingNotificationRequests(withIdentifiers: $0.map { $0.identifier })
             complete()
         }
     }
