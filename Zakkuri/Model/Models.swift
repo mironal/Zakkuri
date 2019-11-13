@@ -17,13 +17,19 @@ public struct Models {
         FirebaseApp.configure()
 
         let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
+        storage.habits.count().subscribe(onNext: {
+            Analytics.setUserProperty("\($0)", forName: "number_of_habits")
+        }).disposed(by: disposeBag)
+        storage.habits.count().subscribe(onNext: {
+            Analytics.setUserProperty("\($0)", forName: "number_of_habitRecords")
+        }).disposed(by: disposeBag)
 
         let habitModel = HabitModel(storage: storage)
         let notifyModel = NotifyModel()
 
-        habitModel.habitsSummary.subscribe(onNext: {
-            notifyModel.scheduleReminderIfNeeded($0)
-        }).disposed(by: disposeBag)
+        habitModel.habitsSummary
+            .subscribe(onNext: notifyModel.scheduleReminderIfNeeded)
+            .disposed(by: disposeBag)
 
         return .init(
             habit: habitModel,
