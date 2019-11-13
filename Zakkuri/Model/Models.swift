@@ -26,28 +26,11 @@ public struct Models {
         }).disposed(by: disposeBag)
 
         return .init(
-            storage: storage,
             habit: habitModel,
             notify: notifyModel
         )
     }()
 
-    public func migrate() {
-        let oldStorage = UserDefaultsStorage()
-
-        oldStorage.__habits.forEach {
-            print("migrate:", $0)
-            storage.add($0)
-        }
-        oldStorage.deleteAllHabits()
-        oldStorage.__record.forEach {
-            print("migrate:", $0)
-            storage.add($0)
-        }
-        oldStorage.deleteAllRecords()
-    }
-
-    private let storage: StorageProtocol
     public let habit: HabitModelProtocol
     public let notify: NotifyModelProtocol
 }

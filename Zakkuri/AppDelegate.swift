@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         ThemeAppier().apply()
-        Models.shared.migrate()
 
         XCGLogger.default.debug("Current user: \(Auth.auth().currentUser?.uid ?? "not login")")
 
