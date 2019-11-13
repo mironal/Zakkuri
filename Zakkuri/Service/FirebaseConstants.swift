@@ -19,28 +19,43 @@ extension Analytics {
     }
 }
 
+private func scEventValue(_ type: String, action: String) -> [String: String] {
+    return [AnalyticsParameterContentType: type,
+            AnalyticsParameterItemID: action]
+}
+
 enum SelectContentEventValue: HasFirebaseEventParameter {
+    // Manipulating habits
     case addedHabit
     case deletedHabit
     case editedHabit
 
+    // Manipulating habit records
     case addedRecord(_ from: String)
+
+    // calendars
+    case tapCalendarDate
+    case longPressCalendarDate
+
+    // others
+    case tapOthersButtonInRecordScreen
 
     var params: [String: Any] {
         switch self {
         case .addedHabit:
-            return [AnalyticsParameterContentType: "habit",
-                    AnalyticsParameterItemID: "added"]
+            return scEventValue("habit", action: "added")
         case .deletedHabit:
-            return [AnalyticsParameterContentType: "habit",
-                    AnalyticsParameterItemID: "deleted"]
+            return scEventValue("habit", action: "deleted")
         case .editedHabit:
-            return [AnalyticsParameterContentType: "habit",
-                    AnalyticsParameterItemID: "edited"]
-
+            return scEventValue("habit", action: "edited")
         case let .addedRecord(from):
-            return [AnalyticsParameterContentType: "record",
-                    AnalyticsParameterItemID: "add-from-\(from)"]
+            return scEventValue("record", action: "add-from-\(from)")
+        case .tapCalendarDate:
+            return scEventValue("calendar", action: "tap")
+        case .longPressCalendarDate:
+            return scEventValue("calendar", action: "long-press")
+        case .tapOthersButtonInRecordScreen:
+            return scEventValue("others", action: "tap-others-button-in-record-screen")
         }
     }
 }

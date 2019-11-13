@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import FirebaseAnalytics
 import Foundation
 import RxRelay
 import RxSwift
@@ -98,6 +99,7 @@ public final class CalendarViewModel {
             .withLatestFrom(habitModel.habitsSummary) { (date: $0, habits: $1) }
             .filter { $0.date.isInPast }
             .map {
+                Analytics.logEvent(AnalyticsEventSelectContent, value: SelectContentEventValue.longPressCalendarDate)
                 let habits = $0.habits.map { (habitId: $0.habit.id ?? "ありえん", title: $0.title) }
                 return (date: $0.date, subject: selectHabitSubject, habits: habits)
             }

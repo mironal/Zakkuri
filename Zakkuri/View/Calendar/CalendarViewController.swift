@@ -7,6 +7,7 @@
 //
 
 import EmptyDataSet_Swift
+import FirebaseAnalytics
 import FloatingPanel
 import JTAppleCalendar
 import RxCocoa
@@ -189,6 +190,10 @@ extension CalendarViewController: JTACMonthViewDelegate {
         if let cell = cell as? CalendarDayCell {
             configureCell(cell, cellState: cellState)
             didSelectDate.onNext(date)
+        }
+
+        if cellState.selectionType == .userInitiated {
+            Analytics.logEvent(AnalyticsEventSelectContent, value: SelectContentEventValue.tapCalendarDate)
         }
     }
 

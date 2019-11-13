@@ -73,11 +73,16 @@ class RecordViewModel {
             .withLatestFrom(current)
             .map { HabitFormViewModel(habit: $0) }
 
+        let showMenu = inputs.tapOthers.mapTo(menuItemSelectedSubject)
+            .do(onNext: { _ in
+                Analytics.logEvent(AnalyticsEventSelectContent,
+                                   value: SelectContentEventValue.tapOthersButtonInRecordScreen)
+            })
         return Outputs(
             title: current.map { $0.title },
             showDetail: showDetail,
             showEdit: showEdit,
-            showMenu: inputs.tapOthers.mapTo(menuItemSelectedSubject),
+            showMenu: showMenu,
             dismiss: done.mapTo(())
         )
     }
