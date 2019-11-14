@@ -81,4 +81,8 @@ iOSInjectionProject/
 Zakkuri/GoogleService-Info.plist
 
 fastlane/Appfile
+
+*.cer
+*.mobileprovision
+
 # End of https://www.gitignore.io/api/swift

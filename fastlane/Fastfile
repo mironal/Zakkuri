@@ -12,13 +12,25 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
-
+skip_docs
 default_platform(:ios)
+
+build_started_at = Date.now
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    build_app(workspace: "Zakkuri.xcworkspace", scheme: "Zakkuri")
+    get_certificates
+    get_provisioning_profile
+    build_app(
+      workspace: "Zakkuri.xcworkspace",
+      scheme: "Zakkuri",
+      export_options: {
+        provisioningProfiles: {
+            "dev.mironal.zakkuri" => "dev.mironal.zakkuri"
+        }
+      }
+    )
     upload_to_testflight
   end
 end
