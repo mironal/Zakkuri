@@ -39,6 +39,7 @@
 		4E5040102380F25100104BCB /* PreviewVideoPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */; };
 		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
 		4E6924A52380F7200046CE18 /* PreviewVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */; };
+		4E6924A7238156980046CE18 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6924A6238156980046CE18 /* AppPreferences.swift */; };
 		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
 		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
@@ -125,6 +126,7 @@
 		4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreviewVideoPlayerViewController.storyboard; sourceTree = "<group>"; };
 		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
 		4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVideoPlayerViewModel.swift; sourceTree = "<group>"; };
+		4E6924A6238156980046CE18 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		4E6CC52F232A5FC500E367E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				4EAC5A932338637B009334F3 /* Theme.swift */,
 				4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */,
 				4EE3020B237C43ED00087BE0 /* FirebaseConstants.swift */,
+				4E6924A6238156980046CE18 /* AppPreferences.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				4EA6072F237193B9004051CA /* RecordListViewController.swift in Sources */,
 				4EAC5A9823388589009334F3 /* NavigationController.swift in Sources */,
 				4E33B5F1232BC74E007D42A5 /* SummaryViewController.swift in Sources */,
+				4E6924A7238156980046CE18 /* AppPreferences.swift in Sources */,
 				4E242BD0236FD4B70050F23A /* CalendarDayCell.swift in Sources */,
 				4E06F3B22337B8DE0083606C /* HabitDetailViewModel.swift in Sources */,
 				4EA3F0792351C8E600F0B4F2 /* HabitSummary.swift in Sources */,

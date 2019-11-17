@@ -45,7 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if AppPreferences.shared.lastLaunchVersion == nil {
+            if let video = UIStoryboard(name: "PreviewVideoPlayerViewController", bundle: .main)
+                .instantiateViewController(withClass: PreviewVideoPlayerViewController.self) {
+                window?.rootViewController?.present(video, animated: true)
+            }
+        }
+
+        AppPreferences.shared.lastLaunchVersion = UIApplication.shared.version
     }
 
     func applicationWillTerminate(_: UIApplication) {
