@@ -9,6 +9,7 @@ target 'Zakkuri' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
 
   pod 'EmptyDataSet-Swift', '~> 5.0.0'
