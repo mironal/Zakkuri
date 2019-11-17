@@ -15,7 +15,7 @@
 skip_docs
 default_platform(:ios)
 
-build_started_at = Date.now
+build_started_at = Time.now
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
