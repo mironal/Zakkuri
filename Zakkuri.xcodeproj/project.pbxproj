@@ -35,7 +35,10 @@
 		4E33B608232E35BF007D42A5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33B607232E35BF007D42A5 /* RecordViewController.swift */; };
 		4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */; };
 		4E4AE87B2372EB10009C4B82 /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */; };
+		4E50400E2380F24400104BCB /* PreviewVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E50400D2380F24400104BCB /* PreviewVideoPlayerViewController.swift */; };
+		4E5040102380F25100104BCB /* PreviewVideoPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */; };
 		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
+		4E6924A52380F7200046CE18 /* PreviewVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */; };
 		4E6CC532232A5FC500E367E3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52D232A5FC500E367E3 /* RxRelay.framework */; };
 		4E6CC534232A5FC500E367E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52F232A5FC500E367E3 /* RxSwift.framework */; };
 		4E6CC536232A5FC500E367E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC531232A5FC500E367E3 /* RxCocoa.framework */; };
@@ -118,7 +121,10 @@
 		4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
 		4E3B807C23458ADB00A81971 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStorage.swift; sourceTree = "<group>"; };
+		4E50400D2380F24400104BCB /* PreviewVideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreviewVideoPlayerViewController.storyboard; sourceTree = "<group>"; };
 		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
+		4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		4E6CC52D232A5FC500E367E3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		4E6CC52F232A5FC500E367E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -290,6 +296,16 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		4E5FED272380E5B2002BBAD0 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				4E50400D2380F24400104BCB /* PreviewVideoPlayerViewController.swift */,
+				4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */,
+				4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
 		4E66A48D233AF882009BD0CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +351,7 @@
 		4E6CC53A232A616D00E367E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E5FED272380E5B2002BBAD0 /* VideoPlayer */,
 				4EA607342371A268004051CA /* Tap */,
 				4EA6072D2371939E004051CA /* RecordList */,
 				4E7DE8DC236FC87100AC7009 /* Calendar */,
@@ -562,6 +579,7 @@
 				4ECE99CC232A596700215BFE /* LaunchScreen.storyboard in Resources */,
 				4E06F3B023379B890083606C /* HabitDetailViewController.storyboard in Resources */,
 				4E7DE8E0236FC89800AC7009 /* CalendarViewController.storyboard in Resources */,
+				4E5040102380F25100104BCB /* PreviewVideoPlayerViewController.storyboard in Resources */,
 				4ECE99C9232A596700215BFE /* Assets.xcassets in Resources */,
 				4E33B60A232E35C7007D42A5 /* RecordViewController.storyboard in Resources */,
 				4E33B5F5232BC7DD007D42A5 /* SummaryViewController.storyboard in Resources */,
@@ -717,9 +735,11 @@
 			files = (
 				4E7DE8DE236FC88D00AC7009 /* CalendarViewController.swift in Sources */,
 				4E06F3AE23379B7B0083606C /* HabitDetailViewController.swift in Sources */,
+				4E50400E2380F24400104BCB /* PreviewVideoPlayerViewController.swift in Sources */,
 				4EE3020C237C43ED00087BE0 /* FirebaseConstants.swift in Sources */,
 				4E6CC53C232A61DA00E367E3 /* HabitFormViewModel.swift in Sources */,
 				4EA607332371A263004051CA /* TabBarController.swift in Sources */,
+				4E6924A52380F7200046CE18 /* PreviewVideoPlayerViewModel.swift in Sources */,
 				4E1F60362371A7F20020AA2C /* RecordListViewModel.swift in Sources */,
 				4EF09C98235061C100691A57 /* UIViewController.swift in Sources */,
 				4ECE99C0232A596600215BFE /* AppDelegate.swift in Sources */,

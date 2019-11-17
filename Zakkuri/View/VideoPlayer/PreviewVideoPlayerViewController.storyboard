@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="of5-pk-Wxf">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Preview Video Player View Controller-->
+        <scene sceneID="J9D-eQ-i4M">
+            <objects>
+                <viewController storyboardIdentifier="PreviewVideoPlayerViewController" modalPresentationStyle="fullScreen" id="of5-pk-Wxf" customClass="PreviewVideoPlayerViewController" customModule="Zakkuri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q6H-JS-0t2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-5j-g5D">
+                                <rect key="frame" x="97.5" y="11" width="125" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dHa-TD-Nbm">
+                                <rect key="frame" x="56" y="283" width="208" height="2"/>
+                            </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-9p-xff" customClass="PlayerView" customModule="Zakkuri" customModuleProvider="target">
+                                <rect key="frame" x="49.5" y="44" width="221" height="480"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="u1N-9p-xff" secondAttribute="height" multiplier="83:180" id="MDy-Vk-YqS"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlN-3D-qMN">
+                                <rect key="frame" x="260" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="lbn-TN-rSf"/>
+                                    <constraint firstAttribute="width" constant="40" id="xZk-e8-8MX"/>
+                                </constraints>
+                                <state key="normal" image="xmark" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbh-Bx-wWx">
+                                <rect key="frame" x="120" y="244" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="LvW-4s-QE7"/>
+                                    <constraint firstAttribute="height" constant="80" id="qPc-27-UYb"/>
+                                </constraints>
+                                <state key="normal" image="play.circle" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M4M-73-a1P" firstAttribute="bottom" secondItem="u1N-9p-xff" secondAttribute="bottom" priority="750" id="2GB-sP-oZM"/>
+                            <constraint firstItem="u1N-9p-xff" firstAttribute="centerY" secondItem="q6H-JS-0t2" secondAttribute="centerY" id="2Iz-t9-nHX"/>
+                            <constraint firstItem="dHa-TD-Nbm" firstAttribute="leading" secondItem="q6H-JS-0t2" secondAttribute="leadingMargin" constant="40" id="3bO-R5-ZI6"/>
+                            <constraint firstItem="nbh-Bx-wWx" firstAttribute="centerX" secondItem="q6H-JS-0t2" secondAttribute="centerX" id="Cbf-qN-gKH"/>
+                            <constraint firstItem="nbh-Bx-wWx" firstAttribute="centerY" secondItem="q6H-JS-0t2" secondAttribute="centerY" id="JiJ-yi-9sn"/>
+                            <constraint firstItem="u1N-9p-xff" firstAttribute="top" secondItem="YlN-3D-qMN" secondAttribute="bottom" constant="4" id="NbD-eh-P5u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dHa-TD-Nbm" secondAttribute="trailing" constant="40" id="Rlf-EP-U48"/>
+                            <constraint firstItem="dHa-TD-Nbm" firstAttribute="centerY" secondItem="q6H-JS-0t2" secondAttribute="centerY" id="Rt5-N5-d0p"/>
+                            <constraint firstItem="YlN-3D-qMN" firstAttribute="top" secondItem="M4M-73-a1P" secondAttribute="top" id="UZT-1s-Dd3"/>
+                            <constraint firstItem="M4M-73-a1P" firstAttribute="trailing" secondItem="YlN-3D-qMN" secondAttribute="trailing" constant="20" id="aMY-6s-6QX"/>
+                            <constraint firstItem="vG2-5j-g5D" firstAttribute="centerX" secondItem="q6H-JS-0t2" secondAttribute="centerX" id="sqW-Tl-Jny"/>
+                            <constraint firstItem="u1N-9p-xff" firstAttribute="centerX" secondItem="q6H-JS-0t2" secondAttribute="centerX" id="uXc-59-Wl3"/>
+                            <constraint firstItem="u1N-9p-xff" firstAttribute="top" secondItem="vG2-5j-g5D" secondAttribute="bottom" constant="4" id="znZ-FJ-b5T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M4M-73-a1P"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="YlN-3D-qMN" id="Ohq-aL-vyQ"/>
+                        <outlet property="playButton" destination="nbh-Bx-wWx" id="Zp3-fj-y1S"/>
+                        <outlet property="playerView" destination="u1N-9p-xff" id="MJN-Qs-jJ8"/>
+                        <outlet property="progressView" destination="dHa-TD-Nbm" id="24f-7d-Uxg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3UQ-T8-lOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="71.739130434782609"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play.circle" catalog="system" width="64" height="60"/>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
