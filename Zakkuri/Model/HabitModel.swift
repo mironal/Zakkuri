@@ -96,6 +96,7 @@ public class HabitModel: HabitModelProtocol {
 
     public var visibleCalendarRange: Observable<(start: Date, end: Date)> {
         return storage.habitRecords
+            .take(1)
             .map { records -> HabitRecord? in
                 guard let first = records.first else { return nil }
                 let record: HabitRecord? = records.reduce(into: first) { result, record in
