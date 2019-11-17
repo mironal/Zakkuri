@@ -15,7 +15,8 @@ public protocol StorageProtocol {
     var habits: Observable<[Habit]> { get }
     var habitRecords: Observable<[HabitRecord]> { get }
 
-    func add(_ habit: Habit)
+    func addOrUpdate(_ habit: Habit)
+    func updates(_ habits: [Habit])
     func add(_ record: HabitRecord)
 
     func deleteHabitAndRecords(_ habitId: HabitID)

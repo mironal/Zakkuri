@@ -19,18 +19,20 @@ public protocol SummaryViewModelService {
 extension Models: SummaryViewModelService {}
 
 public class SummaryViewModel {
+    public typealias ReorderDescription = (srcRow: Int, destRow: Int)
     public struct Inputs {
         public let tapAdd: Observable<Void>
 
         // tableview
         public let selectItem: Observable<IndexPath>
         public let deleteItem: Observable<IndexPath>
+        public let reorder: Observable<ReorderDescription>
     }
 
     public struct Outputs {
         let showRecordView: Observable<RecordViewModel>
         let showHabitForm: Observable<HabitFormViewModel>
-        let habitCells: Observable<[SummaryCellState]>
+        let habitCells: Observable<[SectionOfSummaryCellState]>
     }
 
     private let disposeBag = DisposeBag()
@@ -54,10 +56,14 @@ public class SummaryViewModel {
         let habitCells: Observable<[SummaryCellState]> = habitModel.habitsSummary
             .map { $0.map { $0 as SummaryCellState } }
 
+        inputs.reorder.subscribe(onNext: { [weak self] in
+            self?.habitModel.reorderHabit(srcIndex: $0.srcRow, destIndex: $0.destRow)
+        }).disposed(by: disposeBag)
+
         return Outputs(
             showRecordView: showRecordView,
             showHabitForm: showGoalForm,
-            habitCells: habitCells
+            habitCells: habitCells.map { [SectionOfSummaryCellState(items: $0)] }
         )
     }
 

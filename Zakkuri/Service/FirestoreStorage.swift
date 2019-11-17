@@ -57,24 +57,57 @@ extension Firestore {
     }
 }
 
+func fetchNonOrderHabits(_ uid: String, firestore: Firestore) -> Single<[Habit]> {
+    return .create { single in
+
+        firestore.habitsCollection(uid)
+            .getDocuments { snapshot, _ in
+
+                guard let documents = snapshot?.documents else {
+                    single(.success([]))
+                    return
+                }
+
+                do {
+                    let nonOrderd = try documents.compactMap { d -> Habit? in
+                        let habit = try d.data(as: Habit.self)
+                        return habit?.order == nil ? habit : nil
+                    }
+                    .map { habit -> Habit in
+                        var habit = habit
+                        habit.order = 0
+                        return habit
+                    }
+
+                    single(.success(nonOrderd))
+                } catch let e {
+                    single(.error(e))
+                }
+            }
+        return Disposables.create()
+    }
+}
+
 private func observeHabits(_ uid: String, firestore: Firestore) -> Observable<[Habit]> {
     return .create { o in
         XCGLogger.default.debug("Create observeHabits")
-        let hanble = firestore.habitsCollection(uid).addSnapshotListener { snapshot, error in
-            if let error = error {
-                o.onError(error)
-                return
-            }
-
-            guard let documents = snapshot?.documents else { return }
-
-            do {
-                let habits = try documents.compactMap {
-                    try $0.data(as: Habit.self)
+        let hanble = firestore.habitsCollection(uid)
+            .order(by: "order")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    o.onError(error)
+                    return
                 }
-                o.onNext(habits)
-            } catch let e { o.onError(e) }
-        }
+
+                guard let documents = snapshot?.documents else { return }
+
+                do {
+                    let habits = try documents.compactMap {
+                        try $0.data(as: Habit.self)
+                    }
+                    o.onNext(habits)
+                } catch let e { o.onError(e) }
+            }
         return Disposables.create { hanble.remove() }
     }
 }
@@ -112,6 +145,33 @@ private func addHabit(_ habit: Habit, user uid: String, firestore: Firestore) ->
             }
         } catch let e { single(.error(e)) }
         return Disposables.create {}
+    }
+}
+
+private func updateHabits(_ habits: [Habit], user uid: String, firestore: Firestore) -> Single<Void> {
+    guard habits.all(matching: { $0.id != nil }) else {
+        return .error(FirestoreStorageError.invalidOperation)
+    }
+
+    return .create { single in
+
+        let batch = firestore.batch()
+        let col = firestore.habitsCollection(uid)
+
+        habits.forEach {
+            guard let id = $0.id else { return }
+            _ = try? batch.setData(from: $0, forDocument: col.document(id))
+        }
+
+        batch.commit {
+            if let error = $0 {
+                single(.error(error))
+                return
+            }
+            single(.success(()))
+        }
+
+        return Disposables.create()
     }
 }
 
@@ -194,6 +254,14 @@ public class FirestoreStorage: StorageProtocol {
         self.firestore = firestore
     }
 
+    public func migrate() {
+        let firestore = self.firestore
+        currentUser.flatMapLatest { user in
+            fetchNonOrderHabits(user.uid, firestore: firestore)
+                .flatMap { updateHabits($0, user: user.uid, firestore: firestore) }
+        }.subscribe().disposed(by: disposeBag)
+    }
+
     private lazy var currentUser: Observable<User> = observeUser(self.auth).share(replay: 1)
 
     public private(set) lazy var habits: Observable<[Habit]> = {
@@ -210,10 +278,17 @@ public class FirestoreStorage: StorageProtocol {
         }.share(replay: 1)
     }
 
-    public func add(_ habit: Habit) {
+    public func addOrUpdate(_ habit: Habit) {
         let firestore = self.firestore
         currentUser.flatMapLatest {
             addOrUpdateHabit(habit, user: $0.uid, firestore: firestore)
+        }.subscribe().disposed(by: disposeBag)
+    }
+
+    public func updates(_ habits: [Habit]) {
+        let firestore = self.firestore
+        currentUser.flatMapLatest {
+            updateHabits(habits, user: $0.uid, firestore: firestore)
         }.subscribe().disposed(by: disposeBag)
     }
 

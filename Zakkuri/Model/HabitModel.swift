@@ -11,6 +11,7 @@ import RxRelay
 import RxSwift
 import RxSwiftExt
 import SwifterSwift
+import XCGLogger
 
 public protocol HabitModelProtocol {
     typealias HabitRecordMap = [Date: [Habit: [HabitRecord]]]
@@ -28,6 +29,8 @@ public protocol HabitModelProtocol {
     func deleteRecord(_ recordId: String)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID)
     func addTimeSpent(duration: TimeInterval, to habitId: HabitID, createdAt date: Date?)
+
+    func reorderHabit(srcIndex: Int, destIndex: Int)
 }
 
 public class HabitModel: HabitModelProtocol {
@@ -143,10 +146,14 @@ public class HabitModel: HabitModelProtocol {
     }
 
     public func add(_ habit: Habit) {
+        guard habit.id == nil else {
+            assertionFailure("When adding, id should be null.")
+            return
+        }
         queue.async { [weak self] in
             guard let self = self else { return }
 
-            self.storage.add(habit)
+            self.storage.addOrUpdate(habit)
         }
     }
 
@@ -178,5 +185,18 @@ public class HabitModel: HabitModelProtocol {
             guard let self = self else { return }
             self.storage.add(record)
         }
+    }
+
+    public func reorderHabit(srcIndex: Int, destIndex: Int) {
+        storage.habits.take(1).subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+
+            var src = $0[srcIndex]
+            var dest = $0[destIndex]
+
+            src.order = destIndex
+            dest.order = srcIndex
+            self.storage.updates([src, dest])
+        }).disposed(by: disposeBag)
     }
 }

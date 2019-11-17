@@ -17,6 +17,7 @@ public struct Habit: Codable, Equatable, Hashable {
     public let goalSpan: GoalSpan
     public let targetTime: TimeInterval
     public let notify: Bool
+    public var order: Int?
 
     init(id: HabitID?, title: String, goalSpan: GoalSpan, targetTime: TimeInterval, notify: Bool) {
         self.id = id
@@ -24,6 +25,7 @@ public struct Habit: Codable, Equatable, Hashable {
         self.goalSpan = goalSpan
         self.targetTime = targetTime
         self.notify = notify
+        order = 0
     }
 
     init(createNewHabitWithTitle title: String, goalSpan: GoalSpan, targetTime: TimeInterval, notify: Bool) {

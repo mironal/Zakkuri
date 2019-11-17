@@ -6,6 +6,7 @@
 //  Copyright © 2019 mironal. All rights reserved.
 //
 
+import RxDataSources
 import UIKit
 
 public protocol SummaryCellState {
@@ -13,6 +14,20 @@ public protocol SummaryCellState {
     var spentTimeInDuration: TimeInterval { get }
     var goalSpan: GoalSpan { get }
     var progress: Float { get }
+}
+
+struct SectionOfSummaryCellState: SectionModelType {
+    var items: [SummaryCellState]
+    typealias Item = SummaryCellState
+
+    init(items: [SummaryCellState]) {
+        self.items = items
+    }
+
+    init(original: SectionOfSummaryCellState, items: [SummaryCellState]) {
+        self = original
+        self.items = items
+    }
 }
 
 public class SummaryCell: UITableViewCell {

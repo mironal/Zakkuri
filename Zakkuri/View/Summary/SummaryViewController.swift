@@ -9,7 +9,9 @@
 import EmptyDataSet_Swift
 import FloatingPanel
 import RxCocoa
+import RxDataSources
 import RxSwift
+import SwiftReorder
 import UIKit
 
 class SummaryViewController: UITableViewController {
@@ -18,6 +20,7 @@ class SummaryViewController: UITableViewController {
     @IBOutlet var addButton: UIBarButtonItem!
 
     private let deleteItemRelay = PublishRelay<IndexPath>()
+    private let reorderRelay = PublishRelay<(srcRow: Int, destRow: Int)>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +28,29 @@ class SummaryViewController: UITableViewController {
         let outputs = viewModel.bind(.init(
             tapAdd: addButton.rx.tap.asObservable(),
             selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) }),
-            deleteItem: deleteItemRelay.asObservable()
+            deleteItem: deleteItemRelay.asObservable(),
+            reorder: reorderRelay.asObservable()
         ))
 
         tableView.dataSource = nil
         tableView.emptyDataSetSource = self
+        tableView.reorder.delegate = self
 
-        outputs.habitCells.bind(to: tableView.rx.items(cellIdentifier: "SummaryCell", cellType: SummaryCell.self)) { _, state, cell in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfSummaryCellState>(configureCell: { (_, tableView, indexPath, state) -> UITableViewCell in
+
+            if let spacer = tableView.reorder.spacerCell(for: indexPath) {
+                return spacer
+            }
+
+            let cell = tableView.dequeueReusableCell(withClass: SummaryCell.self, for: indexPath)
 
             cell.state = state
+            return cell
+        })
 
-        }.disposed(by: disposeBag)
+        outputs.habitCells
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
 
         outputs.showRecordView
             .asSignal(onErrorSignalWith: .never())
@@ -113,5 +128,11 @@ extension SummaryViewController: EmptyDataSetSource {
 
     func description(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
         return .init(string: "右上の + ボタンから1つ目の週間を追加しましょう！")
+    }
+}
+
+extension SummaryViewController: TableViewReorderDelegate {
+    func tableView(_: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        reorderRelay.accept((srcRow: sourceIndexPath.row, destRow: destinationIndexPath.row))
     }
 }

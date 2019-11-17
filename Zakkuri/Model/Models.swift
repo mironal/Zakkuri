@@ -17,6 +17,7 @@ public struct Models {
         FirebaseApp.configure()
 
         let storage = FirestoreStorage(auth: Auth.auth(), firestore: Firestore.firestore())
+        storage.migrate()
         storage.habits.count().subscribe(onNext: {
             Analytics.setUserProperty("\($0)", forName: "number_of_habits")
         }).disposed(by: disposeBag)
