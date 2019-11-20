@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="99N-Jm-i6G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="99N-Jm-i6G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,10 +74,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ざっくり" id="1D9-n9-rTk">
+                        <barButtonItem key="leftBarButtonItem" image="gear" catalog="system" id="Ytn-0m-z9d"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="N01-p4-hMW"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="N01-p4-hMW" id="kcX-79-Q0X"/>
+                        <outlet property="settingButton" destination="Ytn-0m-z9d" id="DPn-VY-tPq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjB-YB-9da" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,6 +106,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
         <image name="repeat" catalog="system" width="64" height="48"/>
     </resources>
 </document>

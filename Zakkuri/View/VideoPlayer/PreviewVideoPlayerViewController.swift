@@ -59,7 +59,7 @@ class PreviewVideoPlayerViewController: UIViewController {
         }
     }
 
-    let viewModel: PreviewVideoPlayerViewModel = .init()
+    var viewModel: PreviewVideoPlayerViewModel = .init()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {

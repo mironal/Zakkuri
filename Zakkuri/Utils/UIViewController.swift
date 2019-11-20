@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     private static func loadFromStoryboard<T>(withClass name: T.Type) -> T? where T: UIViewController {
         let sb = UIStoryboard(name: String(describing: name), bundle: .main)
-        return sb.instantiateViewController(withClass: name)
+        return sb.instantiateInitialViewController()
     }
 
     static func instantiateFromStoryboard() -> Self? {

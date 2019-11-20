@@ -18,6 +18,7 @@ class SummaryViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     public var viewModel = SummaryViewModel()
     @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var settingButton: UIBarButtonItem!
 
     private let deleteItemRelay = PublishRelay<IndexPath>()
     private let reorderRelay = PublishRelay<(srcRow: Int, destRow: Int)>()
@@ -27,6 +28,7 @@ class SummaryViewController: UITableViewController {
 
         let outputs = viewModel.bind(.init(
             tapAdd: addButton.rx.tap.asObservable(),
+            tapSetting: settingButton.rx.tap.asObservable(),
             selectItem: tableView.rx.itemSelected.asObservable().do(afterNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) }),
             deleteItem: deleteItemRelay.asObservable(),
             reorder: reorderRelay.asObservable()
@@ -72,6 +74,17 @@ class SummaryViewController: UITableViewController {
 
                 let nav = UINavigationController(rootViewController: vc)
                 self?.present(nav, animated: true)
+            }).disposed(by: disposeBag)
+
+        outputs.showSetting.asSignal(onErrorSignalWith: .never())
+            .emit(onNext: { [weak self] in
+                guard let vc = SettingViewController.instantiateFromStoryboard() else { return }
+
+                vc.viewModel = $0
+
+                let nav = UINavigationController(rootViewController: vc)
+                self?.present(nav, animated: true)
+
             }).disposed(by: disposeBag)
     }
 

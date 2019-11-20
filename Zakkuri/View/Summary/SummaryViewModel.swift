@@ -22,6 +22,7 @@ public class SummaryViewModel {
     public typealias ReorderDescription = (srcRow: Int, destRow: Int)
     public struct Inputs {
         public let tapAdd: Observable<Void>
+        public let tapSetting: Observable<Void>
 
         // tableview
         public let selectItem: Observable<IndexPath>
@@ -32,6 +33,7 @@ public class SummaryViewModel {
     public struct Outputs {
         let showRecordView: Observable<RecordViewModel>
         let showHabitForm: Observable<HabitFormViewModel>
+        let showSetting: Observable<SettingViewModel>
         let habitCells: Observable<[SectionOfSummaryCellState]>
     }
 
@@ -63,6 +65,7 @@ public class SummaryViewModel {
         return Outputs(
             showRecordView: showRecordView,
             showHabitForm: showGoalForm,
+            showSetting: inputs.tapSetting.map { SettingViewModel() },
             habitCells: habitCells.map { [SectionOfSummaryCellState(items: $0)] }
         )
     }
