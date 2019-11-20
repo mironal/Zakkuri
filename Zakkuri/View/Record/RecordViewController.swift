@@ -101,7 +101,7 @@ class RecordViewController: UIViewController {
 
                 guard let self = self else { return }
 
-                guard let detail = UIStoryboard(name: "HabitDetailViewController", bundle: .main).instantiateViewController(withClass: HabitDetailViewController.self) else { return }
+                guard let detail = HabitDetailViewController.instantiateFromStoryboard() else { return }
 
                 detail.viewModel = $0
                 let nav = UINavigationController(rootViewController: detail)
@@ -113,7 +113,7 @@ class RecordViewController: UIViewController {
         outputs.showEdit.asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let edit = UIViewController.loadFromStoryboard(withClass: HabitFormViewController.self) else { return }
+                guard let edit = HabitFormViewController.instantiateFromStoryboard() else { return }
                 edit.viewModel = $0
                 let nav = UINavigationController(rootViewController: edit)
                 self.present(nav, animated: true)

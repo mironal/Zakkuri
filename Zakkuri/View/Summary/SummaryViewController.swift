@@ -56,8 +56,7 @@ class SummaryViewController: UITableViewController {
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
-
-                guard let vc = UIStoryboard(name: "RecordViewController", bundle: .main).instantiateViewController(withClass: RecordViewController.self) else { return }
+                guard let vc = RecordViewController.instantiateFromStoryboard() else { return }
                 vc.viewModel = $0
 
                 let fpc = FloatingPanelController(wrap: vc)
@@ -67,7 +66,7 @@ class SummaryViewController: UITableViewController {
 
         outputs.showHabitForm.asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
-                guard let vc = UIStoryboard(name: "HabitFormViewController", bundle: .main).instantiateViewController(withClass: HabitFormViewController.self) else { return }
+                guard let vc = HabitFormViewController.instantiateFromStoryboard() else { return }
 
                 vc.viewModel = $0
 

@@ -46,8 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_: UIApplication) {
         if AppPreferences.shared.lastLaunchVersion == nil {
-            if let video = UIStoryboard(name: "PreviewVideoPlayerViewController", bundle: .main)
-                .instantiateViewController(withClass: PreviewVideoPlayerViewController.self) {
+            if let video = PreviewVideoPlayerViewController.instantiateFromStoryboard() {
                 window?.rootViewController?.present(video, animated: true)
             }
         }

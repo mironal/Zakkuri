@@ -97,7 +97,7 @@ class CalendarViewController: UIViewController {
         outputs.pushRecordList
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: {
-                guard let vc = UIStoryboard(name: "RecordListViewController", bundle: .main).instantiateViewController(withClass: RecordListViewController.self) else { return }
+                guard let vc = RecordListViewController.instantiateFromStoryboard() else { return }
                 vc.viewModel = $0
                 self.navigationController?.pushViewController(vc)
             }).disposed(by: disposeBag)
@@ -127,7 +127,7 @@ class CalendarViewController: UIViewController {
             .asSignal(onErrorSignalWith: .never())
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let vc = UIStoryboard(name: "RecordViewController", bundle: .main).instantiateViewController(withClass: RecordViewController.self) else { return }
+                guard let vc = RecordViewController.instantiateFromStoryboard() else { return }
 
                 vc.viewModel = $0
 
