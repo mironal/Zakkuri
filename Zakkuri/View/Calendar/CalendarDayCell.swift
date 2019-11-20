@@ -28,7 +28,7 @@ class CalendarDayCell: JTACDayCell {
     public var state: State = .empty {
         didSet {
             dayLabel.text = state.day
-            dayLabel.textColor = state.thisMonth ? .black : .gray
+            dayLabel.textColor = state.thisMonth ? .label : .secondaryLabel
 
             selectedView.isHidden = !state.selected
             borderWidth = state.selected ? 1 : 0

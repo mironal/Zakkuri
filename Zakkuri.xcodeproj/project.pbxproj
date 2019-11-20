@@ -22,6 +22,7 @@
 		4E242BD4236FE0020050F23A /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD3236FE0020050F23A /* CALayer.swift */; };
 		4E242BD6236FEBED0050F23A /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD5236FEBED0050F23A /* DotView.swift */; };
 		4E242BD8237001E60050F23A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E242BD7237001E60050F23A /* CalendarViewModel.swift */; };
+		4E265A4A2385414200ADC8CD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E265A492385414200ADC8CD /* Colors.xcassets */; };
 		4E2C582D237264910041A606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C582C237264910041A606 /* GoogleService-Info.plist */; };
 		4E30CE29233CAD3900934BDD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC52E232A5FC500E367E3 /* RxBlocking.framework */; };
 		4E30CE2A233CAD3900934BDD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6CC530232A5FC500E367E3 /* RxTest.framework */; };
@@ -113,6 +114,7 @@
 		4E242BD3236FE0020050F23A /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		4E242BD5236FEBED0050F23A /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
 		4E242BD7237001E60050F23A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		4E265A492385414200ADC8CD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		4E2C582C237264910041A606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E33B5EE232BC373007D42A5 /* SwifterSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwifterSwift.framework; path = Carthage/Build/iOS/SwifterSwift.framework; sourceTree = "<group>"; };
 		4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				4E33B5F9232C8B41007D42A5 /* Service */,
 				4EA3F0672351C87400F0B4F2 /* Entity */,
 				4ECE99BF232A596600215BFE /* AppDelegate.swift */,
+				4E265A492385414200ADC8CD /* Colors.xcassets */,
 				4ECE99C8232A596700215BFE /* Assets.xcassets */,
 				4ECE99CA232A596700215BFE /* LaunchScreen.storyboard */,
 				4E7DE8DA236FC84000AC7009 /* Main.storyboard */,
@@ -599,6 +602,7 @@
 				4E2C582D237264910041A606 /* GoogleService-Info.plist in Resources */,
 				4EA60731237193C2004051CA /* RecordListViewController.storyboard in Resources */,
 				4E33B5F3232BC790007D42A5 /* HabitFormViewController.storyboard in Resources */,
+				4E265A4A2385414200ADC8CD /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

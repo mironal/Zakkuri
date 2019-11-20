@@ -13,9 +13,9 @@ public struct Theme {
     let secondColor: UIColor
     let accentColor: UIColor
 
-    public static let defailt = Theme(baseColor: UIColor(hexString: "5289FF")!,
-                                      secondColor: UIColor(hexString: "2753B3")!,
-                                      accentColor: UIColor(hexString: "FF836B")!)
+    public static let defailt = Theme(baseColor: UIColor(named: "baseColor")!,
+                                      secondColor: UIColor(named: "secondColor")!,
+                                      accentColor: UIColor(named: "accentColor")!)
 }
 
 class ThemeAppier {
