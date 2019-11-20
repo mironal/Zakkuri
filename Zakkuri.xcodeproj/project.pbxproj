@@ -244,6 +244,7 @@
 			children = (
 				4E06F3AD23379B7B0083606C /* HabitDetailViewController.swift */,
 				4E06F3AF23379B880083606C /* HabitDetailViewController.storyboard */,
+				4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -276,6 +277,7 @@
 			children = (
 				4ECE99C1232A596600215BFE /* HabitFormViewController.swift */,
 				4E33B5F2232BC790007D42A5 /* HabitFormViewController.storyboard */,
+				4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */,
 			);
 			path = HabitForm;
 			sourceTree = "<group>";
@@ -285,6 +287,7 @@
 			children = (
 				4E33B5F0232BC74E007D42A5 /* SummaryViewController.swift */,
 				4E33B5F4232BC7DD007D42A5 /* SummaryViewController.storyboard */,
+				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
 				4E33B5FE232CB3F1007D42A5 /* SummaryCell.swift */,
 			);
 			path = Summary;
@@ -293,8 +296,9 @@
 		4E33B606232E35AE007D42A5 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				4E33B607232E35BF007D42A5 /* RecordViewController.swift */,
+				4E06F3A7233747BD0083606C /* RecordViewModel.swift */,
 				4E33B609232E35C7007D42A5 /* RecordViewController.storyboard */,
+				4E33B607232E35BF007D42A5 /* RecordViewController.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -338,19 +342,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4E6CC539232A615E00E367E3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4E6CC53B232A61DA00E367E3 /* HabitFormViewModel.swift */,
-				4E33B5F6232BC957007D42A5 /* SummaryViewModel.swift */,
-				4E06F3A7233747BD0083606C /* RecordViewModel.swift */,
-				4E06F3B12337B8DE0083606C /* HabitDetailViewModel.swift */,
-				4E242BD7237001E60050F23A /* CalendarViewModel.swift */,
-				4E1F60352371A7F20020AA2C /* RecordListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		4E6CC53A232A616D00E367E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +362,7 @@
 			children = (
 				4E7DE8DD236FC88D00AC7009 /* CalendarViewController.swift */,
 				4E7DE8DF236FC89800AC7009 /* CalendarViewController.storyboard */,
+				4E242BD7237001E60050F23A /* CalendarViewModel.swift */,
 				4E242BCF236FD4B70050F23A /* CalendarDayCell.swift */,
 				4E242BD5236FEBED0050F23A /* DotView.swift */,
 			);
@@ -393,6 +385,7 @@
 			children = (
 				4EA6072E237193B9004051CA /* RecordListViewController.swift */,
 				4EA60730237193C2004051CA /* RecordListViewController.storyboard */,
+				4E1F60352371A7F20020AA2C /* RecordListViewModel.swift */,
 			);
 			path = RecordList;
 			sourceTree = "<group>";
@@ -433,7 +426,6 @@
 			children = (
 				4E06F3A9233751240083606C /* Utils */,
 				4E6CC53A232A616D00E367E3 /* View */,
-				4E6CC539232A615E00E367E3 /* ViewModel */,
 				4E33B5F8232C8B3C007D42A5 /* Model */,
 				4E33B5F9232C8B41007D42A5 /* Service */,
 				4EA3F0672351C87400F0B4F2 /* Entity */,
