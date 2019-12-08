@@ -31,6 +31,7 @@ public class SummaryViewModel {
     }
 
     public struct Outputs {
+        let loading: Observable<Bool>
         let showRecordView: Observable<RecordViewModel>
         let showHabitForm: Observable<HabitFormViewModel>
         let showSetting: Observable<SettingViewModel>
@@ -47,8 +48,10 @@ public class SummaryViewModel {
     public func bind(_ inputs: Inputs) -> Outputs {
         let showGoalForm = inputs.tapAdd.map { HabitFormViewModel() }
 
+        let loadingSummary = habitModel.habitsSummary.loadingContent()
+
         let showRecordView = inputs.selectItem
-            .withLatestFrom(habitModel.habitsSummary) { (indexPath, habits) -> HabitID? in habits[indexPath.row].habit.id }
+            .withLatestFrom(loadingSummary.content) { (indexPath, habits) -> HabitID? in habits[indexPath.row].habit.id }
             .compactMap { $0.map { RecordViewModel(habitId: $0, analytics: "summary") } }
 
         inputs.deleteItem
@@ -63,6 +66,7 @@ public class SummaryViewModel {
         }).disposed(by: disposeBag)
 
         return Outputs(
+            loading: loadingSummary.loading,
             showRecordView: showRecordView,
             showHabitForm: showGoalForm,
             showSetting: inputs.tapSetting.map { SettingViewModel() },

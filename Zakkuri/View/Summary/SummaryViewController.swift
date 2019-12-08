@@ -20,6 +20,8 @@ class SummaryViewController: UITableViewController {
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var settingButton: UIBarButtonItem!
 
+    private let emptyDataString = BehaviorRelay(value: ("", ""))
+
     private let deleteItemRelay = PublishRelay<IndexPath>()
     private let reorderRelay = PublishRelay<(srcRow: Int, destRow: Int)>()
 
@@ -52,6 +54,11 @@ class SummaryViewController: UITableViewController {
 
         outputs.habitCells
             .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        outputs.loading
+            .map { $0 ? ("Loading...", "") : ("まだ習慣がありません", "右上の + ボタンから1つ目の週間を追加しましょう！") }
+            .bind(to: emptyDataString)
             .disposed(by: disposeBag)
 
         outputs.showRecordView
@@ -135,11 +142,11 @@ extension HabitSummary: SummaryCellState {
 
 extension SummaryViewController: EmptyDataSetSource {
     func title(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
-        return .init(string: "まだ習慣がありません")
+        return .init(string: emptyDataString.value.0)
     }
 
     func description(forEmptyDataSet _: UIScrollView) -> NSAttributedString? {
-        return .init(string: "右上の + ボタンから1つ目の週間を追加しましょう！")
+        return .init(string: emptyDataString.value.1)
     }
 }
 
