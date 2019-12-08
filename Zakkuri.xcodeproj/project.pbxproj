@@ -41,6 +41,7 @@
 		4E4AE87B2372EB10009C4B82 /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */; };
 		4E50400E2380F24400104BCB /* PreviewVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E50400D2380F24400104BCB /* PreviewVideoPlayerViewController.swift */; };
 		4E5040102380F25100104BCB /* PreviewVideoPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */; };
+		4E618F12239CF7A300542093 /* AsyncLoadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E618F11239CF7A300542093 /* AsyncLoadingContent.swift */; };
 		4E66A48F233AF8AB009BD0CA /* RecordViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */; };
 		4E6924A52380F7200046CE18 /* PreviewVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */; };
 		4E6924A7238156980046CE18 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6924A6238156980046CE18 /* AppPreferences.swift */; };
@@ -132,6 +133,7 @@
 		4E4AE87A2372EB10009C4B82 /* FirestoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStorage.swift; sourceTree = "<group>"; };
 		4E50400D2380F24400104BCB /* PreviewVideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		4E50400F2380F25100104BCB /* PreviewVideoPlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreviewVideoPlayerViewController.storyboard; sourceTree = "<group>"; };
+		4E618F11239CF7A300542093 /* AsyncLoadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncLoadingContent.swift; sourceTree = "<group>"; };
 		4E66A48E233AF8AB009BD0CA /* RecordViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTest.swift; sourceTree = "<group>"; };
 		4E6924A42380F7200046CE18 /* PreviewVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		4E6924A6238156980046CE18 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				4EF09C97235061C100691A57 /* UIViewController.swift */,
 				4E8EF476236D2B9C00280369 /* Formatter.swift */,
 				4E242BD3236FE0020050F23A /* CALayer.swift */,
+				4E618F11239CF7A300542093 /* AsyncLoadingContent.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				4EE2B66D2372E1F2009C2AA1 /* UserModel.swift in Sources */,
 				4EA3F0772351C8D300F0B4F2 /* HabitRecord.swift in Sources */,
 				4E242BD4236FE0020050F23A /* CALayer.swift in Sources */,
+				4E618F12239CF7A300542093 /* AsyncLoadingContent.swift in Sources */,
 				4EA3F0752351C8BB00F0B4F2 /* GoalSpan.swift in Sources */,
 				4E0A914923852A5600ADF706 /* SettingViewController.swift in Sources */,
 				4E242BD8237001E60050F23A /* CalendarViewModel.swift in Sources */,
